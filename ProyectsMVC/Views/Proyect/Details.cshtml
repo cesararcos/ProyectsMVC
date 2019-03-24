@@ -1,27 +1,36 @@
-﻿@model ProyectsMVC.Models.ViewModel.InicioProyectViewModel
+﻿@model ProyectsMVC.Logica.Models.ViewModel.ProyectsDetailsViewModel
+
+
 @{
-    ViewBag.Title = "Retorno";
+    ViewBag.Title = "Details";
 }
 
-<h2>Retorno</h2>
+<h2>Details</h2>
 
-<label>Name:</label>
-<input type="text" name="Name" value="@Model.Name" />
+<table class="table table-bordered table-info">
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Title)</td>
+        <td>@Html.DisplayNameFor(m => m.Details)</td>
+        <td>@Html.DisplayNameFor(m => m.ExpectedCompletionDate)</td>
+        <td>@Html.DisplayNameFor(m => m.CreatedAt)</td>
+        <td>@Html.DisplayNameFor(m => m.UpdatedAt)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(m => m.Title)</td>
+        <td>@Html.DisplayFor(m => m.Details)</td>
+        <td>@Html.DisplayFor(m => m.ExpectedCompletionDate)</td>
+        <td>@Html.DisplayFor(m => m.CreatedAt)</td>
+        <td>@Html.DisplayFor(m => m.UpdatedAt)</td>
+    </tr>
 
-<label>Titte:</label>
-<input type="text" name="Title" value="@Model.Title" />
+</table>
 
 
+<div class="form-row">
+    <div class="col-md-12">
+        <br />
 
-<label>Details:</label>
-<input type="text" name="Details" value="@Model.Details" />
-
-
-<label>Details:</label>
-<input type="text" name="PercentageAdvance" value="@Model.PercentageAdvance" />
-
-<label>Details:</label>
-<input type="text" name="ExpectedCompletionDate" value="@Model.ExpectedCompletionDate" />
-
-
+        @Html.ActionLink(" ", "Index", "Proyect", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+    </div>
+</div>
 

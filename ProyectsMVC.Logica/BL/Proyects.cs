@@ -72,5 +72,43 @@ namespace ProyectsMVC.Logica.BL
 
             db.SaveChanges();
         }
+
+        /// <summary>
+        /// UPDATE PROYECT
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="title"></param>
+        /// <param name="details"></param>
+        /// <param name="expectedCompletionDate"></param>
+        public void UpdateProyects(int id,
+            string title,
+            string details,
+            DateTime? expectedCompletionDate)
+        {
+            DAL.Models.ProyectsMVCEntities db = new DAL.Models.ProyectsMVCEntities();
+
+            var proyect = db.Projects.FirstOrDefault(x => x.Id == id);
+
+            proyect.Title = title;
+            proyect.Details = details;
+            proyect.ExpectedCompletionDate = expectedCompletionDate;
+            proyect.UpdatedAt = DateTime.Now;
+
+            db.SaveChanges();
+        }
+
+        /// <summary>
+        /// DELETE PROYECT
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteProyects(int? id)
+        {
+            DAL.Models.ProyectsMVCEntities db = new DAL.Models.ProyectsMVCEntities();
+
+            var proyect = db.Projects.FirstOrDefault(x => x.Id == id);
+            db.Projects.Remove(proyect);
+
+            db.SaveChanges();
+        }
     }
 }

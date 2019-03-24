@@ -1,4 +1,4 @@
-﻿using IdentitySample.Models;
+﻿    using IdentitySample.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
 using System.Threading.Tasks;
@@ -108,7 +108,50 @@ namespace ProyectsMVC.Controllers
             return View(proyectBindingModel);
         }
 
+        [HttpPost]
+        public ActionResult Edit(Logica.Models.BindingModel.ProyectEditBindingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Logica.BL.Proyects proyects = new Logica.BL.Proyects();
+                proyects.UpdateProyects(model.Id,
+                    model.Title,
+                    model.Details,
+                    model.ExpectedCompletionDate);
+
+                return RedirectToAction("Index");
+
+            }
+
+            return View(model);
+        }
 
 
+
+        public ActionResult Details(int? id)
+        {
+            Logica.BL.Proyects proyects = new Logica.BL.Proyects();
+            var proyect = proyects.GetProyects(id, null).FirstOrDefault();
+
+            var proyectDetailsViewModel = new Logica.Models.ViewModel.ProyectsDetailsViewModel
+            {
+                Details = proyect.Details,
+                ExpectedCompletionDate = proyect.ExpectedCompletionDate,
+                Title = proyect.Title,
+                CreatedAt = proyect.CreatedAt,
+                UpdatedAt = proyect.UpdatedAt
+            };
+
+            return View(proyectDetailsViewModel);
+        }
+
+
+        public ActionResult Delete(int? id)
+        {
+            Logica.BL.Proyects proyects = new Logica.BL.Proyects();
+            proyects.DeleteProyects(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }
