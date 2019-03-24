@@ -1,9 +1,37 @@
-﻿
+﻿@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.ProyectsIndexViewModel>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-@Html.ActionLink("New","Create","Proyect", null,  new { @class = "btn btn-primary"})
+@Html.ActionLink("New", "Create", "Proyect", null, new { @class = "btn btn-primary" })
 
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Title)</td>
+        <td>@Html.DisplayNameFor(model => model.Details)</td>
+        <td>@Html.DisplayNameFor(model => model.ExpectedCompletionDate)</td>
+        <td>@Html.DisplayNameFor(model => model.CreatedAt)</td>
+        <td>@Html.DisplayNameFor(model => model.UpdatedAt)</td>
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Title)</td>
+            <td>@Html.DisplayFor(model => item.Details)</td>
+            <td>@Html.DisplayFor(model => item.ExpectedCompletionDate)</td>
+            <td>@Html.DisplayFor(model => item.CreatedAt)</td>
+            <td>@Html.DisplayFor(model => item.UpdatedAt)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Proyect", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Details", "Details", "Proyect", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Delete", "Delete", "Proyect", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table> 

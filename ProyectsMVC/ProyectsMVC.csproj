@@ -222,11 +222,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\BindingModel\ProyectBindingModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Proyects.cs" />
-    <Compile Include="Models\ViewModel\ProyectViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -347,6 +345,7 @@
     <Content Include="Views\Proyect\Create.cshtml" />
     <Content Include="Views\Proyect\Details.cshtml" />
     <Content Include="Views\Proyect\Index.cshtml" />
+    <Content Include="Views\Proyect\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +365,10 @@
     <ProjectReference Include="..\ProyectsMVC.DAL\ProyectsMVC.DAL.csproj">
       <Project>{4f5dbef3-a6b4-4ebb-8d40-7daa3a3c978f}</Project>
       <Name>ProyectsMVC.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectsMVC.Logica\ProyectsMVC.Logica.csproj">
+      <Project>{57c6eb36-ce44-4750-b18b-b1cbeaa5fe35}</Project>
+      <Name>ProyectsMVC.Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
