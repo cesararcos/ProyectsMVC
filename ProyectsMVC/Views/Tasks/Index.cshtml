@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.TasksIndexViewModel>
+
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<h2>Tasks</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            @Html.ActionLink("Proyects", "Index", "Proyect")
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Tasks of @ViewBag.Proyect.Title</li>
+    </ol>
+</nav>
+
+@Html.ActionLink(" ",
+    "Create",
+    "Tasks",
+    new { proyectId = ViewBag.Proyect.Id },
+    new { @class = "btn btn-primary fas fa-plus-circle" })
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Title)</td>
+        <td>@Html.DisplayNameFor(model => model.Details)</td>
+        <td>@Html.DisplayNameFor(model => model.ExpirationDate)</td>
+        <td>@Html.DisplayNameFor(model => model.IsCompleted)</td>
+        <td>@Html.DisplayNameFor(model => model.Effort)</td>
+        <td>@Html.DisplayNameFor(model => model.RemainigWork)</td>
+        <td>@Html.DisplayNameFor(model => model.States)</td>
+        <td>@Html.DisplayNameFor(model => model.Activity)</td>
+        <td>@Html.DisplayNameFor(model => model.Priority)</td>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Title)</td>
+            <td>@Html.DisplayFor(model => item.Details)</td>
+            <td>@Html.DisplayFor(model => item.ExpirationDate)</td>
+            <td>@Html.DisplayFor(model => item.IsCompleted)</td>
+            <td>@Html.DisplayFor(model => item.Effort)</td>
+            <td>@Html.DisplayFor(model => item.RemainigWork)</td>
+            <td>@Html.DisplayFor(model => item.States)</td>
+            <td>@Html.DisplayFor(model => item.Activity)</td>
+            <td>@Html.DisplayFor(model => item.Priority)</td>
+
+        </tr>
+    }
+
+</table> 

@@ -38,4 +38,6 @@ namespace ProyectsMVC.Logica.Models.BindingModel
         [Display(Name = "ExpectedCompletionDate")]
         public DateTime? ExpectedCompletionDate { get; set; }
     }
+
+    
 }

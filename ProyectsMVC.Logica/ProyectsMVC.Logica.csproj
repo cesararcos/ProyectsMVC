@@ -47,12 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\Activities.cs" />
+    <Compile Include="BL\Priorities.cs" />
     <Compile Include="BL\Proyects.cs" />
+    <Compile Include="BL\States.cs" />
+    <Compile Include="BL\Tasks.cs" />
     <Compile Include="BL\Tenants.cs" />
     <Compile Include="Models\BindingModel\ProyectBindingModel.cs" />
+    <Compile Include="Models\BindingModel\TasksBindingModel.cs" />
+    <Compile Include="Models\DB\Activities.cs" />
+    <Compile Include="Models\DB\Priorities.cs" />
     <Compile Include="Models\DB\Proyects.cs" />
+    <Compile Include="Models\DB\States.cs" />
+    <Compile Include="Models\DB\Tasks.cs" />
     <Compile Include="Models\DB\Tenants.cs" />
     <Compile Include="Models\ViewModel\ProyectsViewModel.cs" />
+    <Compile Include="Models\ViewModel\TasksViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

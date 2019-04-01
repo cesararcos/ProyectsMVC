@@ -43,4 +43,5 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         public DateTime? UpdatedAt { get; set; }
 
     }
+
 }
