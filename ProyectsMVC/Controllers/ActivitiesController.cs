@@ -10,6 +10,7 @@ using ProyectsMVC.DAL.Models;
 
 namespace ProyectsMVC.Controllers
 {
+    [Authorize]
     public class ActivitiesController : Controller
     {
         private ProyectsMVCEntities db = new ProyectsMVCEntities();

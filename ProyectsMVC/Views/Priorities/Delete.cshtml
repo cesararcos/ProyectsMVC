@@ -10,31 +10,41 @@
 <div>
     <h4>Priorities</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Active)
+            </td>
+        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Active)
+            </td>
+        </tr>
+    </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
+@*<div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+<div class="form-row">
+    <div class="col-md-12">
+        <br />
+        <button type="submit" value="" class="btn btn-primary"><i class="fas fa-trash-alt"></i></button>
+        @Html.ActionLink(" ", "Index", "Priorities", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+    </div>
+</div>
+}
 </div>

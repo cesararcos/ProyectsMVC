@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ProyectsMVC.Controllers
 {
+    [Authorize]
     public class TasksController : Controller
     {
         
