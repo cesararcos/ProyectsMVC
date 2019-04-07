@@ -32,24 +32,28 @@
             <div class="list-group list-group-flush">
                 @if (Request.IsAuthenticated)
                 {
-                    
+
 
                     @Html.ActionLink("  Projects", "Index", "Proyect", null, new { @class = "list-group-item list-group-item-action bg-light fas fa-project-diagram" })
                     //@Html.ActionLink("  Tasks", "Index", "Tasks", null, new { @class = "list-group-item list-group-item-action bg-light fas fa-tasks" })
-                    
+
 
 
                     @*<a href="#" class="list-group-item list-group-item-action bg-light">Perfil</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Calificaciones</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Asistencia</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Horario</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Itinerario</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Eventos</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Encuesta</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Foro</a>*@
+            <a href="#" class="list-group-item list-group-item-action bg-light">Calificaciones</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Asistencia</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Horario</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Itinerario</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Eventos</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Encuesta</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Foro</a>*@
 
                     if (User.IsInRole("Admin"))
                     {
+                        @Html.ActionLink("Activities", "Index", "Activities", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("Priorities", "Index", "Priorities", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                        @Html.ActionLink("States", "Index", "States", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+
                         @Html.ActionLink("RolesAdmin", "Index", "RolesAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                         @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                     }
