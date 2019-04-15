@@ -131,6 +131,145 @@
           <Property Name="PriorityId" Type="int" />
           <Property Name="ProjectId" Type="int" />
         </EntityType>
+        <EntityType Name="tbBarrio">
+          <Key>
+            <PropertyRef Name="barCodigo" />
+          </Key>
+          <Property Name="barCodigo" Type="int" Nullable="false" />
+          <Property Name="barDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ciuCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbCiudad">
+          <Key>
+            <PropertyRef Name="ciuCodigo" />
+          </Key>
+          <Property Name="ciuCodigo" Type="int" Nullable="false" />
+          <Property Name="ciuDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="depCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbClientes">
+          <Key>
+            <PropertyRef Name="regiCedula" />
+          </Key>
+          <Property Name="regiCedula" Type="int" Nullable="false" />
+          <Property Name="regiNombre" Type="varchar" MaxLength="50" />
+          <Property Name="regiApellido" Type="varchar" MaxLength="50" />
+          <Property Name="niveduCodigo" Type="int" />
+          <Property Name="regiTelefonofijo" Type="varchar" MaxLength="50" />
+          <Property Name="regiCelular" Type="varchar" MaxLength="50" />
+          <Property Name="regiEmail" Type="varchar" MaxLength="50" />
+          <Property Name="regiEdad" Type="varchar" MaxLength="50" />
+          <Property Name="geneCodigo" Type="int" />
+          <Property Name="regiFechanacimiento" Type="varchar" MaxLength="50" />
+          <Property Name="usuaCodigo" Type="int" />
+          <Property Name="barCodigo" Type="int" />
+          <Property Name="regiFoto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbDepartamento">
+          <Key>
+            <PropertyRef Name="depCodigo" />
+          </Key>
+          <Property Name="depCodigo" Type="int" Nullable="false" />
+          <Property Name="depDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="paiCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbDescargas">
+          <Key>
+            <PropertyRef Name="descCodigo" />
+          </Key>
+          <Property Name="descCodigo" Type="int" Nullable="false" />
+          <Property Name="prueCodigo" Type="int" />
+          <Property Name="descDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="descLink" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbEncuesta">
+          <Key>
+            <PropertyRef Name="encuCodigo" />
+          </Key>
+          <Property Name="encuCodigo" Type="int" Nullable="false" />
+          <Property Name="encuDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="prueCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbGenero">
+          <Key>
+            <PropertyRef Name="geneCodigo" />
+          </Key>
+          <Property Name="geneCodigo" Type="int" Nullable="false" />
+          <Property Name="geneDescripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbNivelEducativo">
+          <Key>
+            <PropertyRef Name="niveduCodigo" />
+          </Key>
+          <Property Name="niveduCodigo" Type="int" Nullable="false" />
+          <Property Name="niveduDescripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbNiveles">
+          <Key>
+            <PropertyRef Name="niveCodigo" />
+          </Key>
+          <Property Name="niveCodigo" Type="int" Nullable="false" />
+          <Property Name="niveDescripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbPais">
+          <Key>
+            <PropertyRef Name="paiCodigo" />
+          </Key>
+          <Property Name="paiCodigo" Type="int" Nullable="false" />
+          <Property Name="paiDescripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbPerfiles">
+          <Key>
+            <PropertyRef Name="perfCodigo" />
+          </Key>
+          <Property Name="perfCodigo" Type="int" Nullable="false" />
+          <Property Name="perfDescripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbPreguntas">
+          <Key>
+            <PropertyRef Name="pregCodigo" />
+          </Key>
+          <Property Name="pregCodigo" Type="int" Nullable="false" />
+          <Property Name="pregDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="encuCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbPrueba">
+          <Key>
+            <PropertyRef Name="prueCodigo" />
+          </Key>
+          <Property Name="prueCodigo" Type="int" Nullable="false" />
+          <Property Name="niveCodigo" Type="int" />
+          <Property Name="prueNombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbPruebaRespuesta">
+          <Key>
+            <PropertyRef Name="prueresCodigo" />
+          </Key>
+          <Property Name="prueresCodigo" Type="int" Nullable="false" />
+          <Property Name="prueCodigo" Type="int" />
+          <Property Name="respCodigo" Type="int" />
+          <Property Name="regiCedula" Type="int" />
+        </EntityType>
+        <EntityType Name="tbRespuestas">
+          <Key>
+            <PropertyRef Name="respCodigo" />
+          </Key>
+          <Property Name="respCodigo" Type="int" Nullable="false" />
+          <Property Name="respDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="pregCodigo" Type="int" />
+          <Property Name="respCorrectas" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usuaCodigo" />
+          </Key>
+          <Property Name="usuaCodigo" Type="int" Nullable="false" />
+          <Property Name="usuaDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="usuaLogin" Type="varchar" MaxLength="50" />
+          <Property Name="usuaPassword" Type="varchar" MaxLength="50" />
+          <Property Name="perfCodigo" Type="int" />
+          <Property Name="usuaImagen" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Tenants">
           <Key>
             <PropertyRef Name="Id" />
@@ -315,6 +454,198 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbBarrio_tbCiudad">
+          <End Role="tbCiudad" Type="Self.tbCiudad" Multiplicity="0..1" />
+          <End Role="tbBarrio" Type="Self.tbBarrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCiudad">
+              <PropertyRef Name="ciuCodigo" />
+            </Principal>
+            <Dependent Role="tbBarrio">
+              <PropertyRef Name="ciuCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbCiudad_tbDepartamento">
+          <End Role="tbDepartamento" Type="Self.tbDepartamento" Multiplicity="0..1" />
+          <End Role="tbCiudad" Type="Self.tbCiudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDepartamento">
+              <PropertyRef Name="depCodigo" />
+            </Principal>
+            <Dependent Role="tbCiudad">
+              <PropertyRef Name="depCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbClientes_tbBarrio1">
+          <End Role="tbBarrio" Type="Self.tbBarrio" Multiplicity="0..1" />
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbBarrio">
+              <PropertyRef Name="barCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="barCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbDepartamento_tbDepartamento">
+          <End Role="tbPais" Type="Self.tbPais" Multiplicity="0..1" />
+          <End Role="tbDepartamento" Type="Self.tbDepartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPais">
+              <PropertyRef Name="paiCodigo" />
+            </Principal>
+            <Dependent Role="tbDepartamento">
+              <PropertyRef Name="paiCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbDescargas_tbPrueba">
+          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
+          <End Role="tbDescargas" Type="Self.tbDescargas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrueba">
+              <PropertyRef Name="prueCodigo" />
+            </Principal>
+            <Dependent Role="tbDescargas">
+              <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbEncuesta_tbPrueba">
+          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
+          <End Role="tbEncuesta" Type="Self.tbEncuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrueba">
+              <PropertyRef Name="prueCodigo" />
+            </Principal>
+            <Dependent Role="tbEncuesta">
+              <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPreguntas_tbEncuesta">
+          <End Role="tbEncuesta" Type="Self.tbEncuesta" Multiplicity="0..1" />
+          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEncuesta">
+              <PropertyRef Name="encuCodigo" />
+            </Principal>
+            <Dependent Role="tbPreguntas">
+              <PropertyRef Name="encuCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPrueba_tbNiveles">
+          <End Role="tbNiveles" Type="Self.tbNiveles" Multiplicity="0..1" />
+          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNiveles">
+              <PropertyRef Name="niveCodigo" />
+            </Principal>
+            <Dependent Role="tbPrueba">
+              <PropertyRef Name="niveCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbClientes1">
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="0..1" />
+          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="regiCedula" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="regiCedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbPrueba">
+          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
+          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrueba">
+              <PropertyRef Name="prueCodigo" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbRespuestas">
+          <End Role="tbRespuestas" Type="Self.tbRespuestas" Multiplicity="0..1" />
+          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRespuestas">
+              <PropertyRef Name="respCodigo" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="respCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRegistrar_tbGenero">
+          <End Role="tbGenero" Type="Self.tbGenero" Multiplicity="0..1" />
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbGenero">
+              <PropertyRef Name="geneCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="geneCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRegistrar_tbNivelEducativo">
+          <End Role="tbNivelEducativo" Type="Self.tbNivelEducativo" Multiplicity="0..1" />
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNivelEducativo">
+              <PropertyRef Name="niveduCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="niveduCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRegistrar_tbUsuarios">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usuaCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="usuaCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRespuestas_tbPreguntas">
+          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="0..1" />
+          <End Role="tbRespuestas" Type="Self.tbRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPreguntas">
+              <PropertyRef Name="pregCodigo" />
+            </Principal>
+            <Dependent Role="tbRespuestas">
+              <PropertyRef Name="pregCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbUsuarios_tbPerfiles">
+          <End Role="tbPerfiles" Type="Self.tbPerfiles" Multiplicity="0..1" />
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPerfiles">
+              <PropertyRef Name="perfCodigo" />
+            </Principal>
+            <Dependent Role="tbUsuarios">
+              <PropertyRef Name="perfCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserProjects_Projects">
           <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
           <End Role="UserProjects" Type="Self.UserProjects" Multiplicity="*" />
@@ -340,6 +671,22 @@
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbBarrio" EntityType="Self.tbBarrio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCiudad" EntityType="Self.tbCiudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDepartamento" EntityType="Self.tbDepartamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDescargas" EntityType="Self.tbDescargas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbEncuesta" EntityType="Self.tbEncuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbGenero" EntityType="Self.tbGenero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbNivelEducativo" EntityType="Self.tbNivelEducativo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbNiveles" EntityType="Self.tbNiveles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPais" EntityType="Self.tbPais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPerfiles" EntityType="Self.tbPerfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPreguntas" EntityType="Self.tbPreguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPrueba" EntityType="Self.tbPrueba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPruebaRespuesta" EntityType="Self.tbPruebaRespuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbRespuestas" EntityType="Self.tbRespuestas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tenants" EntityType="Self.Tenants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserProjects" EntityType="Self.UserProjects" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AspNetUse__Tenan__300424B4" Association="Self.FK__AspNetUse__Tenan__300424B4">
@@ -393,6 +740,70 @@
           <AssociationSet Name="FK_Tasks_States" Association="Self.FK_Tasks_States">
             <End Role="States" EntitySet="States" />
             <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbBarrio_tbCiudad" Association="Self.FK_tbBarrio_tbCiudad">
+            <End Role="tbCiudad" EntitySet="tbCiudad" />
+            <End Role="tbBarrio" EntitySet="tbBarrio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbCiudad_tbDepartamento" Association="Self.FK_tbCiudad_tbDepartamento">
+            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
+            <End Role="tbCiudad" EntitySet="tbCiudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbClientes_tbBarrio1" Association="Self.FK_tbClientes_tbBarrio1">
+            <End Role="tbBarrio" EntitySet="tbBarrio" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbDepartamento_tbDepartamento" Association="Self.FK_tbDepartamento_tbDepartamento">
+            <End Role="tbPais" EntitySet="tbPais" />
+            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbDescargas_tbPrueba" Association="Self.FK_tbDescargas_tbPrueba">
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+            <End Role="tbDescargas" EntitySet="tbDescargas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbEncuesta_tbPrueba" Association="Self.FK_tbEncuesta_tbPrueba">
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+            <End Role="tbEncuesta" EntitySet="tbEncuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPreguntas_tbEncuesta" Association="Self.FK_tbPreguntas_tbEncuesta">
+            <End Role="tbEncuesta" EntitySet="tbEncuesta" />
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPrueba_tbNiveles" Association="Self.FK_tbPrueba_tbNiveles">
+            <End Role="tbNiveles" EntitySet="tbNiveles" />
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbClientes1" Association="Self.FK_tbPruebaRespuesta_tbClientes1">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbPrueba" Association="Self.FK_tbPruebaRespuesta_tbPrueba">
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbRespuestas" Association="Self.FK_tbPruebaRespuesta_tbRespuestas">
+            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRegistrar_tbGenero" Association="Self.FK_tbRegistrar_tbGenero">
+            <End Role="tbGenero" EntitySet="tbGenero" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRegistrar_tbNivelEducativo" Association="Self.FK_tbRegistrar_tbNivelEducativo">
+            <End Role="tbNivelEducativo" EntitySet="tbNivelEducativo" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRegistrar_tbUsuarios" Association="Self.FK_tbRegistrar_tbUsuarios">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="Self.FK_tbRespuestas_tbPreguntas">
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbUsuarios_tbPerfiles" Association="Self.FK_tbUsuarios_tbPerfiles">
+            <End Role="tbPerfiles" EntitySet="tbPerfiles" />
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_UserProjects_Projects" Association="Self.FK_UserProjects_Projects">
             <End Role="Projects" EntitySet="Projects" />
@@ -690,6 +1101,86 @@
             <End Role="States" EntitySet="States" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
+          <EntitySet Name="tbBarrio" EntityType="ProyectsMVCModel.tbBarrio" />
+          <EntitySet Name="tbCiudad" EntityType="ProyectsMVCModel.tbCiudad" />
+          <EntitySet Name="tbClientes" EntityType="ProyectsMVCModel.tbClientes" />
+          <EntitySet Name="tbDepartamento" EntityType="ProyectsMVCModel.tbDepartamento" />
+          <EntitySet Name="tbDescargas" EntityType="ProyectsMVCModel.tbDescargas" />
+          <EntitySet Name="tbEncuesta" EntityType="ProyectsMVCModel.tbEncuesta" />
+          <EntitySet Name="tbGenero" EntityType="ProyectsMVCModel.tbGenero" />
+          <EntitySet Name="tbNivelEducativo" EntityType="ProyectsMVCModel.tbNivelEducativo" />
+          <EntitySet Name="tbNiveles" EntityType="ProyectsMVCModel.tbNiveles" />
+          <EntitySet Name="tbPais" EntityType="ProyectsMVCModel.tbPais" />
+          <EntitySet Name="tbPerfiles" EntityType="ProyectsMVCModel.tbPerfiles" />
+          <EntitySet Name="tbPreguntas" EntityType="ProyectsMVCModel.tbPreguntas" />
+          <EntitySet Name="tbPrueba" EntityType="ProyectsMVCModel.tbPrueba" />
+          <EntitySet Name="tbPruebaRespuesta" EntityType="ProyectsMVCModel.tbPruebaRespuesta" />
+          <EntitySet Name="tbRespuestas" EntityType="ProyectsMVCModel.tbRespuestas" />
+          <EntitySet Name="tbUsuarios" EntityType="ProyectsMVCModel.tbUsuarios" />
+          <AssociationSet Name="FK_tbBarrio_tbCiudad" Association="ProyectsMVCModel.FK_tbBarrio_tbCiudad">
+            <End Role="tbCiudad" EntitySet="tbCiudad" />
+            <End Role="tbBarrio" EntitySet="tbBarrio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbClientes_tbBarrio1" Association="ProyectsMVCModel.FK_tbClientes_tbBarrio1">
+            <End Role="tbBarrio" EntitySet="tbBarrio" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbCiudad_tbDepartamento" Association="ProyectsMVCModel.FK_tbCiudad_tbDepartamento">
+            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
+            <End Role="tbCiudad" EntitySet="tbCiudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbClientes1" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRegistrar_tbGenero" Association="ProyectsMVCModel.FK_tbRegistrar_tbGenero">
+            <End Role="tbGenero" EntitySet="tbGenero" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRegistrar_tbNivelEducativo" Association="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo">
+            <End Role="tbNivelEducativo" EntitySet="tbNivelEducativo" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRegistrar_tbUsuarios" Association="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbDepartamento_tbDepartamento" Association="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento">
+            <End Role="tbPais" EntitySet="tbPais" />
+            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbDescargas_tbPrueba" Association="ProyectsMVCModel.FK_tbDescargas_tbPrueba">
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+            <End Role="tbDescargas" EntitySet="tbDescargas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbEncuesta_tbPrueba" Association="ProyectsMVCModel.FK_tbEncuesta_tbPrueba">
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+            <End Role="tbEncuesta" EntitySet="tbEncuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPreguntas_tbEncuesta" Association="ProyectsMVCModel.FK_tbPreguntas_tbEncuesta">
+            <End Role="tbEncuesta" EntitySet="tbEncuesta" />
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPrueba_tbNiveles" Association="ProyectsMVCModel.FK_tbPrueba_tbNiveles">
+            <End Role="tbNiveles" EntitySet="tbNiveles" />
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbUsuarios_tbPerfiles" Association="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles">
+            <End Role="tbPerfiles" EntitySet="tbPerfiles" />
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas">
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbPrueba" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba">
+            <End Role="tbPrueba" EntitySet="tbPrueba" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbRespuestas" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas">
+            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Activities">
           <Key>
@@ -783,6 +1274,369 @@
             </Principal>
             <Dependent Role="Tasks">
               <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbBarrio">
+          <Key>
+            <PropertyRef Name="barCodigo" />
+          </Key>
+          <Property Name="barCodigo" Type="Int32" Nullable="false" />
+          <Property Name="barDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ciuCodigo" Type="Int32" />
+          <NavigationProperty Name="tbCiudad" Relationship="ProyectsMVCModel.FK_tbBarrio_tbCiudad" FromRole="tbBarrio" ToRole="tbCiudad" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbClientes_tbBarrio1" FromRole="tbBarrio" ToRole="tbClientes" />
+        </EntityType>
+        <EntityType Name="tbCiudad">
+          <Key>
+            <PropertyRef Name="ciuCodigo" />
+          </Key>
+          <Property Name="ciuCodigo" Type="Int32" Nullable="false" />
+          <Property Name="ciuDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="depCodigo" Type="Int32" />
+          <NavigationProperty Name="tbBarrio" Relationship="ProyectsMVCModel.FK_tbBarrio_tbCiudad" FromRole="tbCiudad" ToRole="tbBarrio" />
+          <NavigationProperty Name="tbDepartamento" Relationship="ProyectsMVCModel.FK_tbCiudad_tbDepartamento" FromRole="tbCiudad" ToRole="tbDepartamento" />
+        </EntityType>
+        <EntityType Name="tbClientes">
+          <Key>
+            <PropertyRef Name="regiCedula" />
+          </Key>
+          <Property Name="regiCedula" Type="Int32" Nullable="false" />
+          <Property Name="regiNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regiApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="niveduCodigo" Type="Int32" />
+          <Property Name="regiTelefonofijo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regiCelular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regiEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regiEdad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geneCodigo" Type="Int32" />
+          <Property Name="regiFechanacimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuaCodigo" Type="Int32" />
+          <Property Name="barCodigo" Type="Int32" />
+          <Property Name="regiFoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbBarrio" Relationship="ProyectsMVCModel.FK_tbClientes_tbBarrio1" FromRole="tbClientes" ToRole="tbBarrio" />
+          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1" FromRole="tbClientes" ToRole="tbPruebaRespuesta" />
+          <NavigationProperty Name="tbGenero" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbGenero" FromRole="tbClientes" ToRole="tbGenero" />
+          <NavigationProperty Name="tbNivelEducativo" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" FromRole="tbClientes" ToRole="tbNivelEducativo" />
+          <NavigationProperty Name="tbUsuarios" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" FromRole="tbClientes" ToRole="tbUsuarios" />
+        </EntityType>
+        <EntityType Name="tbDepartamento">
+          <Key>
+            <PropertyRef Name="depCodigo" />
+          </Key>
+          <Property Name="depCodigo" Type="Int32" Nullable="false" />
+          <Property Name="depDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paiCodigo" Type="Int32" />
+          <NavigationProperty Name="tbCiudad" Relationship="ProyectsMVCModel.FK_tbCiudad_tbDepartamento" FromRole="tbDepartamento" ToRole="tbCiudad" />
+          <NavigationProperty Name="tbPais" Relationship="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento" FromRole="tbDepartamento" ToRole="tbPais" />
+        </EntityType>
+        <EntityType Name="tbDescargas">
+          <Key>
+            <PropertyRef Name="descCodigo" />
+          </Key>
+          <Property Name="descCodigo" Type="Int32" Nullable="false" />
+          <Property Name="prueCodigo" Type="Int32" />
+          <Property Name="descDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbDescargas_tbPrueba" FromRole="tbDescargas" ToRole="tbPrueba" />
+        </EntityType>
+        <EntityType Name="tbEncuesta">
+          <Key>
+            <PropertyRef Name="encuCodigo" />
+          </Key>
+          <Property Name="encuCodigo" Type="Int32" Nullable="false" />
+          <Property Name="encuDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prueCodigo" Type="Int32" />
+          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbEncuesta_tbPrueba" FromRole="tbEncuesta" ToRole="tbPrueba" />
+          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbEncuesta" FromRole="tbEncuesta" ToRole="tbPreguntas" />
+        </EntityType>
+        <EntityType Name="tbGenero">
+          <Key>
+            <PropertyRef Name="geneCodigo" />
+          </Key>
+          <Property Name="geneCodigo" Type="Int32" Nullable="false" />
+          <Property Name="geneDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbGenero" FromRole="tbGenero" ToRole="tbClientes" />
+        </EntityType>
+        <EntityType Name="tbNivelEducativo">
+          <Key>
+            <PropertyRef Name="niveduCodigo" />
+          </Key>
+          <Property Name="niveduCodigo" Type="Int32" Nullable="false" />
+          <Property Name="niveduDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" FromRole="tbNivelEducativo" ToRole="tbClientes" />
+        </EntityType>
+        <EntityType Name="tbNiveles">
+          <Key>
+            <PropertyRef Name="niveCodigo" />
+          </Key>
+          <Property Name="niveCodigo" Type="Int32" Nullable="false" />
+          <Property Name="niveDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPrueba_tbNiveles" FromRole="tbNiveles" ToRole="tbPrueba" />
+        </EntityType>
+        <EntityType Name="tbPais">
+          <Key>
+            <PropertyRef Name="paiCodigo" />
+          </Key>
+          <Property Name="paiCodigo" Type="Int32" Nullable="false" />
+          <Property Name="paiDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbDepartamento" Relationship="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento" FromRole="tbPais" ToRole="tbDepartamento" />
+        </EntityType>
+        <EntityType Name="tbPerfiles">
+          <Key>
+            <PropertyRef Name="perfCodigo" />
+          </Key>
+          <Property Name="perfCodigo" Type="Int32" Nullable="false" />
+          <Property Name="perfDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbUsuarios" Relationship="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles" FromRole="tbPerfiles" ToRole="tbUsuarios" />
+        </EntityType>
+        <EntityType Name="tbPreguntas">
+          <Key>
+            <PropertyRef Name="pregCodigo" />
+          </Key>
+          <Property Name="pregCodigo" Type="Int32" Nullable="false" />
+          <Property Name="pregDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="encuCodigo" Type="Int32" />
+          <NavigationProperty Name="tbEncuesta" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbEncuesta" FromRole="tbPreguntas" ToRole="tbEncuesta" />
+          <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbPreguntas" ToRole="tbRespuestas" />
+        </EntityType>
+        <EntityType Name="tbPrueba">
+          <Key>
+            <PropertyRef Name="prueCodigo" />
+          </Key>
+          <Property Name="prueCodigo" Type="Int32" Nullable="false" />
+          <Property Name="niveCodigo" Type="Int32" />
+          <Property Name="prueNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbDescargas" Relationship="ProyectsMVCModel.FK_tbDescargas_tbPrueba" FromRole="tbPrueba" ToRole="tbDescargas" />
+          <NavigationProperty Name="tbEncuesta" Relationship="ProyectsMVCModel.FK_tbEncuesta_tbPrueba" FromRole="tbPrueba" ToRole="tbEncuesta" />
+          <NavigationProperty Name="tbNiveles" Relationship="ProyectsMVCModel.FK_tbPrueba_tbNiveles" FromRole="tbPrueba" ToRole="tbNiveles" />
+          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" FromRole="tbPrueba" ToRole="tbPruebaRespuesta" />
+        </EntityType>
+        <EntityType Name="tbPruebaRespuesta">
+          <Key>
+            <PropertyRef Name="prueresCodigo" />
+          </Key>
+          <Property Name="prueresCodigo" Type="Int32" Nullable="false" />
+          <Property Name="prueCodigo" Type="Int32" />
+          <Property Name="respCodigo" Type="Int32" />
+          <Property Name="regiCedula" Type="Int32" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1" FromRole="tbPruebaRespuesta" ToRole="tbClientes" />
+          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" FromRole="tbPruebaRespuesta" ToRole="tbPrueba" />
+          <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbPruebaRespuesta" ToRole="tbRespuestas" />
+        </EntityType>
+        <EntityType Name="tbRespuestas">
+          <Key>
+            <PropertyRef Name="respCodigo" />
+          </Key>
+          <Property Name="respCodigo" Type="Int32" Nullable="false" />
+          <Property Name="respDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pregCodigo" Type="Int32" />
+          <Property Name="respCorrectas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbRespuestas" ToRole="tbPreguntas" />
+          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbRespuestas" ToRole="tbPruebaRespuesta" />
+        </EntityType>
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usuaCodigo" />
+          </Key>
+          <Property Name="usuaCodigo" Type="Int32" Nullable="false" />
+          <Property Name="usuaDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuaLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuaPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="perfCodigo" Type="Int32" />
+          <Property Name="usuaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" FromRole="tbUsuarios" ToRole="tbClientes" />
+          <NavigationProperty Name="tbPerfiles" Relationship="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles" FromRole="tbUsuarios" ToRole="tbPerfiles" />
+        </EntityType>
+        <Association Name="FK_tbBarrio_tbCiudad">
+          <End Type="ProyectsMVCModel.tbCiudad" Role="tbCiudad" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbBarrio" Role="tbBarrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCiudad">
+              <PropertyRef Name="ciuCodigo" />
+            </Principal>
+            <Dependent Role="tbBarrio">
+              <PropertyRef Name="ciuCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbClientes_tbBarrio1">
+          <End Type="ProyectsMVCModel.tbBarrio" Role="tbBarrio" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbBarrio">
+              <PropertyRef Name="barCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="barCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbCiudad_tbDepartamento">
+          <End Type="ProyectsMVCModel.tbDepartamento" Role="tbDepartamento" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbCiudad" Role="tbCiudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDepartamento">
+              <PropertyRef Name="depCodigo" />
+            </Principal>
+            <Dependent Role="tbCiudad">
+              <PropertyRef Name="depCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbClientes1">
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="regiCedula" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="regiCedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRegistrar_tbGenero">
+          <End Type="ProyectsMVCModel.tbGenero" Role="tbGenero" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbGenero">
+              <PropertyRef Name="geneCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="geneCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRegistrar_tbNivelEducativo">
+          <End Type="ProyectsMVCModel.tbNivelEducativo" Role="tbNivelEducativo" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNivelEducativo">
+              <PropertyRef Name="niveduCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="niveduCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRegistrar_tbUsuarios">
+          <End Type="ProyectsMVCModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usuaCodigo" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="usuaCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbDepartamento_tbDepartamento">
+          <End Type="ProyectsMVCModel.tbPais" Role="tbPais" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbDepartamento" Role="tbDepartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPais">
+              <PropertyRef Name="paiCodigo" />
+            </Principal>
+            <Dependent Role="tbDepartamento">
+              <PropertyRef Name="paiCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbDescargas_tbPrueba">
+          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbDescargas" Role="tbDescargas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrueba">
+              <PropertyRef Name="prueCodigo" />
+            </Principal>
+            <Dependent Role="tbDescargas">
+              <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbEncuesta_tbPrueba">
+          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbEncuesta" Role="tbEncuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrueba">
+              <PropertyRef Name="prueCodigo" />
+            </Principal>
+            <Dependent Role="tbEncuesta">
+              <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPreguntas_tbEncuesta">
+          <End Type="ProyectsMVCModel.tbEncuesta" Role="tbEncuesta" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEncuesta">
+              <PropertyRef Name="encuCodigo" />
+            </Principal>
+            <Dependent Role="tbPreguntas">
+              <PropertyRef Name="encuCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPrueba_tbNiveles">
+          <End Type="ProyectsMVCModel.tbNiveles" Role="tbNiveles" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNiveles">
+              <PropertyRef Name="niveCodigo" />
+            </Principal>
+            <Dependent Role="tbPrueba">
+              <PropertyRef Name="niveCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbUsuarios_tbPerfiles">
+          <End Type="ProyectsMVCModel.tbPerfiles" Role="tbPerfiles" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbUsuarios" Role="tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPerfiles">
+              <PropertyRef Name="perfCodigo" />
+            </Principal>
+            <Dependent Role="tbUsuarios">
+              <PropertyRef Name="perfCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbRespuestas_tbPreguntas">
+          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbRespuestas" Role="tbRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPreguntas">
+              <PropertyRef Name="pregCodigo" />
+            </Principal>
+            <Dependent Role="tbRespuestas">
+              <PropertyRef Name="pregCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbPrueba">
+          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrueba">
+              <PropertyRef Name="prueCodigo" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbRespuestas">
+          <End Type="ProyectsMVCModel.tbRespuestas" Role="tbRespuestas" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRespuestas">
+              <PropertyRef Name="respCodigo" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="respCodigo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -946,6 +1800,161 @@
                 <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbBarrio">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbBarrio">
+              <MappingFragment StoreEntitySet="tbBarrio">
+                <ScalarProperty Name="ciuCodigo" ColumnName="ciuCodigo" />
+                <ScalarProperty Name="barDescripcion" ColumnName="barDescripcion" />
+                <ScalarProperty Name="barCodigo" ColumnName="barCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCiudad">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbCiudad">
+              <MappingFragment StoreEntitySet="tbCiudad">
+                <ScalarProperty Name="depCodigo" ColumnName="depCodigo" />
+                <ScalarProperty Name="ciuDescripcion" ColumnName="ciuDescripcion" />
+                <ScalarProperty Name="ciuCodigo" ColumnName="ciuCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbClientes">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbClientes">
+              <MappingFragment StoreEntitySet="tbClientes">
+                <ScalarProperty Name="regiFoto" ColumnName="regiFoto" />
+                <ScalarProperty Name="barCodigo" ColumnName="barCodigo" />
+                <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
+                <ScalarProperty Name="regiFechanacimiento" ColumnName="regiFechanacimiento" />
+                <ScalarProperty Name="geneCodigo" ColumnName="geneCodigo" />
+                <ScalarProperty Name="regiEdad" ColumnName="regiEdad" />
+                <ScalarProperty Name="regiEmail" ColumnName="regiEmail" />
+                <ScalarProperty Name="regiCelular" ColumnName="regiCelular" />
+                <ScalarProperty Name="regiTelefonofijo" ColumnName="regiTelefonofijo" />
+                <ScalarProperty Name="niveduCodigo" ColumnName="niveduCodigo" />
+                <ScalarProperty Name="regiApellido" ColumnName="regiApellido" />
+                <ScalarProperty Name="regiNombre" ColumnName="regiNombre" />
+                <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDepartamento">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbDepartamento">
+              <MappingFragment StoreEntitySet="tbDepartamento">
+                <ScalarProperty Name="paiCodigo" ColumnName="paiCodigo" />
+                <ScalarProperty Name="depDescripcion" ColumnName="depDescripcion" />
+                <ScalarProperty Name="depCodigo" ColumnName="depCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDescargas">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbDescargas">
+              <MappingFragment StoreEntitySet="tbDescargas">
+                <ScalarProperty Name="descLink" ColumnName="descLink" />
+                <ScalarProperty Name="descDescripcion" ColumnName="descDescripcion" />
+                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
+                <ScalarProperty Name="descCodigo" ColumnName="descCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbEncuesta">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbEncuesta">
+              <MappingFragment StoreEntitySet="tbEncuesta">
+                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
+                <ScalarProperty Name="encuDescripcion" ColumnName="encuDescripcion" />
+                <ScalarProperty Name="encuCodigo" ColumnName="encuCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbGenero">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbGenero">
+              <MappingFragment StoreEntitySet="tbGenero">
+                <ScalarProperty Name="geneDescripcion" ColumnName="geneDescripcion" />
+                <ScalarProperty Name="geneCodigo" ColumnName="geneCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNivelEducativo">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbNivelEducativo">
+              <MappingFragment StoreEntitySet="tbNivelEducativo">
+                <ScalarProperty Name="niveduDescripcion" ColumnName="niveduDescripcion" />
+                <ScalarProperty Name="niveduCodigo" ColumnName="niveduCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNiveles">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbNiveles">
+              <MappingFragment StoreEntitySet="tbNiveles">
+                <ScalarProperty Name="niveDescripcion" ColumnName="niveDescripcion" />
+                <ScalarProperty Name="niveCodigo" ColumnName="niveCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPais">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPais">
+              <MappingFragment StoreEntitySet="tbPais">
+                <ScalarProperty Name="paiDescripcion" ColumnName="paiDescripcion" />
+                <ScalarProperty Name="paiCodigo" ColumnName="paiCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPerfiles">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPerfiles">
+              <MappingFragment StoreEntitySet="tbPerfiles">
+                <ScalarProperty Name="perfDescripcion" ColumnName="perfDescripcion" />
+                <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPreguntas">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPreguntas">
+              <MappingFragment StoreEntitySet="tbPreguntas">
+                <ScalarProperty Name="encuCodigo" ColumnName="encuCodigo" />
+                <ScalarProperty Name="pregDescripcion" ColumnName="pregDescripcion" />
+                <ScalarProperty Name="pregCodigo" ColumnName="pregCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPrueba">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPrueba">
+              <MappingFragment StoreEntitySet="tbPrueba">
+                <ScalarProperty Name="prueNombre" ColumnName="prueNombre" />
+                <ScalarProperty Name="niveCodigo" ColumnName="niveCodigo" />
+                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPruebaRespuesta">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPruebaRespuesta">
+              <MappingFragment StoreEntitySet="tbPruebaRespuesta">
+                <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
+                <ScalarProperty Name="respCodigo" ColumnName="respCodigo" />
+                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
+                <ScalarProperty Name="prueresCodigo" ColumnName="prueresCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbRespuestas">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbRespuestas">
+              <MappingFragment StoreEntitySet="tbRespuestas">
+                <ScalarProperty Name="respCorrectas" ColumnName="respCorrectas" />
+                <ScalarProperty Name="pregCodigo" ColumnName="pregCodigo" />
+                <ScalarProperty Name="respDescripcion" ColumnName="respDescripcion" />
+                <ScalarProperty Name="respCodigo" ColumnName="respCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsuarios">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.tbUsuarios">
+              <MappingFragment StoreEntitySet="tbUsuarios">
+                <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
+                <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
+                <ScalarProperty Name="usuaPassword" ColumnName="usuaPassword" />
+                <ScalarProperty Name="usuaLogin" ColumnName="usuaLogin" />
+                <ScalarProperty Name="usuaDescripcion" ColumnName="usuaDescripcion" />
+                <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

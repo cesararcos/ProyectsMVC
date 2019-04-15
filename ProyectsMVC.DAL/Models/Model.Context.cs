@@ -38,5 +38,21 @@ namespace ProyectsMVC.DAL.Models
         public virtual DbSet<Priorities> Priorities { get; set; }
         public virtual DbSet<States> States { get; set; }
         public virtual DbSet<Tasks> Tasks { get; set; }
+        public virtual DbSet<tbBarrio> tbBarrio { get; set; }
+        public virtual DbSet<tbCiudad> tbCiudad { get; set; }
+        public virtual DbSet<tbClientes> tbClientes { get; set; }
+        public virtual DbSet<tbDepartamento> tbDepartamento { get; set; }
+        public virtual DbSet<tbDescargas> tbDescargas { get; set; }
+        public virtual DbSet<tbEncuesta> tbEncuesta { get; set; }
+        public virtual DbSet<tbGenero> tbGenero { get; set; }
+        public virtual DbSet<tbNivelEducativo> tbNivelEducativo { get; set; }
+        public virtual DbSet<tbNiveles> tbNiveles { get; set; }
+        public virtual DbSet<tbPais> tbPais { get; set; }
+        public virtual DbSet<tbPerfiles> tbPerfiles { get; set; }
+        public virtual DbSet<tbPreguntas> tbPreguntas { get; set; }
+        public virtual DbSet<tbPrueba> tbPrueba { get; set; }
+        public virtual DbSet<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }
+        public virtual DbSet<tbRespuestas> tbRespuestas { get; set; }
+        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
     }
 }

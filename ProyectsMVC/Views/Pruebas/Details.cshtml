@@ -1,0 +1,30 @@
+﻿@model ProyectsMVC.Logica.Models.ViewModel.PruebaDetailsViewModel
+
+
+@{
+    ViewBag.Title = "Prueba";
+}
+
+<h2>Prueba</h2>
+
+<div class="form-group">
+    <div class="col-md-12">
+        @Html.DisplayNameFor(m => m.NivelDescripcion)
+        @Html.EditorFor(m => m.NivelDescripcion, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-12">
+        @Html.DisplayNameFor(m => m.PruebaDescripcion)
+        @Html.EditorFor(m => m.PruebaDescripcion, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="col-md-12">
+        <br />
+        <button type="submit" value="" class="btn btn-primary"><i class="fas fa-save"></i></button>
+        @Html.ActionLink(" ", "Index", "Pruebas", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+    </div>
+</div>
