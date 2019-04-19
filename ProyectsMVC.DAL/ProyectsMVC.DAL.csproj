@@ -112,9 +112,6 @@
     <Compile Include="Models\tbDescargas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbEncuesta.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tbGenero.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

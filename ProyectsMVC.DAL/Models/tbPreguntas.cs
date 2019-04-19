@@ -22,10 +22,10 @@ namespace ProyectsMVC.DAL.Models
     
         public int pregCodigo { get; set; }
         public string pregDescripcion { get; set; }
-        public Nullable<int> encuCodigo { get; set; }
+        public Nullable<int> prueCodigo { get; set; }
     
-        public virtual tbEncuesta tbEncuesta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbRespuestas> tbRespuestas { get; set; }
+        public virtual tbPrueba tbPrueba { get; set; }
     }
 }

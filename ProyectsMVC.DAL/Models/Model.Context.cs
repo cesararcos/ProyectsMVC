@@ -43,7 +43,6 @@ namespace ProyectsMVC.DAL.Models
         public virtual DbSet<tbClientes> tbClientes { get; set; }
         public virtual DbSet<tbDepartamento> tbDepartamento { get; set; }
         public virtual DbSet<tbDescargas> tbDescargas { get; set; }
-        public virtual DbSet<tbEncuesta> tbEncuesta { get; set; }
         public virtual DbSet<tbGenero> tbGenero { get; set; }
         public virtual DbSet<tbNivelEducativo> tbNivelEducativo { get; set; }
         public virtual DbSet<tbNiveles> tbNiveles { get; set; }

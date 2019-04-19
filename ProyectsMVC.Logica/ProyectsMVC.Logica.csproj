@@ -48,16 +48,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Activities.cs" />
+    <Compile Include="BL\Preguntas.cs" />
     <Compile Include="BL\Priorities.cs" />
     <Compile Include="BL\Proyects.cs" />
     <Compile Include="BL\Prueba.cs" />
     <Compile Include="BL\States.cs" />
     <Compile Include="BL\Tasks.cs" />
     <Compile Include="BL\Tenants.cs" />
+    <Compile Include="Models\BindingModel\PreguntasBindingModel.cs" />
     <Compile Include="Models\BindingModel\ProyectBindingModel.cs" />
     <Compile Include="Models\BindingModel\TasksBindingModel.cs" />
     <Compile Include="Models\DB\Activities.cs" />
     <Compile Include="Models\DB\Niveles.cs" />
+    <Compile Include="Models\DB\Preguntas.cs" />
     <Compile Include="Models\DB\Priorities.cs" />
     <Compile Include="Models\DB\Proyects.cs" />
     <Compile Include="Models\DB\Prueba.cs" />

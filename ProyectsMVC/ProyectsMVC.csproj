@@ -215,6 +215,7 @@
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\PrioritiesController.cs" />
     <Compile Include="Controllers\ProyectController.cs" />
     <Compile Include="Controllers\PruebasController.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PreguntasModels.cs" />
     <Compile Include="Models\Proyects.cs" />
     <Compile Include="Models\PruebaModel.cs" />
     <Compile Include="Models\TasksModel.cs" />
@@ -371,6 +373,7 @@
     <Content Include="Views\States\Edit.cshtml" />
     <Content Include="Views\States\Index.cshtml" />
     <Content Include="Views\Pruebas\Details.cshtml" />
+    <Content Include="Views\Preguntas\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
