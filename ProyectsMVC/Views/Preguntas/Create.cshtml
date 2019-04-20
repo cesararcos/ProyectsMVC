@@ -7,25 +7,30 @@
 
 <form action="/Preguntas/Create" method="post">
     @Html.HiddenFor(m => m.PrueCodigo)
-    
+
 
     <div class="form-row">
         <div class="col-md-6">
             @Html.LabelFor(m => m.PrueCodigo)
             @Html.DropDownListFor(m => m.PregCodigo, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })
-
         </div>
-        
+    </div>
+    <div class="form-row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.PregDescripcion)
+            @Html.DropDownListFor(m => m.PregCodigo, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })
+        </div>
     </div>
 
-    
+
 
     <div class="form-row">
         <div class="col-md-12">
             <br />
             <button type="submit" value="" class="btn btn-primary"><i class="fas fa-save"></i></button>
-            @Html.ActionLink(" ", "Index", "Tasks", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+            @Html.ActionLink(" ", "Details", "Pruebas", null, new { @class = "btn btn-primary fas fa-undo-alt" })
         </div>
     </div>
 </form>

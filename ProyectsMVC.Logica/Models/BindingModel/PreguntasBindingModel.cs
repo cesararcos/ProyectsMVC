@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProyectsMVC.Logica.Models.BindingModel
 {
     public class PreguntasCreateBindingModel
     {
         [Required(ErrorMessage = "The field Descripcion is required")]
-        [Display(Name = "Descripcion a")]
+        [Display(Name = "Altura para necesitar certificado de alturas")]
         public string PregDescripcion { get; set; }
 
         [Required(ErrorMessage = "The field Descripcion is required")]
@@ -18,7 +13,7 @@ namespace ProyectsMVC.Logica.Models.BindingModel
         public int? PregCodigo { get; set; }
 
         [Required(ErrorMessage = "The field Descripcion is required")]
-        [Display(Name = "Descripcion c")]
+        [Display(Name = "El casco es obligatorio con el arnes")]
         public int? PrueCodigo { get; set; }
     }
 }
