@@ -25,7 +25,6 @@ namespace ProyectsMVC.DAL.Models
         public Nullable<int> pregCodigo { get; set; }
         public string respCorrectas { get; set; }
     
-        public virtual tbPreguntas tbPreguntas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }
     }

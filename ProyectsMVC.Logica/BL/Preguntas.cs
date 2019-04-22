@@ -44,5 +44,17 @@ namespace ProyectsMVC.Logica.BL
 
             return listPreguntas;
         }
+
+        public void CreatePreguntas(int? preCodigo)
+        {
+            DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
+
+            _context.tbRespuestas.Add(new DAL.Models.tbRespuestas
+            {
+                respDescripcion = preCodigo.ToString()
+            });
+
+            _context.SaveChanges();
+        }
     }
 }

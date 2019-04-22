@@ -246,7 +246,7 @@
           <Key>
             <PropertyRef Name="respCodigo" />
           </Key>
-          <Property Name="respCodigo" Type="int" Nullable="false" />
+          <Property Name="respCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="respDescripcion" Type="varchar" MaxLength="50" />
           <Property Name="pregCodigo" Type="int" />
           <Property Name="respCorrectas" Type="varchar" MaxLength="50" />
@@ -602,18 +602,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbRespuestas_tbPreguntas">
-          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="0..1" />
-          <End Role="tbRespuestas" Type="Self.tbRespuestas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPreguntas">
-              <PropertyRef Name="pregCodigo" />
-            </Principal>
-            <Dependent Role="tbRespuestas">
-              <PropertyRef Name="pregCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbUsuarios_tbPerfiles">
           <End Role="tbPerfiles" Type="Self.tbPerfiles" Multiplicity="0..1" />
           <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
@@ -771,10 +759,6 @@
           <AssociationSet Name="FK_tbRegistrar_tbUsuarios" Association="Self.FK_tbRegistrar_tbUsuarios">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="Self.FK_tbRespuestas_tbPreguntas">
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
           </AssociationSet>
           <AssociationSet Name="FK_tbUsuarios_tbPerfiles" Association="Self.FK_tbUsuarios_tbPerfiles">
             <End Role="tbPerfiles" EntitySet="tbPerfiles" />
@@ -1135,10 +1119,6 @@
             <End Role="tbPerfiles" EntitySet="tbPerfiles" />
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas">
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
-          </AssociationSet>
           <AssociationSet Name="FK_tbPruebaRespuesta_tbPrueba" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba">
             <End Role="tbPrueba" EntitySet="tbPrueba" />
             <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
@@ -1356,7 +1336,6 @@
           </Key>
           <Property Name="pregCodigo" Type="Int32" Nullable="false" />
           <Property Name="pregDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbPreguntas" ToRole="tbRespuestas" />
           <Property Name="prueCodigo" Type="Int32" />
           <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" FromRole="tbPreguntas" ToRole="tbPrueba" />
         </EntityType>
@@ -1392,7 +1371,6 @@
           <Property Name="respDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="pregCodigo" Type="Int32" />
           <Property Name="respCorrectas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbRespuestas" ToRole="tbPreguntas" />
           <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbRespuestas" ToRole="tbPruebaRespuesta" />
         </EntityType>
         <EntityType Name="tbUsuarios">
@@ -1537,18 +1515,6 @@
             </Principal>
             <Dependent Role="tbUsuarios">
               <PropertyRef Name="perfCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRespuestas_tbPreguntas">
-          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbRespuestas" Role="tbRespuestas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPreguntas">
-              <PropertyRef Name="pregCodigo" />
-            </Principal>
-            <Dependent Role="tbRespuestas">
-              <PropertyRef Name="pregCodigo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

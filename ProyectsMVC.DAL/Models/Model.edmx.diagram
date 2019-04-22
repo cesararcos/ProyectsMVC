@@ -57,7 +57,6 @@
         <AssociationConnector Association="ProyectsMVCModel.FK_tbDescargas_tbPrueba" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPrueba_tbNiveles" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" />

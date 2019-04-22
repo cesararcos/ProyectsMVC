@@ -20,5 +20,26 @@ namespace ProyectsMVC.Controllers
 
             return View(preguntasBindingModel);
         }
+
+        [HttpPost]
+        public ActionResult Create(Logica.Models.BindingModel.PreguntasCreateBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                Logica.BL.Preguntas Preguntas = new Logica.BL.Preguntas();
+                Preguntas.CreatePreguntas(model.PregCodigo
+                   
+                    );
+
+                //return RedirectToAction("Index", new { proyectId = model.proyectId });
+            }
+
+            Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
+            ViewBag.Preguntas = preguntas.GetPreguntas();
+
+            
+
+            return View(model);
+        }
     }
 }
