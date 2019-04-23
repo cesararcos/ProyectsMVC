@@ -60,6 +60,8 @@
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.Encuesta" Width="1.5" PointX="18.625" PointY="5.5" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Encuesta_tbClientes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

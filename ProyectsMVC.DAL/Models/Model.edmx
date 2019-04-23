@@ -76,6 +76,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="TenantId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Encuesta">
+          <Key>
+            <PropertyRef Name="enCodigo" />
+          </Key>
+          <Property Name="enCodigo" Type="int" Nullable="false" />
+          <Property Name="enDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="regiCedula" Type="int" />
+        </EntityType>
         <EntityType Name="Members">
           <Key>
             <PropertyRef Name="Id" />
@@ -386,6 +394,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Encuesta_tbClientes">
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="0..1" />
+          <End Role="Encuesta" Type="Self.Encuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="regiCedula" />
+            </Principal>
+            <Dependent Role="Encuesta">
+              <PropertyRef Name="regiCedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Projects_Tenants">
           <End Role="Tenants" Type="Self.Tenants" Multiplicity="0..1" />
           <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
@@ -634,6 +654,7 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Encuesta" EntityType="Self.Encuesta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
@@ -687,6 +708,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Encuesta_tbClientes" Association="Self.FK_Encuesta_tbClientes">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="Encuesta" EntitySet="Encuesta" />
           </AssociationSet>
           <AssociationSet Name="FK_Projects_Tenants" Association="Self.FK_Projects_Tenants">
             <End Role="Tenants" EntitySet="Tenants" />
@@ -1131,6 +1156,11 @@
             <End Role="tbPrueba" EntitySet="tbPrueba" />
             <End Role="tbPreguntas" EntitySet="tbPreguntas" />
           </AssociationSet>
+          <EntitySet Name="Encuesta" EntityType="ProyectsMVCModel.Encuesta" />
+          <AssociationSet Name="FK_Encuesta_tbClientes" Association="ProyectsMVCModel.FK_Encuesta_tbClientes">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="Encuesta" EntitySet="Encuesta" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Activities">
           <Key>
@@ -1269,6 +1299,7 @@
           <NavigationProperty Name="tbGenero" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbGenero" FromRole="tbClientes" ToRole="tbGenero" />
           <NavigationProperty Name="tbNivelEducativo" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" FromRole="tbClientes" ToRole="tbNivelEducativo" />
           <NavigationProperty Name="tbUsuarios" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" FromRole="tbClientes" ToRole="tbUsuarios" />
+          <NavigationProperty Name="Encuesta" Relationship="ProyectsMVCModel.FK_Encuesta_tbClientes" FromRole="tbClientes" ToRole="Encuesta" />
         </EntityType>
         <EntityType Name="tbDepartamento">
           <Key>
@@ -1551,6 +1582,27 @@
             </Principal>
             <Dependent Role="tbPreguntas">
               <PropertyRef Name="prueCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Encuesta">
+          <Key>
+            <PropertyRef Name="enCodigo" />
+          </Key>
+          <Property Name="enCodigo" Type="Int32" Nullable="false" />
+          <Property Name="enDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regiCedula" Type="Int32" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_Encuesta_tbClientes" FromRole="Encuesta" ToRole="tbClientes" />
+        </EntityType>
+        <Association Name="FK_Encuesta_tbClientes">
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.Encuesta" Role="Encuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="regiCedula" />
+            </Principal>
+            <Dependent Role="Encuesta">
+              <PropertyRef Name="regiCedula" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1860,6 +1912,15 @@
                 <ScalarProperty Name="usuaLogin" ColumnName="usuaLogin" />
                 <ScalarProperty Name="usuaDescripcion" ColumnName="usuaDescripcion" />
                 <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Encuesta">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.Encuesta">
+              <MappingFragment StoreEntitySet="Encuesta">
+                <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
+                <ScalarProperty Name="enDescripcion" ColumnName="enDescripcion" />
+                <ScalarProperty Name="enCodigo" ColumnName="enCodigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

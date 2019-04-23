@@ -53,5 +53,6 @@ namespace ProyectsMVC.DAL.Models
         public virtual DbSet<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }
         public virtual DbSet<tbRespuestas> tbRespuestas { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<Encuesta> Encuesta { get; set; }
     }
 }

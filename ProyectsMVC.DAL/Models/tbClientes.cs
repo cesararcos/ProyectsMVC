@@ -18,6 +18,7 @@ namespace ProyectsMVC.DAL.Models
         public tbClientes()
         {
             this.tbPruebaRespuesta = new HashSet<tbPruebaRespuesta>();
+            this.Encuesta = new HashSet<Encuesta>();
         }
     
         public int regiCedula { get; set; }
@@ -40,5 +41,7 @@ namespace ProyectsMVC.DAL.Models
         public virtual tbGenero tbGenero { get; set; }
         public virtual tbNivelEducativo tbNivelEducativo { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Encuesta> Encuesta { get; set; }
     }
 }
