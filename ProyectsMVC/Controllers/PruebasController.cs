@@ -20,6 +20,8 @@ namespace ProyectsMVC.Controllers
                 PruebaDescripcion = prueba.prueDescripcion
             };
 
+          
+
             return View(pruebaDetailsViewModel);
         }
     }

@@ -18,6 +18,7 @@
     <div class="col-md-12">
         @Html.DisplayNameFor(m => m.PruebaDescripcion)
         @Html.TextBoxFor(m => m.PruebaDescripcion, new { @class = "form-control", @readonly = "readonly" })
+        @*@Html.DropDownListFor(m => m.PruebaDescripcion, new SelectList(ViewBag.States, "prueCodigo", "prueNombre"), new { @class = "form-control" })*@
     </div>
 </div>
 

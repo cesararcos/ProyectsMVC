@@ -123,6 +123,16 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Active" Type="bit" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Tasks">
           <Key>
             <PropertyRef Name="Id" />
@@ -622,6 +632,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbRespuestas_tbPreguntas">
+          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="0..1" />
+          <End Role="tbRespuestas" Type="Self.tbRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPreguntas">
+              <PropertyRef Name="pregCodigo" />
+            </Principal>
+            <Dependent Role="tbRespuestas">
+              <PropertyRef Name="pregCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbUsuarios_tbPerfiles">
           <End Role="tbPerfiles" Type="Self.tbPerfiles" Multiplicity="0..1" />
           <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
@@ -659,6 +681,7 @@
           <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbBarrio" EntityType="Self.tbBarrio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCiudad" EntityType="Self.tbCiudad" Schema="dbo" store:Type="Tables" />
@@ -784,6 +807,10 @@
           <AssociationSet Name="FK_tbRegistrar_tbUsuarios" Association="Self.FK_tbRegistrar_tbUsuarios">
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="Self.FK_tbRespuestas_tbPreguntas">
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
           </AssociationSet>
           <AssociationSet Name="FK_tbUsuarios_tbPerfiles" Association="Self.FK_tbUsuarios_tbPerfiles">
             <End Role="tbPerfiles" EntitySet="tbPerfiles" />
@@ -1161,6 +1188,11 @@
             <End Role="tbClientes" EntitySet="tbClientes" />
             <End Role="Encuesta" EntitySet="Encuesta" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="ProyectsMVCModel.sysdiagrams" />
+          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas">
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Activities">
           <Key>
@@ -1369,6 +1401,7 @@
           <Property Name="pregDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prueCodigo" Type="Int32" />
           <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" FromRole="tbPreguntas" ToRole="tbPrueba" />
+          <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbPreguntas" ToRole="tbRespuestas" />
         </EntityType>
         <EntityType Name="tbPrueba">
           <Key>
@@ -1403,6 +1436,7 @@
           <Property Name="pregCodigo" Type="Int32" />
           <Property Name="respCorrectas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbRespuestas" ToRole="tbPruebaRespuesta" />
+          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbRespuestas" ToRole="tbPreguntas" />
         </EntityType>
         <EntityType Name="tbUsuarios">
           <Key>
@@ -1603,6 +1637,28 @@
             </Principal>
             <Dependent Role="Encuesta">
               <PropertyRef Name="regiCedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_tbRespuestas_tbPreguntas">
+          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbRespuestas" Role="tbRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPreguntas">
+              <PropertyRef Name="pregCodigo" />
+            </Principal>
+            <Dependent Role="tbRespuestas">
+              <PropertyRef Name="pregCodigo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1921,6 +1977,17 @@
                 <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
                 <ScalarProperty Name="enDescripcion" ColumnName="enDescripcion" />
                 <ScalarProperty Name="enCodigo" ColumnName="enCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

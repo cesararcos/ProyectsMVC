@@ -97,6 +97,9 @@
     <Compile Include="Models\States.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tasks.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

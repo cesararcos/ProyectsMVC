@@ -9,5 +9,7 @@ namespace ProyectsMVC.Logica.Models.ViewModel
 
         [Display(Name = "Descripcion prueba")]
         public string PruebaDescripcion { get; set; }
+
+       
     }
 }

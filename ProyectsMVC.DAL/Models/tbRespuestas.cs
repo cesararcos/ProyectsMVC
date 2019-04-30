@@ -27,5 +27,6 @@ namespace ProyectsMVC.DAL.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }
+        public virtual tbPreguntas tbPreguntas { get; set; }
     }
 }
