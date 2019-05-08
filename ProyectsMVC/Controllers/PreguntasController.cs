@@ -9,14 +9,14 @@ namespace ProyectsMVC.Controllers
     public class PreguntasController : Controller
     {
         // GET: Preguntas
-        public ActionResult Create(int? PrueCodigo)
+        public ActionResult Create(int? pruebaId)
         {
             var preguntasBindingModel = new Logica.Models.BindingModel.PreguntasCreateBindingModel
             {
-                   PrueCodigo = PrueCodigo 
+                   PrueCodigo = pruebaId
             };
             Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
-            ViewBag.Preguntas = preguntas.GetPreguntas();
+            ViewBag.PreguntasGetRespuestasViewModel = preguntas.GetPreguntas(pruebaId);
 
             return View(preguntasBindingModel);
         }
@@ -34,10 +34,12 @@ namespace ProyectsMVC.Controllers
                 //return RedirectToAction("Index", new { proyectId = model.proyectId });
             }
 
-            Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
-            ViewBag.Preguntas = preguntas.GetPreguntas();
+            //Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
+            //ViewBag.Preguntas = preguntas.GetPreguntas();
 
-            
+            //Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
+            //ViewBag.PreguntasGetRespuestasViewModel = preguntas.GetPreguntas();
+
 
             return View(model);
         }

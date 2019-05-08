@@ -7,5 +7,7 @@
         public int PrueCodigo { get; set; }
 
         public Prueba Prueba { get; set; }
+        public Respuestas Respuestas { get; set; }
+
     }
 }

@@ -18,6 +18,7 @@ namespace ProyectsMVC.DAL.Models
         public tbPreguntas()
         {
             this.tbRespuestas = new HashSet<tbRespuestas>();
+            this.tbPruebaRespuesta = new HashSet<tbPruebaRespuesta>();
         }
     
         public int pregCodigo { get; set; }
@@ -27,5 +28,7 @@ namespace ProyectsMVC.DAL.Models
         public virtual tbPrueba tbPrueba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbRespuestas> tbRespuestas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }
     }
 }

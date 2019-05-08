@@ -23,7 +23,7 @@ namespace ProyectsMVC.DAL.Models
         public int respCodigo { get; set; }
         public string respDescripcion { get; set; }
         public Nullable<int> pregCodigo { get; set; }
-        public string respCorrectas { get; set; }
+        public Nullable<bool> respCorrectas { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }

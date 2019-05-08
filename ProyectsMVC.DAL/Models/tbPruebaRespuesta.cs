@@ -18,9 +18,11 @@ namespace ProyectsMVC.DAL.Models
         public Nullable<int> prueCodigo { get; set; }
         public Nullable<int> respCodigo { get; set; }
         public Nullable<int> regiCedula { get; set; }
+        public Nullable<int> pregCodigo { get; set; }
     
         public virtual tbClientes tbClientes { get; set; }
         public virtual tbPrueba tbPrueba { get; set; }
         public virtual tbRespuestas tbRespuestas { get; set; }
+        public virtual tbPreguntas tbPreguntas { get; set; }
     }
 }

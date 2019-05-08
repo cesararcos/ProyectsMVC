@@ -70,10 +70,12 @@
     <Compile Include="Models\DB\Priorities.cs" />
     <Compile Include="Models\DB\Proyects.cs" />
     <Compile Include="Models\DB\Prueba.cs" />
+    <Compile Include="Models\DB\Respuestas.cs" />
     <Compile Include="Models\DB\States.cs" />
     <Compile Include="Models\DB\Tasks.cs" />
     <Compile Include="Models\DB\Tenants.cs" />
     <Compile Include="Models\ViewModel\IndexCertyHighViewModel.cs" />
+    <Compile Include="Models\ViewModel\PreguntasViewModel.cs" />
     <Compile Include="Models\ViewModel\ProyectsViewModel.cs" />
     <Compile Include="Models\ViewModel\PruebaViewModel.cs" />
     <Compile Include="Models\ViewModel\TasksViewModel.cs" />

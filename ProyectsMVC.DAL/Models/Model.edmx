@@ -259,6 +259,7 @@
           <Property Name="prueCodigo" Type="int" />
           <Property Name="respCodigo" Type="int" />
           <Property Name="regiCedula" Type="int" />
+          <Property Name="pregCodigo" Type="int" />
         </EntityType>
         <EntityType Name="tbRespuestas">
           <Key>
@@ -267,7 +268,7 @@
           <Property Name="respCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="respDescripcion" Type="varchar" MaxLength="50" />
           <Property Name="pregCodigo" Type="int" />
-          <Property Name="respCorrectas" Type="varchar" MaxLength="50" />
+          <Property Name="respCorrectas" Type="bit" />
         </EntityType>
         <EntityType Name="tbUsuarios">
           <Key>
@@ -572,6 +573,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbPreguntas">
+          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="0..1" />
+          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPreguntas">
+              <PropertyRef Name="pregCodigo" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
+              <PropertyRef Name="pregCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbPruebaRespuesta_tbPrueba">
           <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
           <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
@@ -786,6 +799,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_tbPruebaRespuesta_tbClientes1" Association="Self.FK_tbPruebaRespuesta_tbClientes1">
             <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbPreguntas" Association="Self.FK_tbPruebaRespuesta_tbPreguntas">
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
             <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
           </AssociationSet>
           <AssociationSet Name="FK_tbPruebaRespuesta_tbPrueba" Association="Self.FK_tbPruebaRespuesta_tbPrueba">
@@ -1193,6 +1210,10 @@
             <End Role="tbPreguntas" EntitySet="tbPreguntas" />
             <End Role="tbRespuestas" EntitySet="tbRespuestas" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbPruebaRespuesta_tbPreguntas" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas">
+            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
+            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Activities">
           <Key>
@@ -1402,6 +1423,7 @@
           <Property Name="prueCodigo" Type="Int32" />
           <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" FromRole="tbPreguntas" ToRole="tbPrueba" />
           <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbPreguntas" ToRole="tbRespuestas" />
+          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas" FromRole="tbPreguntas" ToRole="tbPruebaRespuesta" />
         </EntityType>
         <EntityType Name="tbPrueba">
           <Key>
@@ -1426,6 +1448,8 @@
           <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1" FromRole="tbPruebaRespuesta" ToRole="tbClientes" />
           <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" FromRole="tbPruebaRespuesta" ToRole="tbPrueba" />
           <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbPruebaRespuesta" ToRole="tbRespuestas" />
+          <Property Name="pregCodigo" Type="Int32" />
+          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas" FromRole="tbPruebaRespuesta" ToRole="tbPreguntas" />
         </EntityType>
         <EntityType Name="tbRespuestas">
           <Key>
@@ -1434,7 +1458,7 @@
           <Property Name="respCodigo" Type="Int32" Nullable="false" />
           <Property Name="respDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="pregCodigo" Type="Int32" />
-          <Property Name="respCorrectas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="respCorrectas" Type="Boolean" />
           <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbRespuestas" ToRole="tbPruebaRespuesta" />
           <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbRespuestas" ToRole="tbPreguntas" />
         </EntityType>
@@ -1658,6 +1682,18 @@
               <PropertyRef Name="pregCodigo" />
             </Principal>
             <Dependent Role="tbRespuestas">
+              <PropertyRef Name="pregCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbPruebaRespuesta_tbPreguntas">
+          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPreguntas">
+              <PropertyRef Name="pregCodigo" />
+            </Principal>
+            <Dependent Role="tbPruebaRespuesta">
               <PropertyRef Name="pregCodigo" />
             </Dependent>
           </ReferentialConstraint>
@@ -1942,6 +1978,7 @@
           <EntitySetMapping Name="tbPruebaRespuesta">
             <EntityTypeMapping TypeName="ProyectsMVCModel.tbPruebaRespuesta">
               <MappingFragment StoreEntitySet="tbPruebaRespuesta">
+                <ScalarProperty Name="pregCodigo" ColumnName="pregCodigo" />
                 <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
                 <ScalarProperty Name="respCodigo" ColumnName="respCodigo" />
                 <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
