@@ -1,4 +1,4 @@
-﻿@model ProyectsMVC.Logica.Models.BindingModel.PreguntasCreateBindingModel
+﻿@model ProyectsMVC.Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
 @{
     ViewBag.Title = "Create";
 }
@@ -6,21 +6,21 @@
 <h2>Create</h2>
 
 <form action="/Preguntas/Create" method="post">
-    @Html.HiddenFor(m => m.PrueCodigo)
-
+    
+    @Html.HiddenFor(m => m.Codigo)
 
     <div class="form-row">
         <div class="col-md-6">
-            @Html.LabelFor(m => m.PrueCodigo)
-            @Html.DropDownListFor(m => m.PregCodigo, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })
+            @Html.LabelFor(m => m.Codigo)
+            @Html.DropDownListFor(m => m.Descripcion, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })*@
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-6">
-            @Html.LabelFor(m => m.PregDescripcion)
-            @Html.DropDownListFor(m => m.PregCodigo, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })
+            @Html.LabelFor(m => m.Descripcion)
+            @Html.DropDownListFor(m => m.Codigo, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })*@
         </div>
     </div>
 

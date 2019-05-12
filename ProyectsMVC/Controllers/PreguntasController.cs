@@ -11,9 +11,9 @@ namespace ProyectsMVC.Controllers
         // GET: Preguntas
         public ActionResult Create(int? pruebaId)
         {
-            var preguntasBindingModel = new Logica.Models.BindingModel.PreguntasCreateBindingModel
+            var preguntasBindingModel = new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
             {
-                   PrueCodigo = pruebaId
+                   PruebaId = pruebaId
             };
             Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
             ViewBag.PreguntasGetRespuestasViewModel = preguntas.GetPreguntas(pruebaId);
@@ -22,12 +22,12 @@ namespace ProyectsMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Logica.Models.BindingModel.PreguntasCreateBindingModel model)
+        public ActionResult Create(Logica.Models.ViewModel.PreguntasGetRespuestasViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 Logica.BL.Preguntas Preguntas = new Logica.BL.Preguntas();
-                Preguntas.CreatePreguntas(model.PregCodigo
+                Preguntas.CreatePreguntas(model.Codigo
                    
                     );
 

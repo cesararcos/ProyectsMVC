@@ -223,6 +223,7 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\tbPruebasController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -377,6 +378,11 @@
     <Content Include="Views\Preguntas\Create.cshtml" />
     <Content Include="Views\Encuesta\Create.cshtml" />
     <Content Include="Views\IndexCertyHigh\Index.cshtml" />
+    <Content Include="Views\tbPruebas\Create.cshtml" />
+    <Content Include="Views\tbPruebas\Delete.cshtml" />
+    <Content Include="Views\tbPruebas\Details.cshtml" />
+    <Content Include="Views\tbPruebas\Edit.cshtml" />
+    <Content Include="Views\tbPruebas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -421,7 +427,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61592</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61592/</IISUrl>
+          <IISUrl>http://localhost:8080</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
