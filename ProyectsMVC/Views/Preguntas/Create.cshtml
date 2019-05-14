@@ -12,19 +12,11 @@
     <div class="form-row">
         <div class="col-md-6">
             @Html.LabelFor(m => m.Codigo)
-            @Html.DropDownListFor(m => m.Descripcion, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Codigo, new SelectList(ViewBag.PreguntasGetRespuestasViewModel, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
             @*@Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })*@
         </div>
     </div>
-    <div class="form-row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.Descripcion)
-            @Html.DropDownListFor(m => m.Codigo, new SelectList(ViewBag.Preguntas, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
-            @*@Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })*@
-        </div>
-    </div>
-
-
+    
 
     <div class="form-row">
         <div class="col-md-12">
