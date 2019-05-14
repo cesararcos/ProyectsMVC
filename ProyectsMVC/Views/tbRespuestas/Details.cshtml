@@ -1,0 +1,42 @@
+﻿@model ProyectsMVC.DAL.Models.tbRespuestas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbRespuestas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.respDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.respDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.respCorrectas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.respCorrectas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbPreguntas.pregDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbPreguntas.pregDescripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.respCodigo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

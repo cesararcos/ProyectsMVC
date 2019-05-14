@@ -225,6 +225,7 @@
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\tbPreguntasController.cs" />
     <Compile Include="Controllers\tbPruebasController.cs" />
+    <Compile Include="Controllers\tbRespuestasController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -389,6 +390,11 @@
     <Content Include="Views\tbPreguntas\Details.cshtml" />
     <Content Include="Views\tbPreguntas\Edit.cshtml" />
     <Content Include="Views\tbPreguntas\Index.cshtml" />
+    <Content Include="Views\tbRespuestas\Create.cshtml" />
+    <Content Include="Views\tbRespuestas\Delete.cshtml" />
+    <Content Include="Views\tbRespuestas\Details.cshtml" />
+    <Content Include="Views\tbRespuestas\Edit.cshtml" />
+    <Content Include="Views\tbRespuestas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
