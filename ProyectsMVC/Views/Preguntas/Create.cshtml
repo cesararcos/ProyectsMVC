@@ -6,17 +6,18 @@
 <h2>Create</h2>
 
 <form action="/Preguntas/Create" method="post">
-    
-    @Html.HiddenFor(m => m.Codigo)
+     
+    @Html.HiddenFor(m => m.PruebaId)
 
     <div class="form-row">
         <div class="col-md-6">
-            @Html.LabelFor(m => m.Codigo)
-            @Html.DropDownListFor(m => m.Codigo, new SelectList(ViewBag.PreguntasGetRespuestasViewModel, "PregCodigo", "pregDescripcion"), new { @class = "form-control" })
+            @Html.HiddenFor(m => m.Codigo)
+            @Html.LabelFor(m => m.Descripcion)
+            @Html.DropDownListFor(m => m.RespuestaId, new SelectList(ViewBag.PreguntasGetRespuestasViewModel.Respuestas, "Codigo", "Descripcion"), new { @class = "form-control" })
             @*@Html.ValidationMessageFor(m => m.PregCodigo, "", new { @class = "text-danger" })*@
         </div>
     </div>
-    
+
 
     <div class="form-row">
         <div class="col-md-12">

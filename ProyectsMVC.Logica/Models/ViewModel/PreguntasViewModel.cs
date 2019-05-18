@@ -9,6 +9,7 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         public List<Respuestas> Respuestas { get; set; }
 
         public int? PruebaId { get; set; }
+        public int? RespuestaId { get; set; }
     }
 
     public class Respuestas

@@ -54,6 +54,7 @@
     <Compile Include="BL\Priorities.cs" />
     <Compile Include="BL\Proyects.cs" />
     <Compile Include="BL\Prueba.cs" />
+    <Compile Include="BL\PruebaRespuesta.cs" />
     <Compile Include="BL\States.cs" />
     <Compile Include="BL\Tasks.cs" />
     <Compile Include="BL\Tenants.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Models\DB\Priorities.cs" />
     <Compile Include="Models\DB\Proyects.cs" />
     <Compile Include="Models\DB\Prueba.cs" />
+    <Compile Include="Models\DB\PruebaRespuesta.cs" />
     <Compile Include="Models\DB\Respuestas.cs" />
     <Compile Include="Models\DB\States.cs" />
     <Compile Include="Models\DB\Tasks.cs" />

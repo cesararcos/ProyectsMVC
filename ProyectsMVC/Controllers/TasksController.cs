@@ -88,5 +88,10 @@ namespace ProyectsMVC.Controllers
 
             return View(model);
         }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
     }
 }

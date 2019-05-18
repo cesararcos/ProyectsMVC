@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Calendar";
+}
+
+<h2>Calendar</h2>
+
+<div id="calendar"></div>
+
+<script>
+    //jQuery
+    $(function () {
+        GetTasks(0);
+    })
+
+    function GetTasks(projectId) {
+        var calendarE1 = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarE1, {
+            plugings: ['interaction', 'dayGrid'],
+            header: {
+                left: 'prevYear,prev,next,nextYear,today',
+                center: 'title',
+                right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            },
+            navLinks: true,
+            eventClick: function (eventObj) {
+
+            }
+        });
+
+        calendar.render();
+    }
+
+</script>
+
