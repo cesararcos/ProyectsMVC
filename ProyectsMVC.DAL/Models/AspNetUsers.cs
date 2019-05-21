@@ -22,6 +22,7 @@ namespace ProyectsMVC.DAL.Models
             this.Members = new HashSet<Members>();
             this.UserProjects = new HashSet<UserProjects>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
+            this.tbClientes = new HashSet<tbClientes>();
         }
     
         public string Id { get; set; }
@@ -49,5 +50,7 @@ namespace ProyectsMVC.DAL.Models
         public virtual ICollection<UserProjects> UserProjects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbClientes> tbClientes { get; set; }
     }
 }

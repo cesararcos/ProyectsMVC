@@ -34,6 +34,7 @@ namespace ProyectsMVC.DAL.Models
         public Nullable<int> usuaCodigo { get; set; }
         public Nullable<int> barCodigo { get; set; }
         public string regiFoto { get; set; }
+        public string Id { get; set; }
     
         public virtual tbBarrio tbBarrio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -43,5 +44,6 @@ namespace ProyectsMVC.DAL.Models
         public virtual tbUsuarios tbUsuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Encuesta> Encuesta { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

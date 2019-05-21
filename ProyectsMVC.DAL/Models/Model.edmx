@@ -182,6 +182,7 @@
           <Property Name="usuaCodigo" Type="int" />
           <Property Name="barCodigo" Type="int" />
           <Property Name="regiFoto" Type="varchar" MaxLength="50" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="tbDepartamento">
           <Key>
@@ -501,6 +502,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbClientes_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbClientes_tbBarrio1">
           <End Role="tbBarrio" Type="Self.tbBarrio" Multiplicity="0..1" />
           <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
@@ -777,6 +790,10 @@
             <End Role="tbDepartamento" EntitySet="tbDepartamento" />
             <End Role="tbCiudad" EntitySet="tbCiudad" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbClientes_AspNetUsers" Association="Self.FK_tbClientes_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbClientes_tbBarrio1" Association="Self.FK_tbClientes_tbBarrio1">
             <End Role="tbBarrio" EntitySet="tbBarrio" />
             <End Role="tbClientes" EntitySet="tbClientes" />
@@ -906,6 +923,7 @@
           <NavigationProperty Name="Members" Relationship="Self.FK__Members__UserId__2F10007B" FromRole="AspNetUsers" ToRole="Members" />
           <NavigationProperty Name="UserProjects" Relationship="Self.FK__UserProje__UserI__2E1BDC42" FromRole="AspNetUsers" ToRole="UserProjects" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbClientes_AspNetUsers" FromRole="AspNetUsers" ToRole="tbClientes" />
         </EntityType>
         <EntityType Name="Members">
           <Key>
@@ -1214,6 +1232,10 @@
             <End Role="tbPreguntas" EntitySet="tbPreguntas" />
             <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbClientes_AspNetUsers" Association="ProyectsMVCModel.FK_tbClientes_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tbClientes" EntitySet="tbClientes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Activities">
           <Key>
@@ -1353,6 +1375,8 @@
           <NavigationProperty Name="tbNivelEducativo" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" FromRole="tbClientes" ToRole="tbNivelEducativo" />
           <NavigationProperty Name="tbUsuarios" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" FromRole="tbClientes" ToRole="tbUsuarios" />
           <NavigationProperty Name="Encuesta" Relationship="ProyectsMVCModel.FK_Encuesta_tbClientes" FromRole="tbClientes" ToRole="Encuesta" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ProyectsMVCModel.FK_tbClientes_AspNetUsers" FromRole="tbClientes" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="tbDepartamento">
           <Key>
@@ -1698,6 +1722,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbClientes_AspNetUsers">
+          <End Type="ProyectsMVCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbClientes">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1882,6 +1918,7 @@
           <EntitySetMapping Name="tbClientes">
             <EntityTypeMapping TypeName="ProyectsMVCModel.tbClientes">
               <MappingFragment StoreEntitySet="tbClientes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="regiFoto" ColumnName="regiFoto" />
                 <ScalarProperty Name="barCodigo" ColumnName="barCodigo" />
                 <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />

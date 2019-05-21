@@ -14,16 +14,27 @@
     })
 
     function GetTasks(projectId) {
+
+        var events = [];
+
+        events.push({
+            'id': 1,
+            'title': 'Desarrollo web',
+            'start': '2019-05-20 23:59:00',
+            'allDay': true
+        });
+        
         var calendarE1 = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarE1, {
-            plugings: ['interaction', 'dayGrid'],
+            plugins: ['interaction','dayGrid'],
             header: {
-                left: 'prevYear,prev,next,nextYear,today',
+                left: 'prevYear,prev,next,nextYear today',
                 center: 'title',
                 right: 'dayGridMonth,dayGridWeek,dayGridDay'
             },
             navLinks: true,
+            events: events,
             eventClick: function (eventObj) {
 
             }

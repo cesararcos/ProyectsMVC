@@ -9,7 +9,7 @@ namespace ProyectsMVC.Controllers
     [Authorize]
     public class TasksController : Controller
     {
-        
+
         // GET: Tasks
         public ActionResult Index(int? proyectId)
         {
@@ -93,5 +93,41 @@ namespace ProyectsMVC.Controllers
         {
             return View();
         }
+
+        public ActionResult GetTaskCalendar(int? projectId)
+        {
+            try
+            {
+                Logica.BL.Tasks tasks = new Logica.BL.Tasks();
+                var listTasks = tasks.GetTasks(projectId, null);
+
+                var listTasksCalendarViewModel = listTasks.Select(x => new Logica.Models.ViewModel.TasksGetTasksCalendarViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    AllDay = true,
+                    Color = "#FFFF00",
+                    Start = x.ExpirationDate.Value.AddDays(Convert.ToDouble(-x.RemainigWork)).ToString("yyyy-MM-dd HH:mm:ss"),
+                    End = x.ExpirationDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                    TextColor = "#000000"
+
+                }).ToList();
+
+                return Json(new
+                {
+                    Data = listTasksCalendarViewModel,
+                    IsSuccessful = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new Logica.Models.ViewModel.ResponseViewModel
+                {
+                    IsSuccessful = true,
+                    Errors = new List<string> { ex.Message }
+                });
+            }
+        }
+
     }
 }

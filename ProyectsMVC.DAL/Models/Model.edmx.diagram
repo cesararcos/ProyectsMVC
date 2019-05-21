@@ -65,6 +65,7 @@
         <EntityTypeShape EntityType="ProyectsMVCModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" />
         <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_tbClientes_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

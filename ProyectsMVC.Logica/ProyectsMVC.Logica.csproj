@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Activities.cs" />
+    <Compile Include="BL\Clientes.cs" />
     <Compile Include="BL\Encuesta.cs" />
     <Compile Include="BL\IndexCertyHigh.cs" />
     <Compile Include="BL\Preguntas.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="BL\States.cs" />
     <Compile Include="BL\Tasks.cs" />
     <Compile Include="BL\Tenants.cs" />
+    <Compile Include="Models\BindingModel\ClientesBindingModel.cs" />
     <Compile Include="Models\BindingModel\EncuestaBindingModel.cs" />
     <Compile Include="Models\BindingModel\PreguntasBindingModel.cs" />
     <Compile Include="Models\BindingModel\ProyectBindingModel.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Models\ViewModel\PreguntasViewModel.cs" />
     <Compile Include="Models\ViewModel\ProyectsViewModel.cs" />
     <Compile Include="Models\ViewModel\PruebaViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResponseViewModel.cs" />
     <Compile Include="Models\ViewModel\TasksViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
