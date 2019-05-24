@@ -1,0 +1,103 @@
+﻿@model ProyectsMVC.Logica.Models.BindingModel.ClientesBindingModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form action="/Preguntas/Create" method="post">
+
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cedula, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Cedula, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Apellido, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.NiveduCodigo)
+            @Html.DropDownListFor(m => m.NiveduCodigo, new SelectList(ViewBag.Niveles, "niveCodigo", "niveDescripcion"), new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Telefonofijo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Telefonofijo, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Celular, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Celular, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Edad, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Edad, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.GeneCodigo)
+            @Html.DropDownListFor(m => m.GeneCodigo, new SelectList(ViewBag.Genero, "Codigo", "Descripcion"), new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Fechanacimiento, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Fechanacimiento, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.BarCodigo)
+            @Html.DropDownListFor(m => m.BarCodigo, new SelectList(ViewBag.Barrio, "Codigo", "Descripcion"), new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Foto, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Foto, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-12">
+            <br />
+            <button type="submit" value="" class="btn btn-primary"><i class="fas fa-save"></i></button>
+            @Html.ActionLink(" ", "Details", "Pruebas", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+        </div>
+    </div>
+</form>

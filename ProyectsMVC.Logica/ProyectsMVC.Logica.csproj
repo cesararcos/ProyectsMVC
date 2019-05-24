@@ -65,8 +65,11 @@
     <Compile Include="Models\BindingModel\ProyectBindingModel.cs" />
     <Compile Include="Models\BindingModel\TasksBindingModel.cs" />
     <Compile Include="Models\DB\Activities.cs" />
+    <Compile Include="Models\DB\AspNetUsers.cs" />
+    <Compile Include="Models\DB\Barrio.cs" />
     <Compile Include="Models\DB\Clientes.cs" />
     <Compile Include="Models\DB\Encuesta.cs" />
+    <Compile Include="Models\DB\Genero.cs" />
     <Compile Include="Models\DB\IndexCertyHigh.cs" />
     <Compile Include="Models\DB\Niveles.cs" />
     <Compile Include="Models\DB\Preguntas.cs" />

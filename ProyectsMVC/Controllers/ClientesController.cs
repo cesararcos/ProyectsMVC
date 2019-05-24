@@ -9,7 +9,7 @@ namespace ProyectsMVC.Controllers
     public class ClientesController : Controller
     {
         // GET: Clientes
-        public ActionResult Index()
+        public ActionResult Create()
         {
             return View();
         }

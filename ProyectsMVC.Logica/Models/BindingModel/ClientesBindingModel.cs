@@ -22,11 +22,11 @@ namespace ProyectsMVC.Logica.Models.BindingModel
         public DateTime? Apellido { get; set; }
 
         [Required(ErrorMessage = "The field NiveduCodigo is required")]
-        [Display(Name = "NiveduCodigo")]
+        [Display(Name = "Nivel")]
         public int? NiveduCodigo { get; set; }
 
         [Required(ErrorMessage = "The field Telefonofijo is required")]
-        [Display(Name = "Telefonofijo")]
+        [Display(Name = "Telefono fijo")]
         public string Telefonofijo { get; set; }
 
         [Required(ErrorMessage = "The field Celular is required")]
@@ -42,19 +42,15 @@ namespace ProyectsMVC.Logica.Models.BindingModel
         public string Edad { get; set; }
 
         [Required(ErrorMessage = "The field GeneCodigo is required")]
-        [Display(Name = "GeneCodigo")]
+        [Display(Name = "Genero")]
         public int? GeneCodigo { get; set; }
 
         [Required(ErrorMessage = "The field Fechanacimiento is required")]
-        [Display(Name = "Fechanacimiento")]
+        [Display(Name = "Fecha nacimiento")]
         public string Fechanacimiento { get; set; }
-
-        [Required(ErrorMessage = "The field UsuaCodigo is required")]
-        [Display(Name = "UsuaCodigo")]
-        public int? UsuaCodigo { get; set; }
-
+        
         [Required(ErrorMessage = "The field BarCodigo is required")]
-        [Display(Name = "BarCodigo")]
+        [Display(Name = "Barrio")]
         public int? BarCodigo { get; set; }
 
         [Required(ErrorMessage = "The field Foto is required")]

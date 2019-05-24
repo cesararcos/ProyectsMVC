@@ -18,9 +18,13 @@ namespace ProyectsMVC.Logica.Models.DB
         public string Edad { get; set; }
         public int? GeneCodigo { get; set; }
         public string Fechanacimiento { get; set; }
-        public int? UsuaCodigo { get; set; }
         public int? BarCodigo { get; set; }
         public string Foto { get; set; }
         public int? Id { get; set; }
+
+        public Niveles Niveles { get; set; }
+        public Genero Genero { get; set; }
+        public Barrio Barrio { get; set; }
+        public AspNetUsers AspNetUsers { get; set; }
     }
 }

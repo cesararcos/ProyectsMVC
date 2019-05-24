@@ -8,29 +8,30 @@ using System.Web.Mvc;
 namespace ProyectsMVC.Controllers
 {
     [Authorize]
-    public class ProyectController : Controller
+    public class ProjectsJsonController : Controller
     {
         private ApplicationUserManager _userManager;
-       
+
         public ApplicationUserManager UserManager
         {
-            get {
+            get
+            {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
             set { _userManager = value; }
         }
 
-        public ProyectController(ApplicationUserManager userManager)
+        public ProjectsJsonController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
         }
 
-        public ProyectController()
+        public ProjectsJsonController()
         {
 
         }
 
-        
+
         // GET: Proyect
         public async Task<ActionResult> Index()
         {
@@ -99,10 +100,10 @@ namespace ProyectsMVC.Controllers
 
             var proyectBindingModel = new Logica.Models.BindingModel.ProyectEditBindingModel
             {
-                 Id = proyect.Id,
-                 Details = proyect.Details,
-                 ExpectedCompletionDate = proyect.ExpectedCompletionDate,
-                 Title = proyect.Title
+                Id = proyect.Id,
+                Details = proyect.Details,
+                ExpectedCompletionDate = proyect.ExpectedCompletionDate,
+                Title = proyect.Title
             };
 
             return View(proyectBindingModel);
