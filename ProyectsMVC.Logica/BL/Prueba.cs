@@ -21,7 +21,7 @@ namespace ProyectsMVC.Logica.BL
                                     niveCodigo = _prueba.niveCodigo,
                                     Niveles = new Models.DB.Niveles
                                     {
-                                        niveDescripcion = _niveles.niveDescripcion
+                                        Descripcion = _niveles.niveDescripcion
                                     },
                                     prueDescripcion = _prueba.prueNombre
                                 }).ToList();

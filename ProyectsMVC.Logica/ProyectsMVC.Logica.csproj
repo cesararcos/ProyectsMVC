@@ -48,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Activities.cs" />
+    <Compile Include="BL\Barrio.cs" />
     <Compile Include="BL\Clientes.cs" />
     <Compile Include="BL\Encuesta.cs" />
-    <Compile Include="BL\IndexCertyHigh.cs" />
+    <Compile Include="BL\Genero.cs" />
+    <Compile Include="BL\NivelEducativo.cs" />
     <Compile Include="BL\Preguntas.cs" />
     <Compile Include="BL\Priorities.cs" />
     <Compile Include="BL\Proyects.cs" />
@@ -70,7 +72,7 @@
     <Compile Include="Models\DB\Clientes.cs" />
     <Compile Include="Models\DB\Encuesta.cs" />
     <Compile Include="Models\DB\Genero.cs" />
-    <Compile Include="Models\DB\IndexCertyHigh.cs" />
+    <Compile Include="Models\DB\NivelEducativo.cs" />
     <Compile Include="Models\DB\Niveles.cs" />
     <Compile Include="Models\DB\Preguntas.cs" />
     <Compile Include="Models\DB\Priorities.cs" />
@@ -81,7 +83,6 @@
     <Compile Include="Models\DB\States.cs" />
     <Compile Include="Models\DB\Tasks.cs" />
     <Compile Include="Models\DB\Tenants.cs" />
-    <Compile Include="Models\ViewModel\IndexCertyHighViewModel.cs" />
     <Compile Include="Models\ViewModel\PreguntasViewModel.cs" />
     <Compile Include="Models\ViewModel\ProyectsViewModel.cs" />
     <Compile Include="Models\ViewModel\PruebaViewModel.cs" />

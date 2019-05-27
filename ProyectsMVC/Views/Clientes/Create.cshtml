@@ -30,10 +30,10 @@
         </div>
     </div>
 
-    <div class="form-row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.NiveduCodigo)
-            @Html.DropDownListFor(m => m.NiveduCodigo, new SelectList(ViewBag.Niveles, "niveCodigo", "niveDescripcion"), new { @class = "form-control" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.NiveduCodigo)
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.NiveduCodigo, new SelectList(ViewBag.NivelEducativo, "Codigo", "Descripcion"), new { @class = "form-control" })
         </div>
     </div>
 
@@ -65,9 +65,9 @@
         </div>
     </div>
 
-    <div class="form-row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.GeneCodigo)
+    <div class="form-group">
+        @Html.LabelFor(m => m.GeneCodigo)
+        <div class="col-md-10">
             @Html.DropDownListFor(m => m.GeneCodigo, new SelectList(ViewBag.Genero, "Codigo", "Descripcion"), new { @class = "form-control" })
         </div>
     </div>
@@ -79,9 +79,9 @@
         </div>
     </div>
 
-    <div class="form-row">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.BarCodigo)
+    <div class="form-group">
+        @Html.LabelFor(m => m.BarCodigo)
+        <div class="col-md-10">
             @Html.DropDownListFor(m => m.BarCodigo, new SelectList(ViewBag.Barrio, "Codigo", "Descripcion"), new { @class = "form-control" })
         </div>
     </div>

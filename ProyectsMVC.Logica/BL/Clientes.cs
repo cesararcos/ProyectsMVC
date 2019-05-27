@@ -12,7 +12,7 @@ namespace ProyectsMVC.Logica.BL
         {
             DAL.Models.ProyectsMVCEntities db = new DAL.Models.ProyectsMVCEntities();
             var listClientes = (from _Clientes in db.tbClientes
-                                join _Niveles in db.tbNiveles on _Clientes.niveduCodigo equals _Niveles.niveCodigo
+                                join _NivelEducativo in db.tbNivelEducativo on _Clientes.niveduCodigo equals _NivelEducativo.niveduCodigo
                                 join _Genero in db.tbGenero on _Clientes.geneCodigo equals _Genero.geneCodigo
                                 join _Barrio in db.tbBarrio on _Clientes.barCodigo equals _Barrio.barCodigo
                                 select new Models.DB.Clientes
@@ -21,9 +21,9 @@ namespace ProyectsMVC.Logica.BL
                                     Nombre = _Clientes.regiNombre,
                                     Apellido = _Clientes.regiApellido,
                                     NiveduCodigo = _Clientes.niveduCodigo,
-                                    Niveles = new Models.DB.Niveles
+                                    NivelEducativo = new Models.DB.NivelEducativo
                                     {
-                                        niveDescripcion = _Niveles.niveDescripcion
+                                         Descripcion = _NivelEducativo.niveduDescripcion
                                     },
                                     Telefonofijo = _Clientes.regiTelefonofijo,
                                     Celular = _Clientes.regiCelular,
@@ -40,8 +40,9 @@ namespace ProyectsMVC.Logica.BL
                                     {
                                         Descripcion = _Barrio.barDescripcion
                                     },
-                                    Foto = _Clientes.regiFoto
-                                    //PrueCodigo = _Preguntas.prueCodigo
+                                    Foto = _Clientes.regiFoto,
+                                    Id = _Clientes.Id
+                                    
                                 }).ToList();
 
             return listClientes;
@@ -58,7 +59,8 @@ namespace ProyectsMVC.Logica.BL
             int? GeneCodigo,
             string FechaNacimiento,
             int? BarCodigo,
-            string Foto)
+            string Foto,
+            string Id)
         {
             DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
 
@@ -75,7 +77,8 @@ namespace ProyectsMVC.Logica.BL
                 geneCodigo = GeneCodigo,
                 regiFechanacimiento = FechaNacimiento,
                 barCodigo = BarCodigo,
-                regiFoto = Foto
+                regiFoto = Foto,
+                Id = Id
             });
 
             _context.SaveChanges();

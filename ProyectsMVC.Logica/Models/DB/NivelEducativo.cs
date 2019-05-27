@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectsMVC.Logica.Models.DB
 {
-   public class Niveles
+   public class NivelEducativo
     {
         public int Codigo { get; set; }
         public string Descripcion { get; set; }

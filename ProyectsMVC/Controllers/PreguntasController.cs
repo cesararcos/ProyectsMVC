@@ -9,6 +9,11 @@ namespace ProyectsMVC.Controllers
 {
     public class PreguntasController : Controller
     {
+        public PreguntasController()
+        {
+
+        }
+
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -23,31 +28,36 @@ namespace ProyectsMVC.Controllers
         {
             UserManager = userManager;
         }
-        
+
         // GET: Preguntas
         public async Task<ActionResult> Create(int? pruebaId)
         {
             ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
 
-            var preguntasBindingModel = new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
-            {
-                PruebaId = pruebaId
-            };
+            Logica.BL.Clientes Clientes = new Logica.BL.Clientes();
+
+            var listaClientes = Clientes.GetClientes().Where(x => x.Id == user.Id).FirstOrDefault();
 
             Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
             Logica.BL.PruebaRespuesta pruebaRespuestas = new Logica.BL.PruebaRespuesta();
 
             var preguntasConRespuestas = preguntas.GetPreguntas(pruebaId);
-            var preguntasRespondidas = pruebaRespuestas.GetPruebaRespuestas(0);
+            var preguntasRespondidas = pruebaRespuestas.GetPruebaRespuestas(listaClientes.Cedula);
 
-            preguntasConRespuestas = (from q in preguntasConRespuestas
-                                      where !preguntasRespondidas.Select(x => x.PreguntaCodigo).Contains(q.Codigo)
-                                      select q).ToList();
+            var pregunta = (from q in preguntasConRespuestas
+                            where !preguntasRespondidas.Select(x => x.PreguntaCodigo).Contains(q.Codigo)
+                            select q).FirstOrDefault();
 
-            ViewBag.PreguntasGetRespuestasViewModel = preguntasConRespuestas.FirstOrDefault();
-            ViewBag.PruebaId = pruebaId;
-
-            return View(preguntasBindingModel);
+            var preguntasViewModel = new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
+            {
+                PruebaId = pruebaId,
+                Codigo = pregunta.Codigo,
+                Descripcion = pregunta.Descripcion,
+                RespuestaId = pregunta.RespuestaId,
+                Respuestas = pregunta.Respuestas
+            };
+            
+            return View(preguntasViewModel);
         }
 
         [HttpPost]
@@ -57,12 +67,16 @@ namespace ProyectsMVC.Controllers
             {
                 ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
 
+                Logica.BL.Clientes Clientes = new Logica.BL.Clientes();
+
+                var listaClientes = Clientes.GetClientes().Where(x => x.Id == user.Id).FirstOrDefault();
 
 
                 Logica.BL.Preguntas Preguntas = new Logica.BL.Preguntas();
-                Preguntas.CreatePreguntas(model.Codigo
-
-                    );
+                Preguntas.CreatePreguntas(model.PruebaId.Value,
+                    model.RespuestaId.Value,
+                    listaClientes.Cedula,
+                    model.Codigo);
 
                 return RedirectToAction("Create", new { pruebaId = model.PruebaId });
             }

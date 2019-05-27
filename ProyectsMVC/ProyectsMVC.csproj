@@ -216,7 +216,6 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IndexCertyHighController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\PrioritiesController.cs" />
@@ -479,7 +478,6 @@
     <Content Include="Views\States\Index.cshtml" />
     <Content Include="Views\Preguntas\Create.cshtml" />
     <Content Include="Views\Encuesta\Create.cshtml" />
-    <Content Include="Views\IndexCertyHigh\Index.cshtml" />
     <Content Include="Views\tbPruebas\Create.cshtml" />
     <Content Include="Views\tbPruebas\Delete.cshtml" />
     <Content Include="Views\tbPruebas\Details.cshtml" />
