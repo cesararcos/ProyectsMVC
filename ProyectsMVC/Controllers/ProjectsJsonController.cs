@@ -1,5 +1,7 @@
 ﻿using IdentitySample.Models;
 using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -31,35 +33,55 @@ namespace ProyectsMVC.Controllers
 
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
 
         // GET: Proyect
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> GetProyects()
         {
-            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
-            Logica.BL.Tenants tenants = new Logica.BL.Tenants();
-            var tenant = tenants.GetTenants(user.Id).FirstOrDefault();
-
-            Logica.BL.Proyects proyects = new Logica.BL.Proyects();
-
-            var result = await UserManager.IsInRoleAsync(user.Id, "Admin") ?
-                proyects.GetProyects(null, tenant.Id) : // Si es Admin consulta todos los proyectos de la organizacion
-                 proyects.GetProyects(null, tenant.Id, user.Id); // Si es miembro consulta los proyectos de la organizacion que le pertenezcan
-
-            var listProyects = result.Select(x => new Logica.Models.ViewModel.ProyectsIndexViewModel
+            try
             {
-                Id = x.Id,
-                Title = x.Title,
-                Details = x.Details,
-                ExpectedCompletionDate = x.ExpectedCompletionDate,
-                CreatedAt = x.CreatedAt,
-                UpdatedAt = x.UpdatedAt
-            }).ToList();
+                ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+                Logica.BL.Tenants tenants = new Logica.BL.Tenants();
+                var tenant = tenants.GetTenants(user.Id).FirstOrDefault();
 
-            listProyects = tenant.Plan.Equals("Premium") ?
-                listProyects :
-                listProyects.Take(1).ToList();
+                Logica.BL.Proyects proyects = new Logica.BL.Proyects();
 
-            return View(listProyects); // Devuelve una vista que tenga el nombre de la accion
+                var result = await UserManager.IsInRoleAsync(user.Id, "Admin") ?
+                    proyects.GetProyects(null, tenant.Id) : // Si es Admin consulta todos los proyectos de la organizacion
+                     proyects.GetProyects(null, tenant.Id, user.Id); // Si es miembro consulta los proyectos de la organizacion que le pertenezcan
+
+                var listProyects = result.Select(x => new Logica.Models.ViewModel.ProyectsIndexViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Details = x.Details,
+                    ExpectedCompletionDate = x.ExpectedCompletionDate,
+                    CreatedAt = x.CreatedAt,
+                    UpdatedAt = x.UpdatedAt
+                }).ToList();
+
+                listProyects = tenant.Plan.Equals("Premium") ?
+                    listProyects :
+                    listProyects.Take(1).ToList();
+
+                return Json(new
+                {
+                    IsSuccessful = true,
+                    Data = listProyects
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new Logica.Models.ViewModel.ResponseViewModel
+                {
+                    IsSuccessful = false,
+                    Errors = new List<string> { ex.Message }
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult Create()
@@ -72,24 +94,38 @@ namespace ProyectsMVC.Controllers
         [ActionName("Create")]
         public async Task<ActionResult> Create(Logica.Models.BindingModel.ProyectCreateBindingModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+                if (ModelState.IsValid)
+                {
+                    ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
 
-                Logica.BL.Tenants tenants = new Logica.BL.Tenants();
-                var tenant = tenants.GetTenants(user.Id).FirstOrDefault();
+                    Logica.BL.Tenants tenants = new Logica.BL.Tenants();
+                    var tenant = tenants.GetTenants(user.Id).FirstOrDefault();
 
-                Logica.BL.Proyects proyects = new Logica.BL.Proyects();
-                proyects.CreateProyects(model.Title,
-                    model.Details,
-                    model.ExpectedCompletionDate,
-                    tenant.Id);
+                    Logica.BL.Proyects proyects = new Logica.BL.Proyects();
+                    proyects.CreateProyects(model.Title,
+                        model.Details,
+                        model.ExpectedCompletionDate,
+                        tenant.Id);
 
-                return RedirectToAction("Index");
+                    return Json(new
+                    {
+                        IsSuccessful = true
+                    }, JsonRequestBehavior.AllowGet);
 
+                }
+
+                return View(model);
             }
-
-            return View(model);
+            catch (Exception ex)
+            {
+                return Json(new Logica.Models.ViewModel.ResponseViewModel
+                {
+                    IsSuccessful = false,
+                    Errors = new List<string> { ex.Message }
+                }, JsonRequestBehavior.AllowGet);
+            }
 
         }
 
@@ -112,19 +148,33 @@ namespace ProyectsMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Logica.Models.BindingModel.ProyectEditBindingModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Logica.BL.Proyects proyects = new Logica.BL.Proyects();
-                proyects.UpdateProyects(model.Id,
-                    model.Title,
-                    model.Details,
-                    model.ExpectedCompletionDate);
+                if (ModelState.IsValid)
+                {
+                    Logica.BL.Proyects proyects = new Logica.BL.Proyects();
+                    proyects.UpdateProyects(model.Id,
+                        model.Title,
+                        model.Details,
+                        model.ExpectedCompletionDate);
 
-                return RedirectToAction("Index");
+                    //return RedirectToAction("Index");
+                    return Json(new
+                    {
+                        IsSuccessful = true
+                    }, JsonRequestBehavior.AllowGet);
+                }
 
+                return View(model);
             }
-
-            return View(model);
+            catch (Exception ex)
+            {
+                return Json(new Logica.Models.ViewModel.ResponseViewModel
+                {
+                    IsSuccessful = false,
+                    Errors = new List<string> { ex.Message }
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
 

@@ -1,42 +1,50 @@
-﻿@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.ProyectsIndexViewModel>
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
 <h2>Proyects</h2>
 
-@Html.ActionLink(" ", "Create", "Proyect", null, new { @class = "btn btn-primary fas fa-plus-circle" })
+@Html.ActionLink(" ", "Create", "ProjetsJson", null, new { @class = "btn btn-primary fas fa-plus-circle" })
 
 
-<table class="table table-bordered">
+<table id="gridProyects" class="table table-bordered">
     <tr>
-        <td>Tasks</td>
-        <td>@Html.DisplayNameFor(model => model.Title)</td>
-        <td>@Html.DisplayNameFor(model => model.Details)</td>
-        <td>@Html.DisplayNameFor(model => model.ExpectedCompletionDate)</td>
-        <td>@Html.DisplayNameFor(model => model.CreatedAt)</td>
-        <td>@Html.DisplayNameFor(model => model.UpdatedAt)</td>
+        <td>Title</td>
+        <td>Details</td>
+        <td>Expected Completion Date</td>
+        <td>CreatedAt</td>
+        <td>UpdatedAt</td>
         <td></td>
     </tr>
+</table>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink(" ", "Index", "Tasks", new { ProyectId = item.Id }, new { @class = "btn btn-primary fas fa-tasks" })
-            </td>
-            <td>@Html.DisplayFor(model => item.Title)</td>
-            <td>@Html.DisplayFor(model => item.Details)</td>
-            <td>@Html.DisplayFor(model => item.ExpectedCompletionDate)</td>
-            <td>@Html.DisplayFor(model => item.CreatedAt)</td>
-            <td>@Html.DisplayFor(model => item.UpdatedAt)</td>
-            <td>
+<script>
+    $(function () {
+        GetProyects();
+    });
 
-                @Html.ActionLink(" ", "Edit", "Proyect", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-edit" })
-                @Html.ActionLink(" ", "Details", "Proyect", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-info-circle" })
-                @Html.ActionLink(" ", "Delete", "Proyect", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fas fa-trash" })
-            </td>
-        </tr>
+    function GetProyects() {
+        $.get('/ProjectsJson/GetProyects').done(function (data) {
+
+            var isSuccessful = data.IsSuccessful;
+
+            //alert(isSuccessful)
+
+            if (isSuccessful) {
+                var $grid = $('#gridProyects');
+
+                for (var i = 0; i < data.Data.length; i++) {
+                    //alert('ooooo')
+                    var $tr = $('<tr></tr>');
+                    $tr.append('<td>' + data.Data[i].Title + '</td>');
+                    $tr.append('<td>' + data.Data[i].Details + '</td>');
+                    $tr.append('<td>' + data.Data[i].ExpectedCompletionDate + '</td>');
+                    $tr.append('<td>' + data.Data[i].CreatedAt + '</td>');
+                    $tr.append('<td>' + data.Data[i].UpdatedAt + '</td>');
+
+                    $grid.append($tr);
+                }
+            }
+        });
     }
-
-</table> 
+</script> 

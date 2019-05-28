@@ -1,46 +1,91 @@
-﻿
-@{
+﻿<div id="divErrors" 
+     class="alert alert-danger alert-dismissible fade show" role="alert"
+     style="display:none">
+    
+    <strong>
+            <span id="errors"></span>
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@*@{
     ViewBag.Title = "Calendar";
 }
 
-<h2>Calendar</h2>
+<h2>Calendar</h2>*@
 
 <div id="calendar"></div>
 
 <script>
+
+    var projectId = @ViewBag.Project.Id;
+
     //jQuery
     $(function () {
-        GetTasks(0);
+        GetTasks(projectId);
     })
 
     function GetTasks(projectId) {
 
-        var events = [];
+        $.get('/Tasks/GetTasksCalendar?projectId=' + projectId)
+            .done(function (data) {
 
-        events.push({
-            'id': 1,
-            'title': 'Desarrollo web',
-            'start': '2019-05-20 23:59:00',
-            'allDay': true
-        });
-        
-        var calendarE1 = document.getElementById('calendar');
+                var isSuccessful = data.IsSuccessful;
 
-        var calendar = new FullCalendar.Calendar(calendarE1, {
-            plugins: ['interaction','dayGrid'],
-            header: {
-                left: 'prevYear,prev,next,nextYear today',
-                center: 'title',
-                right: 'dayGridMonth,dayGridWeek,dayGridDay'
-            },
-            navLinks: true,
-            events: events,
-            eventClick: function (eventObj) {
+                if (isSuccessful) {
 
-            }
-        });
+                    var events = [];
 
-        calendar.render();
+                    $.each(data.Data, function (idx, task) {
+                        events.push({
+                            'id': task.Id,
+                            'title': task.Title,
+                            'start': task.AllDay,
+                            'end': task.Color,
+                            'allDay': task.Start,
+                            'color': task.End,
+                            'textcolor': task.TextColor
+                        });
+                    });
+
+                   var calendarE1 = document.getElementById('calendar');
+
+                    var calendar = new FullCalendar.Calendar(calendarE1, {
+                        plugins: ['interaction', 'dayGrid'],
+                        header: {
+                            left: 'prevYear,prev,next,nextYear today',
+                            center: 'title',
+                            right: 'dayGridMonth,dayGridWeek,dayGridDay'
+                        },
+                        navLinks: true,
+                        events: events,
+                        eventClick: function (eventObj) {
+
+                        },
+                        events: events
+                    });
+
+                    calendar.render();
+                } else {
+                    var errors = data.Errors;
+                    displayValidationErrors(errors);
+                }
+
+            });
+
+    }
+
+    function displayValidationErrors(Errors) {
+        var $ul = $('<ul>');
+        $ul.empty();
+
+        $.each(errors, function (idx, errorMessage) {
+            $ul.append('<li>' + errorMessage + '</li>');
+        })
+
+        $('#errors').html($ul);
+        $('$divErrors').show();
     }
 
 </script>

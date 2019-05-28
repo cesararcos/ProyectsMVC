@@ -89,8 +89,12 @@ namespace ProyectsMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Calendar()
+        public ActionResult Calendar(int? projectId)
         {
+            Logica.BL.Proyects proyects = new Logica.BL.Proyects();
+            var proyect = proyects.GetProyects(projectId, null).FirstOrDefault();
+
+            ViewBag.Project = proyect;
             return View();
         }
 
@@ -117,7 +121,7 @@ namespace ProyectsMVC.Controllers
                 {
                     Data = listTasksCalendarViewModel,
                     IsSuccessful = true
-                });
+                }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -125,7 +129,7 @@ namespace ProyectsMVC.Controllers
                 {
                     IsSuccessful = true,
                     Errors = new List<string> { ex.Message }
-                });
+                }, JsonRequestBehavior.AllowGet);
             }
         }
 
