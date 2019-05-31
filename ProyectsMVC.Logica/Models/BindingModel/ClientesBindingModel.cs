@@ -19,7 +19,7 @@ namespace ProyectsMVC.Logica.Models.BindingModel
 
         [Required(ErrorMessage = "The field Apellido is required")]
         [Display(Name = "Apellido")]
-        public DateTime? Apellido { get; set; }
+        public string Apellido { get; set; }
 
         [Required(ErrorMessage = "The field NiveduCodigo is required")]
         [Display(Name = "Nivel")]
@@ -59,6 +59,6 @@ namespace ProyectsMVC.Logica.Models.BindingModel
 
         [Required(ErrorMessage = "The field Id is required")]
         [Display(Name = "Id")]
-        public int? Id { get; set; }
+        public string Id { get; set; }
     }
 }
