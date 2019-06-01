@@ -56,7 +56,7 @@ namespace ProyectsMVC.Controllers
                 RespuestaId = pregunta.RespuestaId,
                 Respuestas = pregunta.Respuestas
             };
-            
+
             return View(preguntasViewModel);
         }
 
@@ -89,6 +89,29 @@ namespace ProyectsMVC.Controllers
 
 
             return View(model);
+        }
+
+        // GET: Tasks
+        public ActionResult Index(int? pruebaId)
+        {
+            Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
+            var listPreguntas = preguntas.GetPreguntas(pruebaId);
+
+            var listPreguntasViewModel = listPreguntas.Select(x => new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
+            {
+                Codigo = x.Codigo,
+                Descripcion = x.Descripcion,
+                RespuestaId = x.RespuestaId,
+                Respuestas = x.Respuestas,
+                PruebaId = x.PruebaId
+            }).ToList();
+
+            Logica.BL.Prueba pruebas = new Logica.BL.Prueba();
+            var prueba = pruebas.GetPrueba(pruebaId, null).FirstOrDefault();
+
+            ViewBag.Prueba = prueba;
+
+            return View(listPreguntasViewModel);
         }
     }
 }

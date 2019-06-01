@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.PreguntasGetRespuestasViewModel>
+
+@{
+    ViewBag.Title = "Preguntas";
+}
+
+<h2>Resultados</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Codigo)</td>
+        <td>@Html.DisplayNameFor(model => model.Descripcion)</td>
+        <td>@Html.DisplayNameFor(model => model.RespuestaId)</td>
+        <td>@Html.DisplayNameFor(model => model.Respuestas)</td>
+        <td>@Html.DisplayNameFor(model => model.PruebaId)</td>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Codigo)</td>
+            <td>@Html.DisplayFor(model => item.Descripcion)</td>
+            <td>@Html.DisplayFor(model => item.RespuestaId)</td>
+            <td>@Html.DisplayFor(model => item.Respuestas)</td>
+            <td>@Html.DisplayFor(model => item.PruebaId)</td>
+            
+        </tr>
+    }
+
+</table> 
