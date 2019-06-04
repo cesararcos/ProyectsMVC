@@ -59,6 +59,7 @@
     <Compile Include="BL\Prueba.cs" />
     <Compile Include="BL\PruebaRespuesta.cs" />
     <Compile Include="BL\States.cs" />
+    <Compile Include="BL\TablaRespuestas.cs" />
     <Compile Include="BL\Tasks.cs" />
     <Compile Include="BL\Tenants.cs" />
     <Compile Include="Models\BindingModel\ClientesBindingModel.cs" />
@@ -81,12 +82,14 @@
     <Compile Include="Models\DB\PruebaRespuesta.cs" />
     <Compile Include="Models\DB\Respuestas.cs" />
     <Compile Include="Models\DB\States.cs" />
+    <Compile Include="Models\DB\TablaRespuestas.cs" />
     <Compile Include="Models\DB\Tasks.cs" />
     <Compile Include="Models\DB\Tenants.cs" />
     <Compile Include="Models\ViewModel\PreguntasViewModel.cs" />
     <Compile Include="Models\ViewModel\ProyectsViewModel.cs" />
     <Compile Include="Models\ViewModel\PruebaViewModel.cs" />
     <Compile Include="Models\ViewModel\ResponseViewModel.cs" />
+    <Compile Include="Models\ViewModel\TablaRespuestasViewModel.cs" />
     <Compile Include="Models\ViewModel\TasksViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

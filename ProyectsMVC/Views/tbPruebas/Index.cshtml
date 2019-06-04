@@ -34,6 +34,8 @@
                 @Html.ActionLink("Details", "Details", new { id = item.prueCodigo }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.prueCodigo })
                 @Html.ActionLink("Iniciar", "Create", "Preguntas", new { pruebaId = item.prueCodigo }, new { @class = "" })
+
+                @Html.ActionLink("result", "Index", "Preguntas", new { pruebaId = item.prueCodigo }, new { @class = "" })
             </td>
         </tr>
     }

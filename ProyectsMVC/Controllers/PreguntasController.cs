@@ -47,7 +47,10 @@ namespace ProyectsMVC.Controllers
             var pregunta = (from q in preguntasConRespuestas
                             where !preguntasRespondidas.Select(x => x.PreguntaCodigo).Contains(q.Codigo)
                             select q).FirstOrDefault();
-
+            if (pregunta == null)
+            {
+                return RedirectToAction("Index","tbPruebas", null);
+            }
             var preguntasViewModel = new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
             {
                 PruebaId = pruebaId,
@@ -92,26 +95,28 @@ namespace ProyectsMVC.Controllers
         }
 
         // GET: Tasks
-        public ActionResult Index(int? pruebaId)
+        public async Task<ActionResult> Index(int pruebaId)
         {
-            Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
-            var listPreguntas = preguntas.GetPreguntas(pruebaId);
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
 
-            var listPreguntasViewModel = listPreguntas.Select(x => new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
+            Logica.BL.Clientes Clientes = new Logica.BL.Clientes();
+
+            var listaClientes = Clientes.GetClientes().Where(x => x.Id == user.Id).FirstOrDefault();
+
+            Logica.BL.TablaRespuestas respuestas = new Logica.BL.TablaRespuestas();
+            var listPreguntas = respuestas.GetTablaRespuestas(listaClientes.Cedula, pruebaId);
+
+            var listTablaRespuestasViewModel = listPreguntas.Select(x => new Logica.Models.ViewModel.TablaRespuestasViewModel
             {
                 Codigo = x.Codigo,
-                Descripcion = x.Descripcion,
-                RespuestaId = x.RespuestaId,
-                Respuestas = x.Respuestas,
-                PruebaId = x.PruebaId
+                Prueba = x.Prueba,
+                Respuesta = x.Respuesta,
+                Pregunta = x.Pregunta
             }).ToList();
 
-            Logica.BL.Prueba pruebas = new Logica.BL.Prueba();
-            var prueba = pruebas.GetPrueba(pruebaId, null).FirstOrDefault();
+           
 
-            ViewBag.Prueba = prueba;
-
-            return View(listPreguntasViewModel);
+            return View(listTablaRespuestasViewModel);
         }
     }
 }

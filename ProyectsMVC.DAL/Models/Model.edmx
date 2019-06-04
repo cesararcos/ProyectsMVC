@@ -256,7 +256,7 @@
           <Key>
             <PropertyRef Name="prueresCodigo" />
           </Key>
-          <Property Name="prueresCodigo" Type="int" Nullable="false" />
+          <Property Name="prueresCodigo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="prueCodigo" Type="int" />
           <Property Name="respCodigo" Type="int" />
           <Property Name="regiCedula" Type="int" />
@@ -1465,7 +1465,7 @@
           <Key>
             <PropertyRef Name="prueresCodigo" />
           </Key>
-          <Property Name="prueresCodigo" Type="Int32" Nullable="false" />
+          <Property Name="prueresCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="prueCodigo" Type="Int32" />
           <Property Name="respCodigo" Type="Int32" />
           <Property Name="regiCedula" Type="Int32" />
