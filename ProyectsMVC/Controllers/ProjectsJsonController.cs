@@ -112,14 +112,20 @@ namespace ProyectsMVC.Controllers
                         model.ExpectedCompletionDate,
                         tenant.Id);
 
-                    return Json(new
-                    {
-                        IsSuccessful = true
-                    }, JsonRequestBehavior.AllowGet);
-
                 }
+                else
+                {
+                    return Json(new Logica.Models.ViewModel.ResponseViewModel
+                    {
+                        IsSuccessful = false,
+                        Errors = ModelState.Values.SelectMany(m => m.Errors).Select(e => e.ErrorMessage).ToList()
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new
+                {
+                    IsSuccessful = true
+                }, JsonRequestBehavior.AllowGet);
 
-                return View(model);
             }
             catch (Exception ex)
             {

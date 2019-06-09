@@ -62,6 +62,9 @@
 
             if (isSuccessful) {
                 window.location.href = '/ProjectsJson/Index';
+            } else {
+                var errors = data.Errors;
+                displayValidationErrors(errors);
             }
         });
     }

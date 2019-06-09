@@ -54,8 +54,11 @@
                     $tr.append('<td>' + proyect.UpdatedAtString + '</td>');
 
                     var $td = $('<td></td>');
-                    $tr.append('<a class="btn btn-primary btn-sm fas fa-edit" href="/ProjectsJson/Edit/' + proyect.Id + '"/>');
-                    $tr.append('<a class="btn btn-primary btn-sm fas fa-info-circle" href="/ProjectsJson/Details/' + proyect.Id + '"/>');
+                    $td.append('<a class="btn btn-primary btn-sm fas fa-edit" href="/ProjectsJson/Edit/' + proyect.Id + '"/>');
+                    $td.append('<a class="btn btn-primary btn-sm fas fa-info-circle" href="/ProjectsJson/Details/' + proyect.Id + '"/>');
+
+                    $tr.append($td);
+
                     $grid.append($tr);
                 });
             } else {
