@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Prueba</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
@@ -30,12 +30,11 @@
                 @Html.DisplayFor(modelItem => item.tbNiveles.niveDescripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.prueCodigo }) |
-                @Html.ActionLink("Details", "Details", new { id = item.prueCodigo }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.prueCodigo })
-                @Html.ActionLink("Iniciar", "Create", "Preguntas", new { pruebaId = item.prueCodigo }, new { @class = "" })
-
-                @Html.ActionLink("result", "Index", "Preguntas", new { pruebaId = item.prueCodigo }, new { @class = "" })
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.prueCodigo }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.prueCodigo })*@
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.prueCodigo })*@
+                @Html.ActionLink("Iniciar", "Create", "Preguntas", new { pruebaId = item.prueCodigo }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Resultado", "Index", "Preguntas", new { pruebaId = item.prueCodigo }, new { @class = "btn btn-primary" })
             </td>
         </tr>
     }

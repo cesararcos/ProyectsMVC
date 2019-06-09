@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Modificar preguntas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.tbPrueba.prueNombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pregCodigo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pregCodigo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pregCodigo })
+            @Html.ActionLink("Edit", "Edit", new { id=item.pregCodigo }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.pregCodigo }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.pregCodigo }, new { @class = "btn btn-primary" })
         </td>
     </tr>
 }
