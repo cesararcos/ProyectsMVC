@@ -2,18 +2,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Proyects</h2>
+<h2>Proyects Json</h2>
 
 @Html.ActionLink(" ", "Create", "ProjectsJson", null, new { @class = "btn btn-primary fas fa-plus-circle" })
 
+<div id="divErrors"
+     class="alert alert-danger alert-dismissible fade show" role="alert"
+     style="display:none">
+
+    <strong>
+        <span id="errors"></span>
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 
 <table id="gridProyects" class="table table-bordered">
     <tr>
         <td>Title</td>
         <td>Details</td>
         <td>Expected Completion Date</td>
-        <td>CreatedAt</td>
-        <td>UpdatedAt</td>        
+        <td>Created At</td>
+        <td>Updated At</td>
     </tr>
 </table>
 
@@ -30,19 +41,26 @@
             //alert(isSuccessful)
 
             if (isSuccessful) {
-                var $grid = $('#gridProyects');
+                $.each(data.Data, function (idx, proyect) {
 
-                for (var i = 0; i < data.Data.length; i++) {
-                    //alert('ooooo')
+                    var $grid = $('#gridProyects');
+
+
                     var $tr = $('<tr></tr>');
-                    $tr.append('<td>' + data.Data[i].Title + '</td>');
-                    $tr.append('<td>' + data.Data[i].Details + '</td>');
-                    $tr.append('<td>' + data.Data[i].ExpectedCompletionDate + '</td>');
-                    $tr.append('<td>' + data.Data[i].CreatedAt + '</td>');
-                    $tr.append('<td>' + data.Data[i].UpdatedAt + '</td>');
-                    
+                    $tr.append('<td>' + proyect.Title + '</td>');
+                    $tr.append('<td>' + proyect.Details + '</td>');
+                    $tr.append('<td>' + proyect.ExpectedCompletionDateString + '</td>');
+                    $tr.append('<td>' + proyect.CreatedAtString + '</td>');
+                    $tr.append('<td>' + proyect.UpdatedAtString + '</td>');
+
+                    var $td = $('<td></td>');
+                    $tr.append('<a class="btn btn-primary btn-sm fas fa-edit" href="/ProjectsJson/Edit/' + proyect.Id + '"/>');
+                    $tr.append('<a class="btn btn-primary btn-sm fas fa-info-circle" href="/ProjectsJson/Details/' + proyect.Id + '"/>');
                     $grid.append($tr);
-                }
+                });
+            } else {
+                var errors = data.Errors;
+                displayValidationErrors(errors);
             }
         });
     }

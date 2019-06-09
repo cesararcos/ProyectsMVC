@@ -17,11 +17,20 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         [Display(Name = "ExpectedCompletionDate")]
         public DateTime? ExpectedCompletionDate { get; set; }
 
+        [Display(Name = "ExpectedCompletionDate")]
+        public string ExpectedCompletionDateString { get; set; }
+
         [Display(Name = "IdCreatedAt")]
         public DateTime? CreatedAt { get; set; }
 
+        [Display(Name = "IdCreatedAt")]
+        public string CreatedAtString { get; set; }
+
         [Display(Name = "UpdatedAt")]
         public DateTime? UpdatedAt { get; set; }
+
+        [Display(Name = "UpdatedAt")]
+        public string UpdatedAtString { get; set; }
 
     }
 

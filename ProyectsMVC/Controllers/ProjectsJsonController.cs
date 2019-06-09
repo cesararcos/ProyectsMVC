@@ -42,6 +42,7 @@ namespace ProyectsMVC.Controllers
         // GET: Proyect
         public async Task<ActionResult> GetProyects()
         {
+
             try
             {
                 ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
@@ -59,9 +60,9 @@ namespace ProyectsMVC.Controllers
                     Id = x.Id,
                     Title = x.Title,
                     Details = x.Details,
-                    ExpectedCompletionDate = x.ExpectedCompletionDate,
-                    CreatedAt = x.CreatedAt,
-                    UpdatedAt = x.UpdatedAt
+                    ExpectedCompletionDateString = x.ExpectedCompletionDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                    CreatedAtString = x.CreatedAt.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                    UpdatedAtString = x.UpdatedAt.Value.ToString("yyyy-MM-dd HH:mm:ss")
                 }).ToList();
 
                 listProyects = tenant.Plan.Equals("Premium") ?
@@ -80,8 +81,10 @@ namespace ProyectsMVC.Controllers
                 {
                     IsSuccessful = false,
                     Errors = new List<string> { ex.Message }
-                }, JsonRequestBehavior.AllowGet);
+                }, JsonRequestBehavior.AllowGet); ;
             }
+
+
         }
 
         public ActionResult Create()
