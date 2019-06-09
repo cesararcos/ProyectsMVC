@@ -19,16 +19,16 @@
 
 <script>
 
-    var projectId = @ViewBag.Project.Id;
+    var proyectId = @ViewBag.Proyect.Id;
 
     //jQuery
     $(function () {
-        GetTasks(projectId);
+        GetTasksCalendar(proyectId);
     })
 
-    function GetTasks(projectId) {
+    function GetTasksCalendar(proyectId) {
 
-        $.get('/Tasks/GetTasksCalendar?projectId=' + projectId)
+        $.get('/Tasks/GetTasksCalendar?proyectId=' + proyectId)
             .done(function (data) {
 
                 var isSuccessful = data.IsSuccessful;
@@ -59,7 +59,8 @@
                             right: 'dayGridMonth,dayGridWeek,dayGridDay'
                         },
                         navLinks: true,
-                        events: events,
+                        eventLimit: true,
+                        //events: events,
                         eventClick: function (eventObj) {
 
                         },

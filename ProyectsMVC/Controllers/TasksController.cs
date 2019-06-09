@@ -89,21 +89,21 @@ namespace ProyectsMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Calendar(int? projectId)
+        public ActionResult Calendar(int? proyectId)
         {
             Logica.BL.Proyects proyects = new Logica.BL.Proyects();
-            var proyect = proyects.GetProyects(projectId, null).FirstOrDefault();
+            var proyect = proyects.GetProyects(proyectId, null).FirstOrDefault();
 
-            ViewBag.Project = proyect;
+            ViewBag.Proyect = proyect;
             return View();
         }
 
-        public ActionResult GetTaskCalendar(int? projectId)
+        public ActionResult GetTasksCalendar(int? proyectId)
         {
             try
             {
                 Logica.BL.Tasks tasks = new Logica.BL.Tasks();
-                var listTasks = tasks.GetTasks(projectId, null);
+                var listTasks = tasks.GetTasks(proyectId, null);
 
                 var listTasksCalendarViewModel = listTasks.Select(x => new Logica.Models.ViewModel.TasksGetTasksCalendarViewModel
                 {
