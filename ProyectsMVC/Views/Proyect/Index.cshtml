@@ -10,6 +10,7 @@
 
 <table class="table table-bordered">
     <tr>
+        <td>Tasks Json</td>
         <td>Tasks</td>
         <td>Calendar</td>
         <td>@Html.DisplayNameFor(model => model.Title)</td>
@@ -23,6 +24,9 @@
     @foreach (var item in Model)
     {
     <tr>
+        <td>
+            @Html.ActionLink(" ", "Index", "TasksJson", new { ProyectId = item.Id }, new { @class = "btn btn-primary fas fa-tasks" })
+        </td>
         <td>
             @Html.ActionLink(" ", "Index", "Tasks", new { ProyectId = item.Id }, new { @class = "btn btn-primary fas fa-tasks" })
         </td>
