@@ -4,7 +4,7 @@
 
 <h2>Proyects</h2>
 
-@Html.ActionLink(" ", "Create", "ProjetsJson", null, new { @class = "btn btn-primary fas fa-plus-circle" })
+@Html.ActionLink(" ", "Create", "ProjectsJson", null, new { @class = "btn btn-primary fas fa-plus-circle" })
 
 
 <table id="gridProyects" class="table table-bordered">
@@ -13,8 +13,7 @@
         <td>Details</td>
         <td>Expected Completion Date</td>
         <td>CreatedAt</td>
-        <td>UpdatedAt</td>
-        <td></td>
+        <td>UpdatedAt</td>        
     </tr>
 </table>
 
@@ -41,7 +40,7 @@
                     $tr.append('<td>' + data.Data[i].ExpectedCompletionDate + '</td>');
                     $tr.append('<td>' + data.Data[i].CreatedAt + '</td>');
                     $tr.append('<td>' + data.Data[i].UpdatedAt + '</td>');
-
+                    
                     $grid.append($tr);
                 }
             }
