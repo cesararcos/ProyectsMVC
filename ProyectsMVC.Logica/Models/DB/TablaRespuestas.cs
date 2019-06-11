@@ -12,5 +12,6 @@ namespace ProyectsMVC.Logica.Models.DB
         public string Prueba { get; set; }
         public string Respuesta { get; set; }
         public string Pregunta { get; set; }
+        public string Correctas { get; set; }
     }
 }

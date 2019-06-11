@@ -24,7 +24,7 @@ namespace ProyectsMVC.Logica.BL
                                  Prueba =_prueba.prueNombre,
                                  Respuesta=_respuestas.respDescripcion,
                                  Pregunta=_Preguntas.pregDescripcion,
-                                 
+                                 Correctas= _respuestas.respCorrectas.Value.ToString().Equals("True")?"Correcto":"Incorrecto"
 
 
                              }).ToList();

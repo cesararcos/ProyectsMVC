@@ -12,5 +12,6 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         public string Prueba { get; set; }
         public string Respuesta { get; set; }
         public string Pregunta { get; set; }
+        public string Estado { get; set; }
     }
 }

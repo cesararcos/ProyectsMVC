@@ -9,20 +9,22 @@
 
 <table class="table table-bordered">
     <tr>
-        <td>@Html.DisplayNameFor(model => model.Codigo)</td>
+        @*<td>@Html.DisplayNameFor(model => model.Codigo)</td>*@
         <td>@Html.DisplayNameFor(model => model.Prueba)</td>
-        <td>@Html.DisplayNameFor(model => model.Respuesta)</td>
         <td>@Html.DisplayNameFor(model => model.Pregunta)</td>
+        <td>@Html.DisplayNameFor(model => model.Respuesta)</td>
+        <td>@Html.DisplayNameFor(model => model.Estado)</td>
 
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(model => item.Codigo)</td>
+            @*<td>@Html.DisplayFor(model => item.Codigo)</td>*@
             <td>@Html.DisplayFor(model => item.Prueba)</td>
-            <td>@Html.DisplayFor(model => item.Respuesta)</td>
             <td>@Html.DisplayFor(model => item.Pregunta)</td>
+            <td>@Html.DisplayFor(model => item.Respuesta)</td>
+            <td>@Html.DisplayFor(model => item.Estado)</td>
 
 
         </tr>

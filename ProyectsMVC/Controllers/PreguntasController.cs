@@ -50,7 +50,7 @@ namespace ProyectsMVC.Controllers
             //pruebaId = pruebaId + 1;
             if (pregunta == null)
             {
-                return RedirectToAction("Index","tbPruebas", null);
+                return RedirectToAction("Index", "tbPruebas", null);
             }
             var preguntasViewModel = new Logica.Models.ViewModel.PreguntasGetRespuestasViewModel
             {
@@ -60,9 +60,9 @@ namespace ProyectsMVC.Controllers
                 RespuestaId = pregunta.RespuestaId,
                 Respuestas = pregunta.Respuestas
             };
-            
+
             return View(preguntasViewModel);
-            
+
         }
 
         [HttpPost]
@@ -113,10 +113,11 @@ namespace ProyectsMVC.Controllers
                 Codigo = x.Codigo,
                 Prueba = x.Prueba,
                 Respuesta = x.Respuesta,
-                Pregunta = x.Pregunta
+                Pregunta = x.Pregunta,
+                Estado = x.Correctas
             }).ToList();
 
-           
+
 
             return View(listTablaRespuestasViewModel);
         }
