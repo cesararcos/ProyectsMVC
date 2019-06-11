@@ -6,9 +6,10 @@
 <h2>Cuestionario</h2>
 
 <form action="/Preguntas/Create" method="post">
-     
-    @Html.HiddenFor(m => m.PruebaId)
 
+    @Html.HiddenFor(m => m.PruebaId)
+    <br />
+    <br />
     <div class="form-row">
         <div class="col-md-6">
             @Html.HiddenFor(m => m.Codigo)
@@ -19,7 +20,7 @@
         </div>
     </div>
 
-
+    <br />
     <div class="form-row">
         <div class="col-md-12">
             <br />

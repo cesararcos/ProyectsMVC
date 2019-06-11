@@ -3,12 +3,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Encuesta general</h2>
 
 <form action="/Encuesta/Create" method="post">
     @Html.HiddenFor(m => m.RegiCedula)
 
-
+    <br />
+    <br />
     <div class="form-row">
         <div class="col-md-6">
             @Html.LabelFor(m => m.RegiCedula)
@@ -16,6 +17,7 @@
             @Html.ValidationMessageFor(m => m.EnCodigo, "", new { @class = "text-danger" })
         </div>
     </div>
+    <br />
     <div class="form-row">
         <div class="col-md-6">
             @Html.LabelFor(m => m.EnDescripcion)
@@ -25,7 +27,7 @@
     </div>
 
 
-
+    <br />
     <div class="form-row">
         <div class="col-md-12">
             <br />
