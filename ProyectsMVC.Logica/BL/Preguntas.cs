@@ -14,14 +14,14 @@ namespace ProyectsMVC.Logica.BL
 
             DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
             var listPreguntas = (from _Preguntas in _context.tbPreguntas
-                                 where _Preguntas.pregCodigo == pruebaId
+                                 where _Preguntas.prueCodigo == pruebaId
                                  select new Models.ViewModel.PreguntasGetRespuestasViewModel
                                  {
                                      Codigo = _Preguntas.pregCodigo,
                                      Descripcion = _Preguntas.pregDescripcion,
                                      //PrueCodigo = _Preguntas.prueCodigo
                                  }).ToList();
-
+            //pruebaId = pruebaId + 1;
             foreach (var item in listPreguntas)
             {
                 item.Respuestas = (from _Respuestas in _context.tbRespuestas
