@@ -47,7 +47,7 @@ namespace ProyectsMVC.Controllers
             var pregunta = (from q in preguntasConRespuestas
                             where !preguntasRespondidas.Select(x => x.PreguntaCodigo).Contains(q.Codigo)
                             select q).FirstOrDefault();
-            //pruebaId = pruebaId + 1;
+
             if (pregunta == null)
             {
                 return RedirectToAction("Index", "tbPruebas", null);
