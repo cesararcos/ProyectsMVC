@@ -86,11 +86,6 @@ namespace ProyectsMVC.Controllers
                 return RedirectToAction("Create", new { pruebaId = model.PruebaId });
             }
 
-            //Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
-            //ViewBag.Preguntas = preguntas.GetPreguntas();
-
-            //Logica.BL.Preguntas preguntas = new Logica.BL.Preguntas();
-            //ViewBag.PreguntasGetRespuestasViewModel = preguntas.GetPreguntas();
 
 
             return View(model);
