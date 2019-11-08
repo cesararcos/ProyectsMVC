@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -212,22 +212,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ActivitiesController.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PreguntasController.cs" />
-    <Compile Include="Controllers\PrioritiesController.cs" />
-    <Compile Include="Controllers\ProjectsJsonController.cs" />
-    <Compile Include="Controllers\ProyectController.cs" />
+    <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\StatesController.cs" />
-    <Compile Include="Controllers\TasksController.cs" />
-    <Compile Include="Controllers\TasksJsonController.cs" />
-    <Compile Include="Controllers\tbPreguntasController.cs" />
-    <Compile Include="Controllers\tbPruebasController.cs" />
-    <Compile Include="Controllers\tbRespuestasController.cs" />
+    <Compile Include="Controllers\SaleProductsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -458,56 +448,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Proyect\Create.cshtml" />
-    <Content Include="Views\Proyect\Details.cshtml" />
-    <Content Include="Views\Proyect\Index.cshtml" />
-    <Content Include="Views\Proyect\Edit.cshtml" />
-    <Content Include="Views\Tasks\Index.cshtml" />
-    <Content Include="Views\Tasks\Create.cshtml" />
-    <Content Include="Views\Activities\Create.cshtml" />
-    <Content Include="Views\Activities\Delete.cshtml" />
-    <Content Include="Views\Activities\Details.cshtml" />
-    <Content Include="Views\Activities\Edit.cshtml" />
-    <Content Include="Views\Activities\Index.cshtml" />
-    <Content Include="Views\Priorities\Create.cshtml" />
-    <Content Include="Views\Priorities\Delete.cshtml" />
-    <Content Include="Views\Priorities\Details.cshtml" />
-    <Content Include="Views\Priorities\Edit.cshtml" />
-    <Content Include="Views\Priorities\Index.cshtml" />
-    <Content Include="Views\States\Create.cshtml" />
-    <Content Include="Views\States\Delete.cshtml" />
-    <Content Include="Views\States\Details.cshtml" />
-    <Content Include="Views\States\Edit.cshtml" />
-    <Content Include="Views\States\Index.cshtml" />
-    <Content Include="Views\Preguntas\Create.cshtml" />
-    <Content Include="Views\Encuesta\Create.cshtml" />
-    <Content Include="Views\tbPruebas\Create.cshtml" />
-    <Content Include="Views\tbPruebas\Delete.cshtml" />
-    <Content Include="Views\tbPruebas\Details.cshtml" />
-    <Content Include="Views\tbPruebas\Edit.cshtml" />
-    <Content Include="Views\tbPruebas\Index.cshtml" />
-    <Content Include="Views\tbPreguntas\Create.cshtml" />
-    <Content Include="Views\tbPreguntas\Delete.cshtml" />
-    <Content Include="Views\tbPreguntas\Details.cshtml" />
-    <Content Include="Views\tbPreguntas\Edit.cshtml" />
-    <Content Include="Views\tbPreguntas\Index.cshtml" />
-    <Content Include="Views\tbRespuestas\Create.cshtml" />
-    <Content Include="Views\tbRespuestas\Delete.cshtml" />
-    <Content Include="Views\tbRespuestas\Details.cshtml" />
-    <Content Include="Views\tbRespuestas\Edit.cshtml" />
-    <Content Include="Views\tbRespuestas\Index.cshtml" />
-    <Content Include="Views\Tasks\Calendar.cshtml" />
-    <Content Include="Views\ProjectsJson\Create.cshtml" />
-    <Content Include="Views\ProjectsJson\Details.cshtml" />
-    <Content Include="Views\ProjectsJson\Edit.cshtml" />
-    <Content Include="Views\ProjectsJson\Index.cshtml" />
-    <Content Include="Views\Clientes\Create.cshtml" />
-    <Content Include="Views\Preguntas\Index.cshtml" />
-    <Content Include="Views\TasksJson\Index.cshtml" />
-    <Content Include="Views\TasksJson\Create.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\SaleProducts\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Products\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -549,7 +496,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61592</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8080</IISUrl>
+          <IISUrl>http://localhost:51921/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

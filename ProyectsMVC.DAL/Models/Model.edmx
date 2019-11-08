@@ -4,26 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProyectsMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Activities">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-          <Property Name="Active" Type="bit" />
-        </EntityType>
-        <EntityType Name="Artifacts">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-          <Property Name="Key" Type="varchar" MaxLength="50" />
-          <Property Name="ProjectId" Type="int" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
-        </EntityType>
+      <Schema Namespace="ProyectsMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -74,28 +55,8 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="TenantId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Encuesta">
-          <Key>
-            <PropertyRef Name="enCodigo" />
-          </Key>
-          <Property Name="enCodigo" Type="int" Nullable="false" />
-          <Property Name="enDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="regiCedula" Type="int" />
-        </EntityType>
-        <EntityType Name="Members">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Priorities">
+        <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -103,17 +64,88 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Active" Type="bit" />
         </EntityType>
-        <EntityType Name="Projects">
+        <EntityType Name="Cities">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="50" />
-          <Property Name="Details" Type="varchar" MaxLength="100" />
-          <Property Name="ExpectedCompletionDate" Type="datetime" />
-          <Property Name="TenantId" Type="int" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentTypeId" Type="int" />
+          <Property Name="DocumentNumber" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="SecondName" Type="varchar" MaxLength="50" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="SecondSurname" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="MethodPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProductPhotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Guid" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="float" />
+          <Property Name="ShippingCost" Type="float" />
+          <Property Name="Warranty" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="SaleDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SubtotalValue" Type="float" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MethodPaymentId" Type="int" />
+          <Property Name="TotalValue" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CustomerId" Type="int" />
         </EntityType>
         <EntityType Name="States">
           <Key>
@@ -133,220 +165,39 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Tasks">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="50" />
-          <Property Name="Details" Type="varchar" MaxLength="100" />
-          <Property Name="ExpirationDate" Type="datetime" />
-          <Property Name="IsCompleted" Type="bit" />
-          <Property Name="Effort" Type="int" />
-          <Property Name="RemainingWork" Type="int" />
-          <Property Name="StateId" Type="int" />
-          <Property Name="ActivityId" Type="int" />
-          <Property Name="PriorityId" Type="int" />
-          <Property Name="ProjectId" Type="int" />
-        </EntityType>
-        <EntityType Name="tbBarrio">
-          <Key>
-            <PropertyRef Name="barCodigo" />
-          </Key>
-          <Property Name="barCodigo" Type="int" Nullable="false" />
-          <Property Name="barDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="ciuCodigo" Type="int" />
-        </EntityType>
-        <EntityType Name="tbCiudad">
-          <Key>
-            <PropertyRef Name="ciuCodigo" />
-          </Key>
-          <Property Name="ciuCodigo" Type="int" Nullable="false" />
-          <Property Name="ciuDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="depCodigo" Type="int" />
-        </EntityType>
-        <EntityType Name="tbClientes">
-          <Key>
-            <PropertyRef Name="regiCedula" />
-          </Key>
-          <Property Name="regiCedula" Type="int" Nullable="false" />
-          <Property Name="regiNombre" Type="varchar" MaxLength="50" />
-          <Property Name="regiApellido" Type="varchar" MaxLength="50" />
-          <Property Name="niveduCodigo" Type="int" />
-          <Property Name="regiTelefonofijo" Type="varchar" MaxLength="50" />
-          <Property Name="regiCelular" Type="varchar" MaxLength="50" />
-          <Property Name="regiEmail" Type="varchar" MaxLength="50" />
-          <Property Name="regiEdad" Type="varchar" MaxLength="50" />
-          <Property Name="geneCodigo" Type="int" />
-          <Property Name="regiFechanacimiento" Type="varchar" MaxLength="50" />
-          <Property Name="usuaCodigo" Type="int" />
-          <Property Name="barCodigo" Type="int" />
-          <Property Name="regiFoto" Type="varchar" MaxLength="50" />
-          <Property Name="Id" Type="nvarchar" MaxLength="128" />
-        </EntityType>
-        <EntityType Name="tbDepartamento">
-          <Key>
-            <PropertyRef Name="depCodigo" />
-          </Key>
-          <Property Name="depCodigo" Type="int" Nullable="false" />
-          <Property Name="depDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="paiCodigo" Type="int" />
-        </EntityType>
-        <EntityType Name="tbDescargas">
-          <Key>
-            <PropertyRef Name="descCodigo" />
-          </Key>
-          <Property Name="descCodigo" Type="int" Nullable="false" />
-          <Property Name="prueCodigo" Type="int" />
-          <Property Name="descDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="descLink" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="tbGenero">
-          <Key>
-            <PropertyRef Name="geneCodigo" />
-          </Key>
-          <Property Name="geneCodigo" Type="int" Nullable="false" />
-          <Property Name="geneDescripcion" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbNivelEducativo">
-          <Key>
-            <PropertyRef Name="niveduCodigo" />
-          </Key>
-          <Property Name="niveduCodigo" Type="int" Nullable="false" />
-          <Property Name="niveduDescripcion" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbNiveles">
-          <Key>
-            <PropertyRef Name="niveCodigo" />
-          </Key>
-          <Property Name="niveCodigo" Type="int" Nullable="false" />
-          <Property Name="niveDescripcion" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbPais">
-          <Key>
-            <PropertyRef Name="paiCodigo" />
-          </Key>
-          <Property Name="paiCodigo" Type="int" Nullable="false" />
-          <Property Name="paiDescripcion" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbPerfiles">
-          <Key>
-            <PropertyRef Name="perfCodigo" />
-          </Key>
-          <Property Name="perfCodigo" Type="int" Nullable="false" />
-          <Property Name="perfDescripcion" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbPreguntas">
-          <Key>
-            <PropertyRef Name="pregCodigo" />
-          </Key>
-          <Property Name="pregCodigo" Type="int" Nullable="false" />
-          <Property Name="pregDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="prueCodigo" Type="int" />
-        </EntityType>
-        <EntityType Name="tbPrueba">
-          <Key>
-            <PropertyRef Name="prueCodigo" />
-          </Key>
-          <Property Name="prueCodigo" Type="int" Nullable="false" />
-          <Property Name="niveCodigo" Type="int" />
-          <Property Name="prueNombre" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbPruebaRespuesta">
-          <Key>
-            <PropertyRef Name="prueresCodigo" />
-          </Key>
-          <Property Name="prueresCodigo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="prueCodigo" Type="int" />
-          <Property Name="respCodigo" Type="int" />
-          <Property Name="regiCedula" Type="int" />
-          <Property Name="pregCodigo" Type="int" />
-        </EntityType>
-        <EntityType Name="tbRespuestas">
-          <Key>
-            <PropertyRef Name="respCodigo" />
-          </Key>
-          <Property Name="respCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="respDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="pregCodigo" Type="int" />
-          <Property Name="respCorrectas" Type="bit" />
-        </EntityType>
-        <EntityType Name="tbUsuarios">
-          <Key>
-            <PropertyRef Name="usuaCodigo" />
-          </Key>
-          <Property Name="usuaCodigo" Type="int" Nullable="false" />
-          <Property Name="usuaDescripcion" Type="varchar" MaxLength="50" />
-          <Property Name="usuaLogin" Type="varchar" MaxLength="50" />
-          <Property Name="usuaPassword" Type="varchar" MaxLength="50" />
-          <Property Name="perfCodigo" Type="int" />
-          <Property Name="usuaImagen" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="Tenants">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
-          <Property Name="Plan" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="UserProjects">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProjectId" Type="int" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
-          <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="UpdatedAt" Type="datetime" />
-        </EntityType>
-        <Association Name="FK__AspNetUse__Tenan__300424B4">
-          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tenants">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="TenantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Members__UserId__2F10007B">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="Members" Type="Self.Members" Multiplicity="*" />
+        <Association Name="FK_Customer_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Members">
+            <Dependent Role="Customer">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserProje__UserI__2E1BDC42">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="UserProjects" Type="Self.UserProjects" Multiplicity="*" />
+        <Association Name="FK_Customer_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="Cities">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UserProjects">
-              <PropertyRef Name="UserId" />
+            <Dependent Role="Customer">
+              <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Artifacts_Projects">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
-          <End Role="Artifacts" Type="Self.Artifacts" Multiplicity="*" />
+        <Association Name="FK_Customer_DocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Projects">
+            <Principal Role="DocumentTypes">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Artifacts">
-              <PropertyRef Name="ProjectId" />
+            <Dependent Role="Customer">
+              <PropertyRef Name="DocumentTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -406,341 +257,130 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Encuesta_tbClientes">
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="0..1" />
-          <End Role="Encuesta" Type="Self.Encuesta" Multiplicity="*" />
+        <Association Name="FK_ProductPhotos_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ProductPhotos" Type="Self.ProductPhotos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbClientes">
-              <PropertyRef Name="regiCedula" />
-            </Principal>
-            <Dependent Role="Encuesta">
-              <PropertyRef Name="regiCedula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Projects_Tenants">
-          <End Role="Tenants" Type="Self.Tenants" Multiplicity="0..1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tenants">
+            <Principal Role="Products">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Projects">
-              <PropertyRef Name="TenantId" />
+            <Dependent Role="ProductPhotos">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tasks_Activities">
-          <End Role="Activities" Type="Self.Activities" Multiplicity="0..1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+        <Association Name="FK_Products_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activities">
+            <Principal Role="Categories">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="ActivityId" />
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tasks_Priorities">
-          <End Role="Priorities" Type="Self.Priorities" Multiplicity="0..1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+        <Association Name="FK_Products_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Priorities">
+            <Principal Role="Customer">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="PriorityId" />
+            <Dependent Role="Products">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tasks_Projects">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="ProjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_States">
+        <Association Name="FK_Products_States">
           <End Role="States" Type="Self.States" Multiplicity="0..1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="States">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Tasks">
+            <Dependent Role="Products">
               <PropertyRef Name="StateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbBarrio_tbCiudad">
-          <End Role="tbCiudad" Type="Self.tbCiudad" Multiplicity="0..1" />
-          <End Role="tbBarrio" Type="Self.tbBarrio" Multiplicity="*" />
+        <Association Name="FK_SaleDetails_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="SaleDetails" Type="Self.SaleDetails" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbCiudad">
-              <PropertyRef Name="ciuCodigo" />
-            </Principal>
-            <Dependent Role="tbBarrio">
-              <PropertyRef Name="ciuCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbCiudad_tbDepartamento">
-          <End Role="tbDepartamento" Type="Self.tbDepartamento" Multiplicity="0..1" />
-          <End Role="tbCiudad" Type="Self.tbCiudad" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbDepartamento">
-              <PropertyRef Name="depCodigo" />
-            </Principal>
-            <Dependent Role="tbCiudad">
-              <PropertyRef Name="depCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbClientes_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="Products">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="Id" />
+            <Dependent Role="SaleDetails">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbClientes_tbBarrio1">
-          <End Role="tbBarrio" Type="Self.tbBarrio" Multiplicity="0..1" />
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
+        <Association Name="FK_SaleDetails_Sales">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="0..1" />
+          <End Role="SaleDetails" Type="Self.SaleDetails" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbBarrio">
-              <PropertyRef Name="barCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="barCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbDepartamento_tbDepartamento">
-          <End Role="tbPais" Type="Self.tbPais" Multiplicity="0..1" />
-          <End Role="tbDepartamento" Type="Self.tbDepartamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPais">
-              <PropertyRef Name="paiCodigo" />
-            </Principal>
-            <Dependent Role="tbDepartamento">
-              <PropertyRef Name="paiCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbDescargas_tbPrueba">
-          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
-          <End Role="tbDescargas" Type="Self.tbDescargas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPrueba">
-              <PropertyRef Name="prueCodigo" />
-            </Principal>
-            <Dependent Role="tbDescargas">
-              <PropertyRef Name="prueCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPreguntas_tbPrueba">
-          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
-          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPrueba">
-              <PropertyRef Name="prueCodigo" />
-            </Principal>
-            <Dependent Role="tbPreguntas">
-              <PropertyRef Name="prueCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPrueba_tbNiveles">
-          <End Role="tbNiveles" Type="Self.tbNiveles" Multiplicity="0..1" />
-          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNiveles">
-              <PropertyRef Name="niveCodigo" />
-            </Principal>
-            <Dependent Role="tbPrueba">
-              <PropertyRef Name="niveCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbClientes1">
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="0..1" />
-          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbClientes">
-              <PropertyRef Name="regiCedula" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="regiCedula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbPreguntas">
-          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="0..1" />
-          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPreguntas">
-              <PropertyRef Name="pregCodigo" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="pregCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbPrueba">
-          <End Role="tbPrueba" Type="Self.tbPrueba" Multiplicity="0..1" />
-          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPrueba">
-              <PropertyRef Name="prueCodigo" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="prueCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbRespuestas">
-          <End Role="tbRespuestas" Type="Self.tbRespuestas" Multiplicity="0..1" />
-          <End Role="tbPruebaRespuesta" Type="Self.tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbRespuestas">
-              <PropertyRef Name="respCodigo" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="respCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRegistrar_tbGenero">
-          <End Role="tbGenero" Type="Self.tbGenero" Multiplicity="0..1" />
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbGenero">
-              <PropertyRef Name="geneCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="geneCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRegistrar_tbNivelEducativo">
-          <End Role="tbNivelEducativo" Type="Self.tbNivelEducativo" Multiplicity="0..1" />
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNivelEducativo">
-              <PropertyRef Name="niveduCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="niveduCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRegistrar_tbUsuarios">
-          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbUsuarios">
-              <PropertyRef Name="usuaCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="usuaCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRespuestas_tbPreguntas">
-          <End Role="tbPreguntas" Type="Self.tbPreguntas" Multiplicity="0..1" />
-          <End Role="tbRespuestas" Type="Self.tbRespuestas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPreguntas">
-              <PropertyRef Name="pregCodigo" />
-            </Principal>
-            <Dependent Role="tbRespuestas">
-              <PropertyRef Name="pregCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbUsuarios_tbPerfiles">
-          <End Role="tbPerfiles" Type="Self.tbPerfiles" Multiplicity="0..1" />
-          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPerfiles">
-              <PropertyRef Name="perfCodigo" />
-            </Principal>
-            <Dependent Role="tbUsuarios">
-              <PropertyRef Name="perfCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProjects_Projects">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
-          <End Role="UserProjects" Type="Self.UserProjects" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
+            <Principal Role="Sales">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UserProjects">
-              <PropertyRef Name="ProjectId" />
+            <Dependent Role="SaleDetails">
+              <PropertyRef Name="SaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_MethodPayment">
+          <End Role="MethodPayment" Type="Self.MethodPayment" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MethodPayment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="MethodPaymentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ProyectsMVCModelStoreContainer">
-          <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Artifacts" EntityType="Self.Artifacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Encuesta" EntityType="Self.Encuesta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MethodPayment" EntityType="Self.MethodPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPhotos" EntityType="Self.ProductPhotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleDetails" EntityType="Self.SaleDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbBarrio" EntityType="Self.tbBarrio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbCiudad" EntityType="Self.tbCiudad" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbDepartamento" EntityType="Self.tbDepartamento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbDescargas" EntityType="Self.tbDescargas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbGenero" EntityType="Self.tbGenero" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbNivelEducativo" EntityType="Self.tbNivelEducativo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbNiveles" EntityType="Self.tbNiveles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbPais" EntityType="Self.tbPais" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbPerfiles" EntityType="Self.tbPerfiles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbPreguntas" EntityType="Self.tbPreguntas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbPrueba" EntityType="Self.tbPrueba" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbPruebaRespuesta" EntityType="Self.tbPruebaRespuesta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbRespuestas" EntityType="Self.tbRespuestas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tenants" EntityType="Self.Tenants" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserProjects" EntityType="Self.UserProjects" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AspNetUse__Tenan__300424B4" Association="Self.FK__AspNetUse__Tenan__300424B4">
-            <End Role="Tenants" EntitySet="Tenants" />
+          <AssociationSet Name="FK_Customer_AspNetUsers" Association="Self.FK_Customer_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Members__UserId__2F10007B" Association="Self.FK__Members__UserId__2F10007B">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Members" EntitySet="Members" />
+          <AssociationSet Name="FK_Customer_Cities" Association="Self.FK_Customer_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserProje__UserI__2E1BDC42" Association="Self.FK__UserProje__UserI__2E1BDC42">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="UserProjects" EntitySet="UserProjects" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Artifacts_Projects" Association="Self.FK_Artifacts_Projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="Artifacts" EntitySet="Artifacts" />
+          <AssociationSet Name="FK_Customer_DocumentTypes" Association="Self.FK_Customer_DocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -758,119 +398,44 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Encuesta_tbClientes" Association="Self.FK_Encuesta_tbClientes">
-            <End Role="tbClientes" EntitySet="tbClientes" />
-            <End Role="Encuesta" EntitySet="Encuesta" />
+          <AssociationSet Name="FK_ProductPhotos_Products" Association="Self.FK_ProductPhotos_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductPhotos" EntitySet="ProductPhotos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Projects_Tenants" Association="Self.FK_Projects_Tenants">
-            <End Role="Tenants" EntitySet="Tenants" />
-            <End Role="Projects" EntitySet="Projects" />
+          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Activities" Association="Self.FK_Tasks_Activities">
-            <End Role="Activities" EntitySet="Activities" />
-            <End Role="Tasks" EntitySet="Tasks" />
+          <AssociationSet Name="FK_Products_Customer" Association="Self.FK_Products_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Priorities" Association="Self.FK_Tasks_Priorities">
-            <End Role="Priorities" EntitySet="Priorities" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Projects" Association="Self.FK_Tasks_Projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_States" Association="Self.FK_Tasks_States">
+          <AssociationSet Name="FK_Products_States" Association="Self.FK_Products_States">
             <End Role="States" EntitySet="States" />
-            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbBarrio_tbCiudad" Association="Self.FK_tbBarrio_tbCiudad">
-            <End Role="tbCiudad" EntitySet="tbCiudad" />
-            <End Role="tbBarrio" EntitySet="tbBarrio" />
+          <AssociationSet Name="FK_SaleDetails_Products" Association="Self.FK_SaleDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SaleDetails" EntitySet="SaleDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbCiudad_tbDepartamento" Association="Self.FK_tbCiudad_tbDepartamento">
-            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
-            <End Role="tbCiudad" EntitySet="tbCiudad" />
+          <AssociationSet Name="FK_SaleDetails_Sales" Association="Self.FK_SaleDetails_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SaleDetails" EntitySet="SaleDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbClientes_AspNetUsers" Association="Self.FK_tbClientes_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
+          <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbClientes_tbBarrio1" Association="Self.FK_tbClientes_tbBarrio1">
-            <End Role="tbBarrio" EntitySet="tbBarrio" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbDepartamento_tbDepartamento" Association="Self.FK_tbDepartamento_tbDepartamento">
-            <End Role="tbPais" EntitySet="tbPais" />
-            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbDescargas_tbPrueba" Association="Self.FK_tbDescargas_tbPrueba">
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-            <End Role="tbDescargas" EntitySet="tbDescargas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPreguntas_tbPrueba" Association="Self.FK_tbPreguntas_tbPrueba">
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPrueba_tbNiveles" Association="Self.FK_tbPrueba_tbNiveles">
-            <End Role="tbNiveles" EntitySet="tbNiveles" />
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbClientes1" Association="Self.FK_tbPruebaRespuesta_tbClientes1">
-            <End Role="tbClientes" EntitySet="tbClientes" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbPreguntas" Association="Self.FK_tbPruebaRespuesta_tbPreguntas">
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbPrueba" Association="Self.FK_tbPruebaRespuesta_tbPrueba">
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbRespuestas" Association="Self.FK_tbPruebaRespuesta_tbRespuestas">
-            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRegistrar_tbGenero" Association="Self.FK_tbRegistrar_tbGenero">
-            <End Role="tbGenero" EntitySet="tbGenero" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRegistrar_tbNivelEducativo" Association="Self.FK_tbRegistrar_tbNivelEducativo">
-            <End Role="tbNivelEducativo" EntitySet="tbNivelEducativo" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRegistrar_tbUsuarios" Association="Self.FK_tbRegistrar_tbUsuarios">
-            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="Self.FK_tbRespuestas_tbPreguntas">
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbUsuarios_tbPerfiles" Association="Self.FK_tbUsuarios_tbPerfiles">
-            <End Role="tbPerfiles" EntitySet="tbPerfiles" />
-            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProjects_Projects" Association="Self.FK_UserProjects_Projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="UserProjects" EntitySet="UserProjects" />
+          <AssociationSet Name="FK_Sales_MethodPayment" Association="Self.FK_Sales_MethodPayment">
+            <End Role="MethodPayment" EntitySet="MethodPayment" />
+            <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectsMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Artifacts">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProjectId" Type="Int32" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Artifacts_Projects" FromRole="Artifacts" ToRole="Projects" />
-        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -916,79 +481,141 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenantId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Tenants" Relationship="Self.FK__AspNetUse__Tenan__300424B4" FromRole="AspNetUsers" ToRole="Tenants" />
-          <NavigationProperty Name="Members" Relationship="Self.FK__Members__UserId__2F10007B" FromRole="AspNetUsers" ToRole="Members" />
-          <NavigationProperty Name="UserProjects" Relationship="Self.FK__UserProje__UserI__2E1BDC42" FromRole="AspNetUsers" ToRole="UserProjects" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_AspNetUsers" FromRole="AspNetUsers" ToRole="Customer" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbClientes_AspNetUsers" FromRole="AspNetUsers" ToRole="tbClientes" />
         </EntityType>
-        <EntityType Name="Members">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Members__UserId__2F10007B" FromRole="Members" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="Projects">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ExpectedCompletionDate" Type="DateTime" Precision="3" />
-          <Property Name="TenantId" Type="Int32" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Artifacts" Relationship="Self.FK_Artifacts_Projects" FromRole="Projects" ToRole="Artifacts" />
-          <NavigationProperty Name="Tenants" Relationship="Self.FK_Projects_Tenants" FromRole="Projects" ToRole="Tenants" />
-          <NavigationProperty Name="UserProjects" Relationship="Self.FK_UserProjects_Projects" FromRole="Projects" ToRole="UserProjects" />
-          <NavigationProperty Name="Tasks" Relationship="ProyectsMVCModel.FK_Tasks_Projects" FromRole="Projects" ToRole="Tasks" />
-        </EntityType>
-        <EntityType Name="Tenants">
+        <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="Plan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetUse__Tenan__300424B4" FromRole="Tenants" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Projects_Tenants" FromRole="Tenants" ToRole="Projects" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
         </EntityType>
-        <EntityType Name="UserProjects">
+        <EntityType Name="Cities">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectId" Type="Int32" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__UserProje__UserI__2E1BDC42" FromRole="UserProjects" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_UserProjects_Projects" FromRole="UserProjects" ToRole="Projects" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Cities" FromRole="Cities" ToRole="Customer" />
         </EntityType>
-        <Association Name="FK_Artifacts_Projects">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
-          <End Role="Artifacts" Type="Self.Artifacts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Artifacts">
-              <PropertyRef Name="ProjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentTypeId" Type="Int32" />
+          <Property Name="DocumentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Customer_AspNetUsers" FromRole="Customer" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Customer_Cities" FromRole="Customer" ToRole="Cities" />
+          <NavigationProperty Name="DocumentTypes" Relationship="Self.FK_Customer_DocumentTypes" FromRole="Customer" ToRole="DocumentTypes" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Customer" FromRole="Customer" ToRole="Products" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Customer" FromRole="Customer" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_DocumentTypes" FromRole="DocumentTypes" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="MethodPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_MethodPayment" FromRole="MethodPayment" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="ProductPhotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Guid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_ProductPhotos_Products" FromRole="ProductPhotos" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="ShippingCost" Type="Double" />
+          <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Products_Customer" FromRole="Products" ToRole="Customer" />
+          <NavigationProperty Name="ProductPhotos" Relationship="Self.FK_ProductPhotos_Products" FromRole="Products" ToRole="ProductPhotos" />
+          <NavigationProperty Name="States" Relationship="Self.FK_Products_States" FromRole="Products" ToRole="States" />
+          <NavigationProperty Name="SaleDetails" Relationship="Self.FK_SaleDetails_Products" FromRole="Products" ToRole="SaleDetails" />
+        </EntityType>
+        <EntityType Name="SaleDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SubtotalValue" Type="Double" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_SaleDetails_Products" FromRole="SaleDetails" ToRole="Products" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_SaleDetails_Sales" FromRole="SaleDetails" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MethodPaymentId" Type="Int32" />
+          <Property Name="TotalValue" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Sales_Customer" FromRole="Sales" ToRole="Customer" />
+          <NavigationProperty Name="MethodPayment" Relationship="Self.FK_Sales_MethodPayment" FromRole="Sales" ToRole="MethodPayment" />
+          <NavigationProperty Name="SaleDetails" Relationship="Self.FK_SaleDetails_Sales" FromRole="Sales" ToRole="SaleDetails" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_States" FromRole="States" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1017,63 +644,135 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AspNetUse__Tenan__300424B4">
-          <End Role="Tenants" Type="Self.Tenants" Multiplicity="1" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tenants">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="TenantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Members__UserId__2F10007B">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="Members" Type="Self.Members" Multiplicity="*" />
+        <Association Name="FK_Customer_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Members">
+            <Dependent Role="Customer">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserProje__UserI__2E1BDC42">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="UserProjects" Type="Self.UserProjects" Multiplicity="*" />
+        <Association Name="FK_Products_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="Categories">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UserProjects">
-              <PropertyRef Name="UserId" />
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Projects_Tenants">
-          <End Role="Tenants" Type="Self.Tenants" Multiplicity="0..1" />
-          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+        <Association Name="FK_Customer_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tenants">
+            <Principal Role="Cities">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Projects">
-              <PropertyRef Name="TenantId" />
+            <Dependent Role="Customer">
+              <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserProjects_Projects">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
-          <End Role="UserProjects" Type="Self.UserProjects" Multiplicity="*" />
+        <Association Name="FK_Customer_DocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Projects">
+            <Principal Role="DocumentTypes">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UserProjects">
-              <PropertyRef Name="ProjectId" />
+            <Dependent Role="Customer">
+              <PropertyRef Name="DocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_MethodPayment">
+          <End Role="MethodPayment" Type="Self.MethodPayment" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MethodPayment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="MethodPaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPhotos_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ProductPhotos" Type="Self.ProductPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPhotos">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_States">
+          <End Role="States" Type="Self.States" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleDetails_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="SaleDetails" Type="Self.SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaleDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleDetails_Sales">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="0..1" />
+          <End Role="SaleDetails" Type="Self.SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaleDetails">
+              <PropertyRef Name="SaleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1082,19 +781,21 @@
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
         <EntityContainer Name="ProyectsMVCEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Artifacts" EntityType="Self.Artifacts" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="Members" EntityType="Self.Members" />
-          <EntitySet Name="Projects" EntityType="Self.Projects" />
-          <EntitySet Name="Tenants" EntityType="Self.Tenants" />
-          <EntitySet Name="UserProjects" EntityType="Self.UserProjects" />
-          <AssociationSet Name="FK_Artifacts_Projects" Association="Self.FK_Artifacts_Projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="Artifacts" EntitySet="Artifacts" />
-          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" />
+          <EntitySet Name="MethodPayment" EntityType="Self.MethodPayment" />
+          <EntitySet Name="ProductPhotos" EntityType="Self.ProductPhotos" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="SaleDetails" EntityType="Self.SaleDetails" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" />
+          <EntitySet Name="States" EntityType="Self.States" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -1103,655 +804,61 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK__AspNetUse__Tenan__300424B4" Association="Self.FK__AspNetUse__Tenan__300424B4">
-            <End Role="Tenants" EntitySet="Tenants" />
+          <AssociationSet Name="FK_Customer_AspNetUsers" Association="Self.FK_Customer_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Members__UserId__2F10007B" Association="Self.FK__Members__UserId__2F10007B">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Members" EntitySet="Members" />
+          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserProje__UserI__2E1BDC42" Association="Self.FK__UserProje__UserI__2E1BDC42">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="UserProjects" EntitySet="UserProjects" />
+          <AssociationSet Name="FK_Customer_Cities" Association="Self.FK_Customer_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK_Projects_Tenants" Association="Self.FK_Projects_Tenants">
-            <End Role="Tenants" EntitySet="Tenants" />
-            <End Role="Projects" EntitySet="Projects" />
+          <AssociationSet Name="FK_Customer_DocumentTypes" Association="Self.FK_Customer_DocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProjects_Projects" Association="Self.FK_UserProjects_Projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="UserProjects" EntitySet="UserProjects" />
+          <AssociationSet Name="FK_Products_Customer" Association="Self.FK_Products_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_MethodPayment" Association="Self.FK_Sales_MethodPayment">
+            <End Role="MethodPayment" EntitySet="MethodPayment" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPhotos_Products" Association="Self.FK_ProductPhotos_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductPhotos" EntitySet="ProductPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_States" Association="Self.FK_Products_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleDetails_Products" Association="Self.FK_SaleDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SaleDetails" EntitySet="SaleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleDetails_Sales" Association="Self.FK_SaleDetails_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SaleDetails" EntitySet="SaleDetails" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Activities" EntityType="ProyectsMVCModel.Activities" />
-          <EntitySet Name="Priorities" EntityType="ProyectsMVCModel.Priorities" />
-          <EntitySet Name="States" EntityType="ProyectsMVCModel.States" />
-          <EntitySet Name="Tasks" EntityType="ProyectsMVCModel.Tasks" />
-          <AssociationSet Name="FK_Tasks_Activities" Association="ProyectsMVCModel.FK_Tasks_Activities">
-            <End Role="Activities" EntitySet="Activities" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Priorities" Association="ProyectsMVCModel.FK_Tasks_Priorities">
-            <End Role="Priorities" EntitySet="Priorities" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_Projects" Association="ProyectsMVCModel.FK_Tasks_Projects">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_States" Association="ProyectsMVCModel.FK_Tasks_States">
-            <End Role="States" EntitySet="States" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <EntitySet Name="tbBarrio" EntityType="ProyectsMVCModel.tbBarrio" />
-          <EntitySet Name="tbCiudad" EntityType="ProyectsMVCModel.tbCiudad" />
-          <EntitySet Name="tbClientes" EntityType="ProyectsMVCModel.tbClientes" />
-          <EntitySet Name="tbDepartamento" EntityType="ProyectsMVCModel.tbDepartamento" />
-          <EntitySet Name="tbDescargas" EntityType="ProyectsMVCModel.tbDescargas" />
-          <EntitySet Name="tbGenero" EntityType="ProyectsMVCModel.tbGenero" />
-          <EntitySet Name="tbNivelEducativo" EntityType="ProyectsMVCModel.tbNivelEducativo" />
-          <EntitySet Name="tbNiveles" EntityType="ProyectsMVCModel.tbNiveles" />
-          <EntitySet Name="tbPais" EntityType="ProyectsMVCModel.tbPais" />
-          <EntitySet Name="tbPerfiles" EntityType="ProyectsMVCModel.tbPerfiles" />
-          <EntitySet Name="tbPreguntas" EntityType="ProyectsMVCModel.tbPreguntas" />
-          <EntitySet Name="tbPrueba" EntityType="ProyectsMVCModel.tbPrueba" />
-          <EntitySet Name="tbPruebaRespuesta" EntityType="ProyectsMVCModel.tbPruebaRespuesta" />
-          <EntitySet Name="tbRespuestas" EntityType="ProyectsMVCModel.tbRespuestas" />
-          <EntitySet Name="tbUsuarios" EntityType="ProyectsMVCModel.tbUsuarios" />
-          <AssociationSet Name="FK_tbBarrio_tbCiudad" Association="ProyectsMVCModel.FK_tbBarrio_tbCiudad">
-            <End Role="tbCiudad" EntitySet="tbCiudad" />
-            <End Role="tbBarrio" EntitySet="tbBarrio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbClientes_tbBarrio1" Association="ProyectsMVCModel.FK_tbClientes_tbBarrio1">
-            <End Role="tbBarrio" EntitySet="tbBarrio" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbCiudad_tbDepartamento" Association="ProyectsMVCModel.FK_tbCiudad_tbDepartamento">
-            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
-            <End Role="tbCiudad" EntitySet="tbCiudad" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbClientes1" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1">
-            <End Role="tbClientes" EntitySet="tbClientes" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRegistrar_tbGenero" Association="ProyectsMVCModel.FK_tbRegistrar_tbGenero">
-            <End Role="tbGenero" EntitySet="tbGenero" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRegistrar_tbNivelEducativo" Association="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo">
-            <End Role="tbNivelEducativo" EntitySet="tbNivelEducativo" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbRegistrar_tbUsuarios" Association="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios">
-            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbDepartamento_tbDepartamento" Association="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento">
-            <End Role="tbPais" EntitySet="tbPais" />
-            <End Role="tbDepartamento" EntitySet="tbDepartamento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbDescargas_tbPrueba" Association="ProyectsMVCModel.FK_tbDescargas_tbPrueba">
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-            <End Role="tbDescargas" EntitySet="tbDescargas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPrueba_tbNiveles" Association="ProyectsMVCModel.FK_tbPrueba_tbNiveles">
-            <End Role="tbNiveles" EntitySet="tbNiveles" />
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbUsuarios_tbPerfiles" Association="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles">
-            <End Role="tbPerfiles" EntitySet="tbPerfiles" />
-            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbPrueba" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba">
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbRespuestas" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas">
-            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPreguntas_tbPrueba" Association="ProyectsMVCModel.FK_tbPreguntas_tbPrueba">
-            <End Role="tbPrueba" EntitySet="tbPrueba" />
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-          </AssociationSet>
-          <EntitySet Name="Encuesta" EntityType="ProyectsMVCModel.Encuesta" />
-          <AssociationSet Name="FK_Encuesta_tbClientes" Association="ProyectsMVCModel.FK_Encuesta_tbClientes">
-            <End Role="tbClientes" EntitySet="tbClientes" />
-            <End Role="Encuesta" EntitySet="Encuesta" />
-          </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="ProyectsMVCModel.sysdiagrams" />
-          <AssociationSet Name="FK_tbRespuestas_tbPreguntas" Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas">
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-            <End Role="tbRespuestas" EntitySet="tbRespuestas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbPruebaRespuesta_tbPreguntas" Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas">
-            <End Role="tbPreguntas" EntitySet="tbPreguntas" />
-            <End Role="tbPruebaRespuesta" EntitySet="tbPruebaRespuesta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbClientes_AspNetUsers" Association="ProyectsMVCModel.FK_tbClientes_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="tbClientes" EntitySet="tbClientes" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Activities">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" />
-          <NavigationProperty Name="Tasks" Relationship="ProyectsMVCModel.FK_Tasks_Activities" FromRole="Activities" ToRole="Tasks" />
-        </EntityType>
-        <EntityType Name="Priorities">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" />
-          <NavigationProperty Name="Tasks" Relationship="ProyectsMVCModel.FK_Tasks_Priorities" FromRole="Priorities" ToRole="Tasks" />
-        </EntityType>
-        <EntityType Name="States">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" />
-          <NavigationProperty Name="Tasks" Relationship="ProyectsMVCModel.FK_Tasks_States" FromRole="States" ToRole="Tasks" />
-        </EntityType>
-        <EntityType Name="Tasks">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
-          <Property Name="IsCompleted" Type="Boolean" />
-          <Property Name="Effort" Type="Int32" />
-          <Property Name="RemainingWork" Type="Int32" />
-          <Property Name="StateId" Type="Int32" />
-          <Property Name="ActivityId" Type="Int32" />
-          <Property Name="PriorityId" Type="Int32" />
-          <Property Name="ProjectId" Type="Int32" />
-          <NavigationProperty Name="Activities" Relationship="ProyectsMVCModel.FK_Tasks_Activities" FromRole="Tasks" ToRole="Activities" />
-          <NavigationProperty Name="Priorities" Relationship="ProyectsMVCModel.FK_Tasks_Priorities" FromRole="Tasks" ToRole="Priorities" />
-          <NavigationProperty Name="Projects" Relationship="ProyectsMVCModel.FK_Tasks_Projects" FromRole="Tasks" ToRole="Projects" />
-          <NavigationProperty Name="States" Relationship="ProyectsMVCModel.FK_Tasks_States" FromRole="Tasks" ToRole="States" />
-        </EntityType>
-        <Association Name="FK_Tasks_Activities">
-          <End Type="ProyectsMVCModel.Activities" Role="Activities" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.Tasks" Role="Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activities">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="ActivityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_Priorities">
-          <End Type="ProyectsMVCModel.Priorities" Role="Priorities" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.Tasks" Role="Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Priorities">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="PriorityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_Projects">
-          <End Type="ProyectsMVCModel.Projects" Role="Projects" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.Tasks" Role="Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="ProjectId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_States">
-          <End Type="ProyectsMVCModel.States" Role="States" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.Tasks" Role="Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="States">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbBarrio">
-          <Key>
-            <PropertyRef Name="barCodigo" />
-          </Key>
-          <Property Name="barCodigo" Type="Int32" Nullable="false" />
-          <Property Name="barDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ciuCodigo" Type="Int32" />
-          <NavigationProperty Name="tbCiudad" Relationship="ProyectsMVCModel.FK_tbBarrio_tbCiudad" FromRole="tbBarrio" ToRole="tbCiudad" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbClientes_tbBarrio1" FromRole="tbBarrio" ToRole="tbClientes" />
-        </EntityType>
-        <EntityType Name="tbCiudad">
-          <Key>
-            <PropertyRef Name="ciuCodigo" />
-          </Key>
-          <Property Name="ciuCodigo" Type="Int32" Nullable="false" />
-          <Property Name="ciuDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="depCodigo" Type="Int32" />
-          <NavigationProperty Name="tbBarrio" Relationship="ProyectsMVCModel.FK_tbBarrio_tbCiudad" FromRole="tbCiudad" ToRole="tbBarrio" />
-          <NavigationProperty Name="tbDepartamento" Relationship="ProyectsMVCModel.FK_tbCiudad_tbDepartamento" FromRole="tbCiudad" ToRole="tbDepartamento" />
-        </EntityType>
-        <EntityType Name="tbClientes">
-          <Key>
-            <PropertyRef Name="regiCedula" />
-          </Key>
-          <Property Name="regiCedula" Type="Int32" Nullable="false" />
-          <Property Name="regiNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="regiApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="niveduCodigo" Type="Int32" />
-          <Property Name="regiTelefonofijo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="regiCelular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="regiEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="regiEdad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="geneCodigo" Type="Int32" />
-          <Property Name="regiFechanacimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usuaCodigo" Type="Int32" />
-          <Property Name="barCodigo" Type="Int32" />
-          <Property Name="regiFoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbBarrio" Relationship="ProyectsMVCModel.FK_tbClientes_tbBarrio1" FromRole="tbClientes" ToRole="tbBarrio" />
-          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1" FromRole="tbClientes" ToRole="tbPruebaRespuesta" />
-          <NavigationProperty Name="tbGenero" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbGenero" FromRole="tbClientes" ToRole="tbGenero" />
-          <NavigationProperty Name="tbNivelEducativo" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" FromRole="tbClientes" ToRole="tbNivelEducativo" />
-          <NavigationProperty Name="tbUsuarios" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" FromRole="tbClientes" ToRole="tbUsuarios" />
-          <NavigationProperty Name="Encuesta" Relationship="ProyectsMVCModel.FK_Encuesta_tbClientes" FromRole="tbClientes" ToRole="Encuesta" />
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="ProyectsMVCModel.FK_tbClientes_AspNetUsers" FromRole="tbClientes" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="tbDepartamento">
-          <Key>
-            <PropertyRef Name="depCodigo" />
-          </Key>
-          <Property Name="depCodigo" Type="Int32" Nullable="false" />
-          <Property Name="depDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="paiCodigo" Type="Int32" />
-          <NavigationProperty Name="tbCiudad" Relationship="ProyectsMVCModel.FK_tbCiudad_tbDepartamento" FromRole="tbDepartamento" ToRole="tbCiudad" />
-          <NavigationProperty Name="tbPais" Relationship="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento" FromRole="tbDepartamento" ToRole="tbPais" />
-        </EntityType>
-        <EntityType Name="tbDescargas">
-          <Key>
-            <PropertyRef Name="descCodigo" />
-          </Key>
-          <Property Name="descCodigo" Type="Int32" Nullable="false" />
-          <Property Name="prueCodigo" Type="Int32" />
-          <Property Name="descDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="descLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbDescargas_tbPrueba" FromRole="tbDescargas" ToRole="tbPrueba" />
-        </EntityType>
-        <EntityType Name="tbGenero">
-          <Key>
-            <PropertyRef Name="geneCodigo" />
-          </Key>
-          <Property Name="geneCodigo" Type="Int32" Nullable="false" />
-          <Property Name="geneDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbGenero" FromRole="tbGenero" ToRole="tbClientes" />
-        </EntityType>
-        <EntityType Name="tbNivelEducativo">
-          <Key>
-            <PropertyRef Name="niveduCodigo" />
-          </Key>
-          <Property Name="niveduCodigo" Type="Int32" Nullable="false" />
-          <Property Name="niveduDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" FromRole="tbNivelEducativo" ToRole="tbClientes" />
-        </EntityType>
-        <EntityType Name="tbNiveles">
-          <Key>
-            <PropertyRef Name="niveCodigo" />
-          </Key>
-          <Property Name="niveCodigo" Type="Int32" Nullable="false" />
-          <Property Name="niveDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPrueba_tbNiveles" FromRole="tbNiveles" ToRole="tbPrueba" />
-        </EntityType>
-        <EntityType Name="tbPais">
-          <Key>
-            <PropertyRef Name="paiCodigo" />
-          </Key>
-          <Property Name="paiCodigo" Type="Int32" Nullable="false" />
-          <Property Name="paiDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbDepartamento" Relationship="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento" FromRole="tbPais" ToRole="tbDepartamento" />
-        </EntityType>
-        <EntityType Name="tbPerfiles">
-          <Key>
-            <PropertyRef Name="perfCodigo" />
-          </Key>
-          <Property Name="perfCodigo" Type="Int32" Nullable="false" />
-          <Property Name="perfDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbUsuarios" Relationship="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles" FromRole="tbPerfiles" ToRole="tbUsuarios" />
-        </EntityType>
-        <EntityType Name="tbPreguntas">
-          <Key>
-            <PropertyRef Name="pregCodigo" />
-          </Key>
-          <Property Name="pregCodigo" Type="Int32" Nullable="false" />
-          <Property Name="pregDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prueCodigo" Type="Int32" />
-          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" FromRole="tbPreguntas" ToRole="tbPrueba" />
-          <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbPreguntas" ToRole="tbRespuestas" />
-          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas" FromRole="tbPreguntas" ToRole="tbPruebaRespuesta" />
-        </EntityType>
-        <EntityType Name="tbPrueba">
-          <Key>
-            <PropertyRef Name="prueCodigo" />
-          </Key>
-          <Property Name="prueCodigo" Type="Int32" Nullable="false" />
-          <Property Name="niveCodigo" Type="Int32" />
-          <Property Name="prueNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbDescargas" Relationship="ProyectsMVCModel.FK_tbDescargas_tbPrueba" FromRole="tbPrueba" ToRole="tbDescargas" />
-          <NavigationProperty Name="tbNiveles" Relationship="ProyectsMVCModel.FK_tbPrueba_tbNiveles" FromRole="tbPrueba" ToRole="tbNiveles" />
-          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" FromRole="tbPrueba" ToRole="tbPruebaRespuesta" />
-          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" FromRole="tbPrueba" ToRole="tbPreguntas" />
-        </EntityType>
-        <EntityType Name="tbPruebaRespuesta">
-          <Key>
-            <PropertyRef Name="prueresCodigo" />
-          </Key>
-          <Property Name="prueresCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="prueCodigo" Type="Int32" />
-          <Property Name="respCodigo" Type="Int32" />
-          <Property Name="regiCedula" Type="Int32" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1" FromRole="tbPruebaRespuesta" ToRole="tbClientes" />
-          <NavigationProperty Name="tbPrueba" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" FromRole="tbPruebaRespuesta" ToRole="tbPrueba" />
-          <NavigationProperty Name="tbRespuestas" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbPruebaRespuesta" ToRole="tbRespuestas" />
-          <Property Name="pregCodigo" Type="Int32" />
-          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas" FromRole="tbPruebaRespuesta" ToRole="tbPreguntas" />
-        </EntityType>
-        <EntityType Name="tbRespuestas">
-          <Key>
-            <PropertyRef Name="respCodigo" />
-          </Key>
-          <Property Name="respCodigo" Type="Int32" Nullable="false" />
-          <Property Name="respDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="pregCodigo" Type="Int32" />
-          <Property Name="respCorrectas" Type="Boolean" />
-          <NavigationProperty Name="tbPruebaRespuesta" Relationship="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" FromRole="tbRespuestas" ToRole="tbPruebaRespuesta" />
-          <NavigationProperty Name="tbPreguntas" Relationship="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" FromRole="tbRespuestas" ToRole="tbPreguntas" />
-        </EntityType>
-        <EntityType Name="tbUsuarios">
-          <Key>
-            <PropertyRef Name="usuaCodigo" />
-          </Key>
-          <Property Name="usuaCodigo" Type="Int32" Nullable="false" />
-          <Property Name="usuaDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usuaLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usuaPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="perfCodigo" Type="Int32" />
-          <Property Name="usuaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" FromRole="tbUsuarios" ToRole="tbClientes" />
-          <NavigationProperty Name="tbPerfiles" Relationship="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles" FromRole="tbUsuarios" ToRole="tbPerfiles" />
-        </EntityType>
-        <Association Name="FK_tbBarrio_tbCiudad">
-          <End Type="ProyectsMVCModel.tbCiudad" Role="tbCiudad" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbBarrio" Role="tbBarrio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCiudad">
-              <PropertyRef Name="ciuCodigo" />
-            </Principal>
-            <Dependent Role="tbBarrio">
-              <PropertyRef Name="ciuCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbClientes_tbBarrio1">
-          <End Type="ProyectsMVCModel.tbBarrio" Role="tbBarrio" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbBarrio">
-              <PropertyRef Name="barCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="barCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbCiudad_tbDepartamento">
-          <End Type="ProyectsMVCModel.tbDepartamento" Role="tbDepartamento" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbCiudad" Role="tbCiudad" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbDepartamento">
-              <PropertyRef Name="depCodigo" />
-            </Principal>
-            <Dependent Role="tbCiudad">
-              <PropertyRef Name="depCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbClientes1">
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbClientes">
-              <PropertyRef Name="regiCedula" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="regiCedula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRegistrar_tbGenero">
-          <End Type="ProyectsMVCModel.tbGenero" Role="tbGenero" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbGenero">
-              <PropertyRef Name="geneCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="geneCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRegistrar_tbNivelEducativo">
-          <End Type="ProyectsMVCModel.tbNivelEducativo" Role="tbNivelEducativo" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNivelEducativo">
-              <PropertyRef Name="niveduCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="niveduCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbRegistrar_tbUsuarios">
-          <End Type="ProyectsMVCModel.tbUsuarios" Role="tbUsuarios" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbUsuarios">
-              <PropertyRef Name="usuaCodigo" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="usuaCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbDepartamento_tbDepartamento">
-          <End Type="ProyectsMVCModel.tbPais" Role="tbPais" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbDepartamento" Role="tbDepartamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPais">
-              <PropertyRef Name="paiCodigo" />
-            </Principal>
-            <Dependent Role="tbDepartamento">
-              <PropertyRef Name="paiCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbDescargas_tbPrueba">
-          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbDescargas" Role="tbDescargas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPrueba">
-              <PropertyRef Name="prueCodigo" />
-            </Principal>
-            <Dependent Role="tbDescargas">
-              <PropertyRef Name="prueCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPrueba_tbNiveles">
-          <End Type="ProyectsMVCModel.tbNiveles" Role="tbNiveles" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNiveles">
-              <PropertyRef Name="niveCodigo" />
-            </Principal>
-            <Dependent Role="tbPrueba">
-              <PropertyRef Name="niveCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbUsuarios_tbPerfiles">
-          <End Type="ProyectsMVCModel.tbPerfiles" Role="tbPerfiles" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbUsuarios" Role="tbUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPerfiles">
-              <PropertyRef Name="perfCodigo" />
-            </Principal>
-            <Dependent Role="tbUsuarios">
-              <PropertyRef Name="perfCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbPrueba">
-          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPrueba">
-              <PropertyRef Name="prueCodigo" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="prueCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbRespuestas">
-          <End Type="ProyectsMVCModel.tbRespuestas" Role="tbRespuestas" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbRespuestas">
-              <PropertyRef Name="respCodigo" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="respCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPreguntas_tbPrueba">
-          <End Type="ProyectsMVCModel.tbPrueba" Role="tbPrueba" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPrueba">
-              <PropertyRef Name="prueCodigo" />
-            </Principal>
-            <Dependent Role="tbPreguntas">
-              <PropertyRef Name="prueCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Encuesta">
-          <Key>
-            <PropertyRef Name="enCodigo" />
-          </Key>
-          <Property Name="enCodigo" Type="Int32" Nullable="false" />
-          <Property Name="enDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="regiCedula" Type="Int32" />
-          <NavigationProperty Name="tbClientes" Relationship="ProyectsMVCModel.FK_Encuesta_tbClientes" FromRole="Encuesta" ToRole="tbClientes" />
-        </EntityType>
-        <Association Name="FK_Encuesta_tbClientes">
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.Encuesta" Role="Encuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbClientes">
-              <PropertyRef Name="regiCedula" />
-            </Principal>
-            <Dependent Role="Encuesta">
-              <PropertyRef Name="regiCedula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK_tbRespuestas_tbPreguntas">
-          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbRespuestas" Role="tbRespuestas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPreguntas">
-              <PropertyRef Name="pregCodigo" />
-            </Principal>
-            <Dependent Role="tbRespuestas">
-              <PropertyRef Name="pregCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbPruebaRespuesta_tbPreguntas">
-          <End Type="ProyectsMVCModel.tbPreguntas" Role="tbPreguntas" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbPruebaRespuesta" Role="tbPruebaRespuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPreguntas">
-              <PropertyRef Name="pregCodigo" />
-            </Principal>
-            <Dependent Role="tbPruebaRespuesta">
-              <PropertyRef Name="pregCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbClientes_AspNetUsers">
-          <End Type="ProyectsMVCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
-          <End Type="ProyectsMVCModel.tbClientes" Role="tbClientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbClientes">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ProyectsMVCModelStoreContainer" CdmEntityContainer="ProyectsMVCEntities">
-          <EntitySetMapping Name="Artifacts">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Artifacts">
-              <MappingFragment StoreEntitySet="Artifacts">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Key" ColumnName="Key" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="ProyectsMVCModel.AspNetRoles">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1794,54 +901,126 @@
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Members">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Members">
-              <MappingFragment StoreEntitySet="Members">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Projects">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Projects">
-              <MappingFragment StoreEntitySet="Projects">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Details" ColumnName="Details" />
-                <ScalarProperty Name="ExpectedCompletionDate" ColumnName="ExpectedCompletionDate" />
-                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tenants">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Tenants">
-              <MappingFragment StoreEntitySet="Tenants">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="Plan" ColumnName="Plan" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserProjects">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.UserProjects">
-              <MappingFragment StoreEntitySet="UserProjects">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="SecondSurname" ColumnName="SecondSurname" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.DocumentTypes">
+              <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MethodPayment">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.MethodPayment">
+              <MappingFragment StoreEntitySet="MethodPayment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPhotos">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.ProductPhotos">
+              <MappingFragment StoreEntitySet="ProductPhotos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShippingCost" ColumnName="ShippingCost" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleDetails">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.SaleDetails">
+              <MappingFragment StoreEntitySet="SaleDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SubtotalValue" ColumnName="SubtotalValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.Sales">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MethodPaymentId" ColumnName="MethodPaymentId" />
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.States">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProyectsMVCModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1853,218 +1032,6 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Activities">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Activities">
-              <MappingFragment StoreEntitySet="Activities">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Priorities">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Priorities">
-              <MappingFragment StoreEntitySet="Priorities">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="States">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.States">
-              <MappingFragment StoreEntitySet="States">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Tasks">
-              <MappingFragment StoreEntitySet="Tasks">
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
-                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="RemainingWork" ColumnName="RemainingWork" />
-                <ScalarProperty Name="Effort" ColumnName="Effort" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
-                <ScalarProperty Name="Details" ColumnName="Details" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbBarrio">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbBarrio">
-              <MappingFragment StoreEntitySet="tbBarrio">
-                <ScalarProperty Name="ciuCodigo" ColumnName="ciuCodigo" />
-                <ScalarProperty Name="barDescripcion" ColumnName="barDescripcion" />
-                <ScalarProperty Name="barCodigo" ColumnName="barCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbCiudad">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbCiudad">
-              <MappingFragment StoreEntitySet="tbCiudad">
-                <ScalarProperty Name="depCodigo" ColumnName="depCodigo" />
-                <ScalarProperty Name="ciuDescripcion" ColumnName="ciuDescripcion" />
-                <ScalarProperty Name="ciuCodigo" ColumnName="ciuCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbClientes">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbClientes">
-              <MappingFragment StoreEntitySet="tbClientes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="regiFoto" ColumnName="regiFoto" />
-                <ScalarProperty Name="barCodigo" ColumnName="barCodigo" />
-                <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
-                <ScalarProperty Name="regiFechanacimiento" ColumnName="regiFechanacimiento" />
-                <ScalarProperty Name="geneCodigo" ColumnName="geneCodigo" />
-                <ScalarProperty Name="regiEdad" ColumnName="regiEdad" />
-                <ScalarProperty Name="regiEmail" ColumnName="regiEmail" />
-                <ScalarProperty Name="regiCelular" ColumnName="regiCelular" />
-                <ScalarProperty Name="regiTelefonofijo" ColumnName="regiTelefonofijo" />
-                <ScalarProperty Name="niveduCodigo" ColumnName="niveduCodigo" />
-                <ScalarProperty Name="regiApellido" ColumnName="regiApellido" />
-                <ScalarProperty Name="regiNombre" ColumnName="regiNombre" />
-                <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbDepartamento">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbDepartamento">
-              <MappingFragment StoreEntitySet="tbDepartamento">
-                <ScalarProperty Name="paiCodigo" ColumnName="paiCodigo" />
-                <ScalarProperty Name="depDescripcion" ColumnName="depDescripcion" />
-                <ScalarProperty Name="depCodigo" ColumnName="depCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbDescargas">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbDescargas">
-              <MappingFragment StoreEntitySet="tbDescargas">
-                <ScalarProperty Name="descLink" ColumnName="descLink" />
-                <ScalarProperty Name="descDescripcion" ColumnName="descDescripcion" />
-                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
-                <ScalarProperty Name="descCodigo" ColumnName="descCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbGenero">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbGenero">
-              <MappingFragment StoreEntitySet="tbGenero">
-                <ScalarProperty Name="geneDescripcion" ColumnName="geneDescripcion" />
-                <ScalarProperty Name="geneCodigo" ColumnName="geneCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbNivelEducativo">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbNivelEducativo">
-              <MappingFragment StoreEntitySet="tbNivelEducativo">
-                <ScalarProperty Name="niveduDescripcion" ColumnName="niveduDescripcion" />
-                <ScalarProperty Name="niveduCodigo" ColumnName="niveduCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbNiveles">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbNiveles">
-              <MappingFragment StoreEntitySet="tbNiveles">
-                <ScalarProperty Name="niveDescripcion" ColumnName="niveDescripcion" />
-                <ScalarProperty Name="niveCodigo" ColumnName="niveCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPais">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPais">
-              <MappingFragment StoreEntitySet="tbPais">
-                <ScalarProperty Name="paiDescripcion" ColumnName="paiDescripcion" />
-                <ScalarProperty Name="paiCodigo" ColumnName="paiCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPerfiles">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPerfiles">
-              <MappingFragment StoreEntitySet="tbPerfiles">
-                <ScalarProperty Name="perfDescripcion" ColumnName="perfDescripcion" />
-                <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPreguntas">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPreguntas">
-              <MappingFragment StoreEntitySet="tbPreguntas">
-                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
-                <ScalarProperty Name="pregDescripcion" ColumnName="pregDescripcion" />
-                <ScalarProperty Name="pregCodigo" ColumnName="pregCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPrueba">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPrueba">
-              <MappingFragment StoreEntitySet="tbPrueba">
-                <ScalarProperty Name="prueNombre" ColumnName="prueNombre" />
-                <ScalarProperty Name="niveCodigo" ColumnName="niveCodigo" />
-                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPruebaRespuesta">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbPruebaRespuesta">
-              <MappingFragment StoreEntitySet="tbPruebaRespuesta">
-                <ScalarProperty Name="pregCodigo" ColumnName="pregCodigo" />
-                <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
-                <ScalarProperty Name="respCodigo" ColumnName="respCodigo" />
-                <ScalarProperty Name="prueCodigo" ColumnName="prueCodigo" />
-                <ScalarProperty Name="prueresCodigo" ColumnName="prueresCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbRespuestas">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbRespuestas">
-              <MappingFragment StoreEntitySet="tbRespuestas">
-                <ScalarProperty Name="respCorrectas" ColumnName="respCorrectas" />
-                <ScalarProperty Name="pregCodigo" ColumnName="pregCodigo" />
-                <ScalarProperty Name="respDescripcion" ColumnName="respDescripcion" />
-                <ScalarProperty Name="respCodigo" ColumnName="respCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbUsuarios">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.tbUsuarios">
-              <MappingFragment StoreEntitySet="tbUsuarios">
-                <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
-                <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
-                <ScalarProperty Name="usuaPassword" ColumnName="usuaPassword" />
-                <ScalarProperty Name="usuaLogin" ColumnName="usuaLogin" />
-                <ScalarProperty Name="usuaDescripcion" ColumnName="usuaDescripcion" />
-                <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Encuesta">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.Encuesta">
-              <MappingFragment StoreEntitySet="Encuesta">
-                <ScalarProperty Name="regiCedula" ColumnName="regiCedula" />
-                <ScalarProperty Name="enDescripcion" ColumnName="enDescripcion" />
-                <ScalarProperty Name="enCodigo" ColumnName="enCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ProyectsMVCModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

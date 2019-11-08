@@ -17,7 +17,7 @@ namespace ProyectsMVC.DAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public States()
         {
-            this.Tasks = new HashSet<Tasks>();
+            this.Products = new HashSet<Products>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace ProyectsMVC.DAL.Models
         public Nullable<bool> Active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tasks> Tasks { get; set; }
+        public virtual ICollection<Products> Products { get; set; }
     }
 }

@@ -4,68 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9c950ee4d9f048ccb403269d42832b00" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="ProyectsMVCModel.Artifacts" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetUsers" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Members" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Projects" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Tenants" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.UserProjects" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Artifacts_Projects" ManuallyRouted="false" />
+      <Diagram DiagramId="52345fadb3a4431faa6650d0b16ec373" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.AspNetUsers" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.Categories" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.Cities" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.Customer" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.DocumentTypes" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.MethodPayment" Width="1.5" PointX="11.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.ProductPhotos" Width="1.5" PointX="12.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.Products" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.SaleDetails" Width="1.5" PointX="15.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.Sales" Width="1.5" PointX="13.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.States" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectsMVCModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ProyectsMVCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectsMVCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectsMVCModel.FK__AspNetUse__Tenan__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectsMVCModel.FK__Members__UserId__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectsMVCModel.FK__UserProje__UserI__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Projects_Tenants" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_UserProjects_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Customer_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Customer_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Customer_DocumentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Products_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Sales_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Sales_MethodPayment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_ProductPhotos_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_Products_States" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_SaleDetails_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectsMVCModel.FK_SaleDetails_Sales" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectsMVCModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Activities" Width="1.5" PointX="6" PointY="19.75" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Priorities" Width="1.5" PointX="6" PointY="22.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.States" Width="1.5" PointX="6" PointY="24.875" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Tasks" Width="1.5" PointX="8.25" PointY="15.25" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Tasks_Activities" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Tasks_Priorities" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Tasks_Projects" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Tasks_States" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbBarrio" Width="1.5" PointX="14.125" PointY="2.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbCiudad" Width="1.5" PointX="11.875" PointY="2.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbClientes" Width="1.5" PointX="16.375" PointY="1" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbDepartamento" Width="1.5" PointX="9.625" PointY="2.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbDescargas" Width="1.5" PointX="22.875" PointY="8.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbGenero" Width="1.5" PointX="14.125" PointY="11.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbNivelEducativo" Width="1.5" PointX="14.125" PointY="5.625" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbNiveles" Width="1.5" PointX="18" PointY="8.375" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbPais" Width="1.5" PointX="7.375" PointY="2.5" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbPerfiles" Width="1.5" PointX="11.875" PointY="8.5" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbPreguntas" Width="1.5" PointX="18.375" PointY="11.25" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbPrueba" Width="1.5" PointX="20.625" PointY="8" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbPruebaRespuesta" Width="1.5" PointX="18.625" PointY="2.125" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbRespuestas" Width="1.5" PointX="20.625" PointY="11.125" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.tbUsuarios" Width="1.5" PointX="14.125" PointY="8" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbBarrio_tbCiudad" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbClientes_tbBarrio1" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbCiudad_tbDepartamento" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbClientes1" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbRegistrar_tbGenero" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbRegistrar_tbNivelEducativo" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbRegistrar_tbUsuarios" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbDepartamento_tbDepartamento" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbDescargas_tbPrueba" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbPrueba_tbNiveles" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbUsuarios_tbPerfiles" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPrueba" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbRespuestas" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbPreguntas_tbPrueba" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.Encuesta" Width="1.5" PointX="18.625" PointY="5.5" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_Encuesta_tbClientes" />
-        <EntityTypeShape EntityType="ProyectsMVCModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbRespuestas_tbPreguntas" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbPruebaRespuesta_tbPreguntas" />
-        <AssociationConnector Association="ProyectsMVCModel.FK_tbClientes_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

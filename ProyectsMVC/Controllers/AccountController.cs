@@ -174,21 +174,21 @@ namespace IdentitySample.Controllers
                           + "before you can log in.";
 
                     #region Tenant
-                    var _context = new ProyectsMVC.DAL.Models.ProyectsMVCEntities();
+                    //var _context = new ProyectsMVC.DAL.Models.ProyectsMVCEntities();
 
-                    _context.Tenants.Add(new ProyectsMVC.DAL.Models.Tenants
-                    {
-                        Name = model.Organization,
-                        CreatedAt = DateTime.Now,
-                        Plan = model.Plan.ToString()
+                    //_context.Tenants.Add(new ProyectsMVC.DAL.Models.Tenants
+                    //{
+                    //    Name = model.Organization,
+                    //    CreatedAt = DateTime.Now,
+                    //    Plan = model.Plan.ToString()
 
-                    });
+                    //});
 
-                    _context.SaveChanges();
+                    //_context.SaveChanges();
 
-                    var aspNetUser = _context.AspNetUsers.Where(x=>x.UserName.Equals(model.Email)).FirstOrDefault();
-                    aspNetUser.TenantId = _context.Tenants.Max(x => x.Id);
-                    _context.SaveChanges();
+                    //var aspNetUser = _context.AspNetUsers.Where(x=>x.UserName.Equals(model.Email)).FirstOrDefault();
+                    //aspNetUser.TenantId = _context.Tenants.Max(x => x.Id);
+                    //_context.SaveChanges();
 
                     var userResult = await UserManager.FindByNameAsync(model.Email);
                     if (userResult != null)

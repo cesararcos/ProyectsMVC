@@ -25,35 +25,20 @@ namespace ProyectsMVC.DAL.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Artifacts> Artifacts { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Members> Members { get; set; }
-        public virtual DbSet<Projects> Projects { get; set; }
-        public virtual DbSet<Tenants> Tenants { get; set; }
-        public virtual DbSet<UserProjects> UserProjects { get; set; }
-        public virtual DbSet<Activities> Activities { get; set; }
-        public virtual DbSet<Priorities> Priorities { get; set; }
+        public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Cities> Cities { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<DocumentTypes> DocumentTypes { get; set; }
+        public virtual DbSet<MethodPayment> MethodPayment { get; set; }
+        public virtual DbSet<ProductPhotos> ProductPhotos { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<SaleDetails> SaleDetails { get; set; }
+        public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<States> States { get; set; }
-        public virtual DbSet<Tasks> Tasks { get; set; }
-        public virtual DbSet<tbBarrio> tbBarrio { get; set; }
-        public virtual DbSet<tbCiudad> tbCiudad { get; set; }
-        public virtual DbSet<tbClientes> tbClientes { get; set; }
-        public virtual DbSet<tbDepartamento> tbDepartamento { get; set; }
-        public virtual DbSet<tbDescargas> tbDescargas { get; set; }
-        public virtual DbSet<tbGenero> tbGenero { get; set; }
-        public virtual DbSet<tbNivelEducativo> tbNivelEducativo { get; set; }
-        public virtual DbSet<tbNiveles> tbNiveles { get; set; }
-        public virtual DbSet<tbPais> tbPais { get; set; }
-        public virtual DbSet<tbPerfiles> tbPerfiles { get; set; }
-        public virtual DbSet<tbPreguntas> tbPreguntas { get; set; }
-        public virtual DbSet<tbPrueba> tbPrueba { get; set; }
-        public virtual DbSet<tbPruebaRespuesta> tbPruebaRespuesta { get; set; }
-        public virtual DbSet<tbRespuestas> tbRespuestas { get; set; }
-        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
-        public virtual DbSet<Encuesta> Encuesta { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

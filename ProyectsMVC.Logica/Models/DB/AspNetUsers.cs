@@ -20,6 +20,6 @@ namespace ProyectsMVC.Logica.Models.DB
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
-        public int? TenantId { get; set; }
+        
     }
 }

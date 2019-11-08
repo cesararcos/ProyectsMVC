@@ -1,0 +1,104 @@
+﻿@model ProyectsMVC.Logica.Models.BindingModel.SaleProductsCreateBindingModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Vender</h2>
+<br />
+<p>
+    In this module you can publish the product you want to sell
+</p>
+<br />
+<form action="/SaleProducts/Create" method="post" enctype="multipart/form-data">
+
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="form-group col-md-4">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-1">
+            @Html.LabelFor(m => m.Category, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="col-md-5">
+            @Html.DropDownListFor(m => m.Category, new SelectList(ViewBag.Categories, "Id", "Name"), new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-12 control-label" })
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.States, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(m => m.States, new SelectList(ViewBag.States, "Id", "Name"), new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.Quantity, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="form-group col-md-4">
+            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.Price, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="form-group col-md-2">
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.ShippingCost, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.TextBoxFor(m => m.ShippingCost, new { @class = "col-md-10 form-control" })
+            @Html.ValidationMessageFor(model => model.ShippingCost, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-3">
+            <input type="file" name="FilesFront" />
+            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Warranty, new { @class = "col-md-12 control-label" })
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.Warranty, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Warranty, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.Photo, new { @class = "col-md-12 control-label" })
+        <div class="col-md-12">
+            <input type="file" name="FilesFront" />
+            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    <div class="form-row">
+        <div class="col-md-12">
+            <br />
+            <button type="submit" value="" class="btn btn-primary"><i class="fas fa-save"></i></button>
+
+        </div>
+    </div>
+
+</form>
+
