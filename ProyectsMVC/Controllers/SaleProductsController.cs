@@ -1,14 +1,17 @@
-﻿using System;
+﻿using ProyectsMVC.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace ProyectsMVC.Controllers
 {
     [Authorize]
     public class SaleProductsController : Controller
     {
+        private ProyectsMVCEntities db = new ProyectsMVCEntities();
         // GET: SaleProducts
         public ActionResult Create()
         {
@@ -50,7 +53,7 @@ namespace ProyectsMVC.Controllers
                     string.Format("{0}.{1}", guid, ext));
                 }
 
-                Logica.BL.SaleDetails saleDetails = new Logica.BL.SaleDetails();
+                Logica.BL.SellProducts saleDetails = new Logica.BL.SellProducts();
                 saleDetails.CreateSaleProducts(model.Name,
                     model.Category,
                     model.Description,
@@ -61,15 +64,20 @@ namespace ProyectsMVC.Controllers
                     model.ShippingCost,
                     model.Warranty);
 
-                ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                          + "before you can log in.";
+                ViewBag.Message = "Tu producto se guardo de manera satisfactoria!";
 
-                return RedirectToAction("Create");
+                return View("SuccessMessage");
+                //return RedirectToAction("Create");
                 
                 
             }
 
             return View(model);
+        }
+        
+        public ActionResult SuccessMessage()
+        {
+            return RedirectToAction("Create");
         }
     }
 

@@ -16,8 +16,7 @@
             <p class="card-text">@Html.DisplayFor(modelItem => item.Name)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.Categories.Name)</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            @Html.ActionLink(" ", "Details", "Pruebas", null, new { @class = "btn btn-primary fas fa-undo-alt" })
+            @Html.ActionLink("Ver producto", "Create", "ProductDetail", new { productsId = item.Id}, new { @class = "btn btn-primary" })
         </div>
     </div>
 }

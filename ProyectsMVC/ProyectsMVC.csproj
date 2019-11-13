@@ -219,6 +219,7 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SaleProductsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\ViewProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -449,8 +450,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\ProductDetail\Create.cshtml" />
     <Content Include="Views\SaleProducts\Create.cshtml" />
+    <Content Include="Views\SaleProducts\SuccessMessage.cshtml" />
+    <Content Include="Views\ViewProducts\Index.cshtml" />
+    <Content Include="Views\ProductDetail\CreateMethodPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

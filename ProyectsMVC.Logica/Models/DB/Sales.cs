@@ -10,7 +10,7 @@ namespace ProyectsMVC.Logica.Models.DB
     {
         public int Id { get; set; }
         public int MethodPaymentId { get; set; }
-        public decimal TotalValue { get; set; }
+        public double? TotalValue { get; set; }
         public DateTime Date { get; set; }
         public int CustomerId { get; set; }
 

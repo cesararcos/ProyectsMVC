@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProyectsMVC.DAL.Models.Products>
+@{
+    ViewBag.Title = "ViewProducts";
+}
+
+<h2>View sell products</h2>
+<br />
+@foreach (var item in Model)
+{
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <img class="card-img-top" src="~/Images/Products/24bcdfed-f543-4700-9ea7-3c1d61c65ed0.jpeg" height="250" width="50" alt="Card image cap">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.DisplayFor(modelItem => item.Name)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            @Html.DisplayFor(modelItem => item.Categories.Name)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            @Html.DisplayFor(modelItem => item.Description)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.DisplayFor(modelItem => item.Price)
+        </div>
+        <div class="form-group col-md-2">
+            @Html.Name("x 1 unidad")
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.Name("Cargo de envío")
+        </div>
+        <div class="form-group col-md-2">
+            @Html.DisplayFor(modelItem => item.ShippingCost)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.Name("Estado")
+        </div>
+        <div class="form-group col-md-2">
+            @Html.DisplayFor(modelItem => item.States.Name)
+        </div>
+    </div>
+}

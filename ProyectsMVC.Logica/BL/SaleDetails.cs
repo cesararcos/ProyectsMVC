@@ -13,13 +13,19 @@ namespace ProyectsMVC.Logica.BL
             DAL.Models.ProyectsMVCEntities db = new DAL.Models.ProyectsMVCEntities();
             var listDetails = (from _Details in db.SaleDetails
                                join _Products in db.Products on _Details.ProductId equals _Products.Id
+                               //join _Sales in db.Sales on _Details.SaleId equals _Sales.Id
                                select new Models.DB.SaleDetails
                                {
                                    Id = _Details.Id,
-                                   products = new Models.DB.Products
-                                   {
-                                       Description = _Products.Description
-                                   },
+                                   //sales= new Models.DB.Sales
+                                   //{
+                                   //    TotalValue = _Sales.TotalValue
+                                   //},
+                                   ProductId = _Details.ProductId,
+                                   //products = new Models.DB.Products
+                                   //{
+                                   //    Name = _Products.Name
+                                   //},
                                    Quantity = _Details.Quantity,
                                    SubtotalValue = _Details.SubtotalValue
                                }
@@ -29,47 +35,71 @@ namespace ProyectsMVC.Logica.BL
             return listDetails;
         }
 
-        public void CreateSaleProducts(string name,
-            int? category,
-            string description,
-            string photo,
-            int? states,
-            int quantity,
-            double price,
-            double shippingCost,
-            string warranty)
+        public void CreateSaleProducts(int id,
+            int? quantity,
+            double? price)
         {
             DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
 
-            _context.Products.Add(new DAL.Models.Products
+            _context.SaleDetails.Add(new DAL.Models.SaleDetails
             {
-                Name = name,
-                CategoryId = category,
-                Description = description,
-                StateId = states,
+                ProductId = id,
                 Quantity = quantity,
-                Price = price,
-                ShippingCost = shippingCost,
-                Warranty = warranty
+                SubtotalValue = price
             });
             _context.SaveChanges();
+        }
 
-            //LAS SIGUIENTES DOS LINEA 58-59 SON PARA CAPTURAR EL ID DEL PRODUCTO Y ALMACENARLO CON LA IMAGEN
-            Products products = new Products();
-            var listaClientes = products.GetProducts().LastOrDefault();
-
-            if (!photo.Split('.').Contains("octet-stream"))
+        public void CreateShipping(bool shippingClient,
+            bool shippingSeller,
+            int? quantity,
+            double? subtotalValue,
+            double? shippingCost,
+            int id)
+        {
+            if (shippingClient)
             {
-                //LINEAS DE CODIGO PARA ALMACENAR IMAGEN
-                _context.ProductPhotos.Add(new DAL.Models.ProductPhotos
+                DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
+                _context.Sales.Add(new DAL.Models.Sales
                 {
-                    ProductId = listaClientes.Id,
-                    Guid = photo,
+                    TotalValue = quantity * (subtotalValue + shippingCost),
+                    Date = DateTime.Today
+                });
+                _context.SaveChanges();
 
+                Sales sales = new Sales();
+                var listasales = sales.GetSale().LastOrDefault();
+
+                Services.UpdateSaleDetails updateSaleDetails = new Services.UpdateSaleDetails();
+                updateSaleDetails.UpdateDetails(listasales.Id,
+                    id);
+
+                //_context.SaleDetails.Add(new DAL.Models.SaleDetails
+                //{
+                //    SaleId = listasales.Id
+                //});
+                //_context.SaveChanges();
+            }
+            else
+            {
+                DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
+                _context.Sales.Add(new DAL.Models.Sales
+                {
+                    TotalValue = quantity * subtotalValue,
+                    Date = DateTime.Today
+                });
+                _context.SaveChanges();
+
+                Sales sales = new Sales();
+                var listasales = sales.GetSale().LastOrDefault();
+
+                _context.SaleDetails.Add(new DAL.Models.SaleDetails
+                {
+                    SaleId = listasales.Id
                 });
                 _context.SaveChanges();
             }
-            
+
         }
     }
 }
