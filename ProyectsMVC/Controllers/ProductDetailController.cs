@@ -52,12 +52,18 @@ namespace ProyectsMVC.Controllers
 
         public ActionResult CreateMethodPayment()
         {
+            Logica.BL.MethodPayment method = new Logica.BL.MethodPayment();
+            ViewBag.MethodPayment = method.GetMethodPayment();
+
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateMethodPayment(Logica.Models.ViewModel.ShippingCreateCost model)
         {
+            Logica.BL.MethodPayment method = new Logica.BL.MethodPayment();
+            ViewBag.MethodPayment = method.GetMethodPayment();
+
             Logica.BL.SaleDetails saleDetails = new Logica.BL.SaleDetails();
             var listaPaymentProducts = saleDetails.GetSaleDetails().LastOrDefault();
 
@@ -78,9 +84,11 @@ namespace ProyectsMVC.Controllers
                 listaPaymentProducts.Quantity,
                 listaPaymentProducts.SubtotalValue,
                 costoproducto.ShippingCost,
-                listaPaymentProducts.Id);
+                listaPaymentProducts.Id,
+                model.MethodPayment);
 
-            return View(model);
+            return RedirectToAction("CreateMethodPayment");
         }
+
     }
 }

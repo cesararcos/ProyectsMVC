@@ -55,7 +55,8 @@ namespace ProyectsMVC.Logica.BL
             int? quantity,
             double? subtotalValue,
             double? shippingCost,
-            int id)
+            int id,
+            int? methodPayment)
         {
             if (shippingClient)
             {
@@ -63,22 +64,20 @@ namespace ProyectsMVC.Logica.BL
                 _context.Sales.Add(new DAL.Models.Sales
                 {
                     TotalValue = quantity * (subtotalValue + shippingCost),
-                    Date = DateTime.Today
+                    Date = DateTime.Now
                 });
                 _context.SaveChanges();
 
                 Sales sales = new Sales();
                 var listasales = sales.GetSale().LastOrDefault();
 
+                // RECIBE ID PARA ACTUALIZAR TABLA SQL
                 Services.UpdateSaleDetails updateSaleDetails = new Services.UpdateSaleDetails();
                 updateSaleDetails.UpdateDetails(listasales.Id,
                     id);
 
-                //_context.SaleDetails.Add(new DAL.Models.SaleDetails
-                //{
-                //    SaleId = listasales.Id
-                //});
-                //_context.SaveChanges();
+                updateSaleDetails.UpdatemethodPayment(methodPayment,
+                    listasales.Id);
             }
             else
             {

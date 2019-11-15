@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Categories.cs" />
+    <Compile Include="BL\MethodPayment.cs" />
     <Compile Include="BL\Products.cs" />
     <Compile Include="BL\SaleDetails.cs" />
     <Compile Include="BL\Sales.cs" />

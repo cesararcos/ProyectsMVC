@@ -14,5 +14,8 @@ namespace ProyectsMVC.Logica.Models.ViewModel
 
         [Display(Name = "Shipping Cost Client")]
         public bool ShippingClient { get; set; }
+
+        [Display(Name = "MethodPayment")]
+        public int? MethodPayment { get; set; }
     }
 }
