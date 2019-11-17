@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Categories.cs" />
+    <Compile Include="BL\Cities.cs" />
+    <Compile Include="BL\Customer.cs" />
+    <Compile Include="BL\DocumentTypes.cs" />
     <Compile Include="BL\MethodPayment.cs" />
     <Compile Include="BL\Products.cs" />
     <Compile Include="BL\SaleDetails.cs" />
@@ -61,7 +64,9 @@
     <Compile Include="Data\ConectionDB.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Models\BindingModel\ClientesBindingModel.cs" />
+    <Compile Include="Models\BindingModel\CustomerBindingModel.cs" />
     <Compile Include="Models\BindingModel\SaleProductsCreateBindingModel.cs" />
+    <Compile Include="Models\BindingModel\SearchProducts.cs" />
     <Compile Include="Models\BindingModel\TasksBindingModel.cs" />
     <Compile Include="Models\DB\AspNetUsers.cs" />
     <Compile Include="Models\DB\Categories.cs" />
@@ -73,11 +78,14 @@
     <Compile Include="Models\DB\Products.cs" />
     <Compile Include="Models\DB\SaleDetails.cs" />
     <Compile Include="Models\DB\Sales.cs" />
+    <Compile Include="Models\DB\SearchProducts.cs" />
     <Compile Include="Models\DB\States.cs" />
     <Compile Include="Models\ViewModel\ShippingCost.cs" />
     <Compile Include="Models\ViewModel\ProductDetail.cs" />
+    <Compile Include="Models\ViewModel\ViewProducts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Login.cs" />
+    <Compile Include="Services\SearchProducts.cs" />
     <Compile Include="Services\UpdateSaleDetails.cs" />
   </ItemGroup>
   <ItemGroup>

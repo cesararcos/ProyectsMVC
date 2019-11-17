@@ -43,5 +43,7 @@ namespace ProyectsMVC.Logica.Models.BindingModel
 
         [Display(Name = "Load Product Image")]
         public string Photo { get; set; }
+
+        public string Guid { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace ProyectsMVC.DAL.Models
         public int Id { get; set; }
         public Nullable<int> ProductId { get; set; }
         public string Guid { get; set; }
+        public string Ext { get; set; }
     
         public virtual Products Products { get; set; }
     }

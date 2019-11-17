@@ -190,11 +190,11 @@ namespace IdentitySample.Controllers
                     //aspNetUser.TenantId = _context.Tenants.Max(x => x.Id);
                     //_context.SaveChanges();
 
-                    var userResult = await UserManager.FindByNameAsync(model.Email);
-                    if (userResult != null)
-                    {
-                        await UserManager.AddToRoleAsync(userResult.Id, "Admin");
-                    }
+                    //var userResult = await UserManager.FindByNameAsync(model.Email);
+                    //if (userResult != null)
+                    //{
+                    //    await UserManager.AddToRoleAsync(userResult.Id, "Admin");
+                    //}
                     #endregion
 
                     return View("Info");

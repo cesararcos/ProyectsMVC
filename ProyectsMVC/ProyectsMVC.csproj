@@ -212,12 +212,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SaleProductsController.cs" />
+    <Compile Include="Controllers\SearchProductsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\ViewProductsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -455,6 +457,10 @@
     <Content Include="Views\SaleProducts\SuccessMessage.cshtml" />
     <Content Include="Views\ViewProducts\Index.cshtml" />
     <Content Include="Views\ProductDetail\CreateMethodPayment.cshtml" />
+    <Content Include="Views\SearchProducts\Create.cshtml" />
+    <Content Include="Views\SearchProducts\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\SuccessCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

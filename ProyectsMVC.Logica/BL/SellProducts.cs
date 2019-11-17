@@ -12,6 +12,7 @@ namespace ProyectsMVC.Logica.BL
             int? category,
             string description,
             string photo,
+            string guid,
             int? states,
             int quantity,
             double price,
@@ -44,6 +45,7 @@ namespace ProyectsMVC.Logica.BL
                 {
                     ProductId = listaClientes.Id,
                     Guid = photo,
+                    Ext = guid
 
                 });
                 _context.SaveChanges();

@@ -47,8 +47,9 @@ namespace ProyectsMVC.Controllers
                     var guid = Guid.NewGuid();
                     var ext = mimeType.Split('/').LastOrDefault();
                     
-                    //model.Photo = Convert.ToString(guid) + '.' + ext;
-                    model.Photo = string.Format("{0}.{1}", guid, ext);
+                    //model.Photo = string.Format("{0}.{1}", guid, ext);
+                    model.Photo = string.Format("{0}", guid);
+                    model.Guid = string.Format(".{0}", ext);
                     file.SaveAs(Server.MapPath("~/Images/Products/") +
                     string.Format("{0}.{1}", guid, ext));
                 }
@@ -58,6 +59,7 @@ namespace ProyectsMVC.Controllers
                     model.Category,
                     model.Description,
                     model.Photo,
+                    model.Guid,
                     model.States,
                     model.Quantity,
                     model.Price,
@@ -67,9 +69,6 @@ namespace ProyectsMVC.Controllers
                 ViewBag.Message = "Tu producto se guardo de manera satisfactoria!";
 
                 return View("SuccessMessage");
-                //return RedirectToAction("Create");
-                
-                
             }
 
             return View(model);

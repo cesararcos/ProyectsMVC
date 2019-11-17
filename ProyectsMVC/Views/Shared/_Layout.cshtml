@@ -44,18 +44,16 @@
             </div>
             <div class="list-group list-group-flush">
                 @*@if (Request.IsAuthenticated)
-                {*@
+                    {*@
 
 
-                    @Html.ActionLink("  Projects", "Index", "Proyect", null, new { @class = "list-group-item list-group-item-action bg-light" })
-                    @Html.ActionLink("  Projects Json", "Index", "ProjectsJson", null, new { @class = "list-group-item list-group-item-action bg-light" })
-                    @Html.ActionLink("  Empezar Pruebas", "Index", "tbPruebas", null, new { @class = "list-group-item list-group-item-action bg-light" })
-                    @Html.ActionLink("  Ver Productos", "Index", "Products", null, new { @class = "list-group-item list-group-item-action bg-light" })
-                    @Html.ActionLink("  Vender", "Create", "SaleProducts", null, new { @class = "list-group-item list-group-item-action bg-light" })
-                    
+                @Html.ActionLink("  Buscar", "Create", "SearchProducts", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("  Comprar", "Index", "Products", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("  Vender", "Create", "SaleProducts", null, new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("  Registrarse", "Create", "Customer", null, new { @class = "list-group-item list-group-item-action bg-light" })
 
 
-                    @*if (User.IsInRole("Admin"))
+                @*if (User.IsInRole("Admin"))
                     {
                         @Html.ActionLink("   Activities", "Index", "Activities", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light fas fa-chart-line" })
                         @Html.ActionLink("   Priorities", "Index", "Priorities", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light fas fa-tags" })
@@ -65,11 +63,11 @@
                         @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                     }*@
                 @*}
-                else
-                {*@
-                    @Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
-                    @Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
-                    @Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                    else
+                    {*@
+                @Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                 @*}*@
             </div>
         </div>

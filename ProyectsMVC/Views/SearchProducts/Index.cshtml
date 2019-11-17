@@ -1,10 +1,9 @@
-﻿@*@model IEnumerable<ProyectsMVC.DAL.Models.Products>*@
-@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.ViewProducts>
+﻿@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.ViewProducts>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search Products";
 }
 
-<h2>Products</h2>
+<h2>Search Result</h2>
 
 <br />
 @foreach (var item in Model)
@@ -16,7 +15,8 @@
             <p class="card-text">@Html.DisplayFor(modelItem => item.prodName)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.CategoryName)</p>
-            @Html.ActionLink("Ver producto", "Create", "ProductDetail", new { productsId = item.prodId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Ver producto", "Create", "ProductDetail", new { @class = "btn btn-primary" })
         </div>
     </div>
 }
+

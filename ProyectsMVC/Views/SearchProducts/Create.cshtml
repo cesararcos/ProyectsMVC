@@ -1,0 +1,49 @@
+﻿@model ProyectsMVC.Logica.Models.BindingModel.SearchCreateProducts
+@{
+    ViewBag.Title = "Buscar productos";
+}
+
+<h2>Buscar productos</h2>
+<br />
+<p>
+    Aquí encuentras el articulo que quieras
+</p>
+<br />
+
+<form action="/SearchProducts/Create" method="post" enctype="multipart/form-data">
+
+    <br />
+    <h5>
+        Buscar por categoria:
+    </h5>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.CategoryId, new { @class = "control-label" })
+        </div>
+        <div class="form-group col-md-2">
+            @Html.DropDownListFor(m => m.CategoryId, new SelectList(ViewBag.Categories, "Id", "Name"), new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <h5>
+        Buscar por nombre de producto (Opcional)
+    </h5>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(m => m.ProdName, new { @class = "col-md-12 control-label" })
+        </div>
+        <div class="form-group col-md-4">
+            @Html.TextBoxFor(m => m.ProdName, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-12">
+            <br />
+            <button type="submit" value="" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+
+</form>
+

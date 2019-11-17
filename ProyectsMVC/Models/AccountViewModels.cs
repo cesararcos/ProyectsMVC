@@ -80,11 +80,11 @@ namespace IdentitySample.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "The field organization is required")]
+        //[Required(ErrorMessage = "The field organization is required")]
         [Display(Name = "Organization")]
         public string Organization { get; set; }
 
-        [Required(ErrorMessage = "The field Plan is required")]
+        //[Required(ErrorMessage = "The field Plan is required")]
         [Display(Name = "Plan")]
         public Plan Plan { get; set; }
     }
