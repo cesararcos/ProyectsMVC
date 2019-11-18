@@ -74,7 +74,7 @@ namespace ProyectsMVC.Controllers
             {
                 return RedirectToAction("CreateMethodPayment", "ProductDetail", null);
             }
-            if (!model.ShippingClient && model.ShippingSeller)
+            if ((model.ShippingClient==false) && (model.ShippingSeller==false))
             {
                 return RedirectToAction("CreateMethodPayment", "ProductDetail", null);
             }

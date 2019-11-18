@@ -461,6 +461,7 @@
     <Content Include="Views\SearchProducts\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\SuccessCustomer.cshtml" />
+    <Content Include="Views\Products\SuccessProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

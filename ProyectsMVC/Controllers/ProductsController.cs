@@ -42,30 +42,31 @@ namespace ProyectsMVC.Controllers
 
             Logica.BL.Customer customer = new Logica.BL.Customer();
             var validaCustomer = customer.GetCustomer().Where(x => x.UserId == user.Id).FirstOrDefault();
-            //if (validaCustomer == null)
-            //{
-            //    return View();
-            //}
-
-            Logica.Services.SearchProducts search = new Logica.Services.SearchProducts();
-            var listViewSearchProducts = search.GetSearchProductsAll();
-
-            var listaTodosProductosEncontrados = listViewSearchProducts.Select(x => new Logica.Models.ViewModel.ViewProducts
+            if (validaCustomer != null)
             {
-                prodId = x.prodId,
-                CategoryId = x.CategoryId,
-                CategoryName = x.CategoryName,
-                prodName = x.prodName,
-                Price = x.Price,
-                ShippingCost = x.ShippingCost,
-                Warranty = x.Warranty,
-                Description = x.Description,
-                Quantity = x.Quantity,
-                StateId = x.StateId,
-                StateName = x.StateName,
-                Guid = x.Guid
-            }).ToList();
-            return View(listaTodosProductosEncontrados);
+                Logica.Services.SearchProducts search = new Logica.Services.SearchProducts();
+                var listViewSearchProducts = search.GetSearchProductsAll();
+
+                var listaTodosProductosEncontrados = listViewSearchProducts.Select(x => new Logica.Models.ViewModel.ViewProducts
+                {
+                    prodId = x.prodId,
+                    CategoryId = x.CategoryId,
+                    CategoryName = x.CategoryName,
+                    prodName = x.prodName,
+                    Price = x.Price,
+                    ShippingCost = x.ShippingCost,
+                    Warranty = x.Warranty,
+                    Description = x.Description,
+                    Quantity = x.Quantity,
+                    StateId = x.StateId,
+                    StateName = x.StateName,
+                    Guid = x.Guid
+                }).ToList();
+                return View(listaTodosProductosEncontrados);
+            }
+            ViewBag.Message = "Aun no estar registrado, debes hacerlo para empezar a comprar";
+
+            return View ("SuccessProducts");
         }
     }
 }

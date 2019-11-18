@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using IdentitySample.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ProyectsMVC.Controllers
 {
@@ -12,6 +14,25 @@ namespace ProyectsMVC.Controllers
     public class SaleProductsController : Controller
     {
         private ProyectsMVCEntities db = new ProyectsMVCEntities();
+
+        public SaleProductsController()
+        {
+
+        }
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            set { _userManager = value; }
+        }
+        public SaleProductsController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
         // GET: SaleProducts
         public ActionResult Create()
         {
