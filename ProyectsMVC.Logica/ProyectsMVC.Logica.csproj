@@ -70,6 +70,7 @@
     <Compile Include="Models\BindingModel\SearchProducts.cs" />
     <Compile Include="Models\BindingModel\TasksBindingModel.cs" />
     <Compile Include="Models\Custom\Autenticacion.cs" />
+    <Compile Include="Models\Custom\Response.cs" />
     <Compile Include="Models\DB\AspNetUsers.cs" />
     <Compile Include="Models\DB\Categories.cs" />
     <Compile Include="Models\DB\Cities.cs" />

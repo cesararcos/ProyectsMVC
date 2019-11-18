@@ -8,25 +8,59 @@ namespace ProyectsMVC.Logica.BL
 {
     public class Login
     {
-        public Models.Custom.Autenticacion Autenticacion(string usuario, string contrasena)
+        public Models.Custom.Response Autenticacion(string email, string contrasena)
         {
-            DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
-
-            var user = (from q in _context.AspNetUsers
-                        where q.Email.Equals(usuario)
-                        select new Models.Custom.Autenticacion
-                        {
-                            email = q.Email,
-                            contrasena = q.Password
-                            }).First();
-                        //}).ToList();
-
-            return new Models.Custom.Autenticacion
+            try
             {
-                email = user.email,
-                contrasena = user.contrasena
-            };
-            //return user;
+                DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
+
+                var user = (from q in _context.AspNetUsers
+                            where q.Email.Equals(email)
+                            select new Models.Custom.Autenticacion
+                            {
+                                email = q.Email,
+                                contrasena = q.Password
+                            }).First();
+                if (user != null)
+                {
+                    if (user.contrasena.Equals(contrasena))
+                    {
+                        return new Logica.Models.Custom.Response
+                        {
+                            IsSuccess = true,
+                            Message = "Usuario logeado correctamente",
+                            Result = user
+                        };
+                    }
+                    else
+                    {
+                        return new Logica.Models.Custom.Response
+                        {
+                            IsSuccess = false,
+                            Message = "Contraseña incorrecta",
+                            Result = null
+                        };
+                    }
+                }
+                else
+                {
+                    return new Logica.Models.Custom.Response
+                    {
+                        IsSuccess = false,
+                        Message = "Email no registrado",
+                        Result = null
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                return new Logica.Models.Custom.Response
+                {
+                    IsSuccess = false,
+                    Message = "Email no registrado",
+                    Result = null
+                };
+            }
         }
     }
 }

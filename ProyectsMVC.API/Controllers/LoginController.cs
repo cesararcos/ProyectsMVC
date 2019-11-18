@@ -7,25 +7,35 @@ using System.Web.Http;
 
 namespace ProyectsMVC.API.Controllers
 {
-    [RoutePrefix("api/Login")]
     public class LoginController : ApiController
     {
-
-        [Route("GetAspNetUsers")]
-        public IHttpActionResult GetLogin()
+        // GET: api/Login
+        public IEnumerable<string> Get()
         {
+            return new string[] { "value1", "value2" };
+        }
 
-            try
-            {
-                Logica.Services.Login login = new Logica.Services.Login();
-                var listLogin = login.GetAspNetUsers();
+        // GET: api/Login/5
+        public string Get(int id)
+        {
+            return "value";
+        }
 
-                return Ok(listLogin);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
+        // POST: api/Login
+        public Logica.Models.Custom.Response Post([FromBody]Logica.Models.Custom.Autenticacion a)
+        {
+            Logica.BL.Login login = new Logica.BL.Login();
+            return login.Autenticacion(a.email, a.contrasena);
+        }
+
+        // PUT: api/Login/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/Login/5
+        public void Delete(int id)
+        {
         }
     }
 }
