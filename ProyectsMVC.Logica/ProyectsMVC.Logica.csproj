@@ -76,6 +76,7 @@
     <Compile Include="Models\DB\Cities.cs" />
     <Compile Include="Models\DB\Customer.cs" />
     <Compile Include="Models\DB\DocumentTypes.cs" />
+    <Compile Include="Models\DB\GetConfirmSale.cs" />
     <Compile Include="Models\DB\MethodPayment.cs" />
     <Compile Include="Models\DB\ProductPhotos.cs" />
     <Compile Include="Models\DB\Products.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Models\DB\Sales.cs" />
     <Compile Include="Models\DB\SearchProducts.cs" />
     <Compile Include="Models\DB\States.cs" />
+    <Compile Include="Models\ViewModel\ConfirmSaleViewModel.cs" />
     <Compile Include="Models\ViewModel\ShippingCost.cs" />
     <Compile Include="Models\ViewModel\ProductDetail.cs" />
     <Compile Include="Models\ViewModel\ViewProducts.cs" />

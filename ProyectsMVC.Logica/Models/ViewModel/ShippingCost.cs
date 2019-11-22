@@ -9,10 +9,10 @@ namespace ProyectsMVC.Logica.Models.ViewModel
 {
     public class ShippingCreateCost
     {
-        [Display(Name = "Shipping Cost Seller")]
+        [Display(Name = "Retiro en domicilio del vendedor - Cali")]
         public bool ShippingSeller { get; set; }
 
-        [Display(Name = "Shipping Cost Client")]
+        [Display(Name = "Normal a domicilio $ 40.655")]
         public bool ShippingClient { get; set; }
 
         [Display(Name = "MethodPayment")]

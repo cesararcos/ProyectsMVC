@@ -40,13 +40,14 @@
         <!-- ============================================================== -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">
-                Project Management
+                @*Project Management*@
+                <img class="" src="~/Images/84465885-4573-465f-aa2c-92513bd12da5.jpeg" height="100" width="200" alt="Card image cap">
             </div>
             <div class="list-group list-group-flush">
                 @*@if (Request.IsAuthenticated)
                     {*@
 
-
+                @Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("  Buscar", "Create", "SearchProducts", null, new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("  Comprar", "Index", "Products", null, new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("  Vender", "Create", "SaleProducts", null, new { @class = "list-group-item list-group-item-action bg-light" })
@@ -65,7 +66,7 @@
                 @*}
                     else
                     {*@
-                @Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
+
                 @Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                 @Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action bg-light" })
                 @*}*@

@@ -6,11 +6,16 @@
 
 <h2>Products</h2>
 
+@{ int colum = 1; }
 <br />
 @foreach (var item in Model)
 {
+    if (colum == 1)
+    {
+        @Html.Raw("<div class='form-row'>");
+    }
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="~/Images/Products/@item.Guid" alt="Card image cap">
+        <img class="card-img-top" src="~/Images/Products/@item.Guid" alt="Card image cap" width="150" height="280" >
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">@Html.DisplayFor(modelItem => item.prodName)</p>
@@ -19,4 +24,10 @@
             @Html.ActionLink("Ver producto", "Create", "ProductDetail", new { productsId = item.prodId }, new { @class = "btn btn-primary" })
         </div>
     </div>
+    if (colum == 3)
+    {
+        colum = 0;
+        @Html.Raw("</div>")
+        colum++;
+    }
 }

@@ -64,7 +64,7 @@ namespace ProyectsMVC.Controllers
                 }).ToList();
                 return View(listaTodosProductosEncontrados);
             }
-            ViewBag.Message = "Aun no estar registrado, debes hacerlo para empezar a comprar";
+            ViewBag.Message = "Aun no estas registrado, debes hacerlo para empezar a comprar";
 
             return View ("SuccessProducts");
         }

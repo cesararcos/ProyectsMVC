@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Upps";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="form-row">
+    <div class="col-md-12">
+        <br />
+        @Html.ActionLink("Registrarse", "Create", "Customer", null, new { @class = "btn btn-primary" })
+    </div>
+</div>

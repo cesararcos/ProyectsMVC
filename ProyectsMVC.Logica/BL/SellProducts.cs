@@ -17,7 +17,8 @@ namespace ProyectsMVC.Logica.BL
             int quantity,
             double price,
             double shippingCost,
-            string warranty)
+            string warranty,
+            int customerId)
         {
             DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
 
@@ -30,7 +31,8 @@ namespace ProyectsMVC.Logica.BL
                 Quantity = quantity,
                 Price = price,
                 ShippingCost = shippingCost,
-                Warranty = warranty
+                Warranty = warranty,
+                CustomerId = customerId
             });
             _context.SaveChanges();
 

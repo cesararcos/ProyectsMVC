@@ -16,6 +16,7 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         [Display(Name = "Shipping Cost")]
         public double? ShippingCost { get; set; }
 
+        [Required(ErrorMessage = "The quantity is required")]
         [Display(Name = "Quantity")]
         public int? Quantity { get; set; }
 
@@ -29,5 +30,7 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         public string Description { get; set; }
 
         public int Id { get; set; }
+
+        public string Guid { get; set; }
     }
 }

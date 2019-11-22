@@ -9,9 +9,10 @@
 <form action="/ProductDetail/Create" method="post" enctype="multipart/form-data">
 
     @Html.HiddenFor(m => m.Id)
+
     <div class="form-row">
         <div class="form-group col-md-4">
-            <img class="card-img-top" src="~/Images/Products/24bcdfed-f543-4700-9ea7-3c1d61c65ed0.jpeg" height="250" width="50" alt="Card image cap">
+            <img class="card-img-top" src="~/Images/Products/@Html.DisplayFor(m => m.Guid)" height="240" width="60" alt="Card image cap">
         </div>
     </div>
     <div class="form-row">
@@ -19,7 +20,7 @@
             @Html.LabelFor(m => m.Category, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.Category, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.Category, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
     <div class="form-row">
@@ -27,7 +28,7 @@
             @Html.LabelFor(m => m.Name, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.Name, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
     <div class="form-row">
@@ -35,7 +36,7 @@
             @Html.LabelFor(m => m.Price, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.Price, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.Price, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
     <div class="form-row">
@@ -43,7 +44,7 @@
             @Html.LabelFor(m => m.ShippingCost, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.ShippingCost, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.ShippingCost, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
     <div class="form-row">
@@ -51,7 +52,8 @@
             @Html.LabelFor(m => m.Quantity, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.Quantity, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @type = "number", min=1 })
+            @Html.TextBoxFor(m => m.Quantity, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @type = "number", min = 1 })
+            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-row">
@@ -59,7 +61,7 @@
             @Html.LabelFor(m => m.Warranty, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.Warranty, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.Warranty, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
     <div class="form-row">
@@ -67,7 +69,7 @@
             @Html.LabelFor(m => m.States, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.States, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.States, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
     <div class="form-row">
@@ -75,15 +77,15 @@
             @Html.LabelFor(m => m.Description, new { @class = "col-md-12 control-label" })
         </div>
         <div class="form-group col-md-4">
-            @Html.TextBoxFor(m => m.Description, new { @class = "col-md-6 form-control", Style="background:#FFFFFF80;", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.Description, new { @class = "col-md-6 form-control", Style = "background:#FFFFFF80;", @readonly = "readonly" })
         </div>
     </div>
 
     <div class="form-row">
         <div class="col-md-12">
             <br />
-            <button type="submit" value="Comprar" class="btn btn-primary"><i class="fas fa-save" ></i></button>
+            <button type="submit" value="" class="btn btn-primary">Continuar</button>
         </div>
     </div>
-
+    <br />
 </form>

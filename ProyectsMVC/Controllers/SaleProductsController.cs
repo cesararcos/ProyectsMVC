@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using IdentitySample.Models;
 using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 
 namespace ProyectsMVC.Controllers
 {
@@ -46,8 +47,10 @@ namespace ProyectsMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Logica.Models.BindingModel.SaleProductsCreateBindingModel model)
+        public async Task<ActionResult> Create(Logica.Models.BindingModel.SaleProductsCreateBindingModel model)
         {
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+
             Logica.BL.Categories categories = new Logica.BL.Categories();
             ViewBag.Categories = categories.GetCategories();
 
@@ -75,21 +78,31 @@ namespace ProyectsMVC.Controllers
                     string.Format("{0}.{1}", guid, ext));
                 }
 
-                Logica.BL.SellProducts saleDetails = new Logica.BL.SellProducts();
-                saleDetails.CreateSaleProducts(model.Name,
-                    model.Category,
-                    model.Description,
-                    model.Photo,
-                    model.Guid,
-                    model.States,
-                    model.Quantity,
-                    model.Price,
-                    model.ShippingCost,
-                    model.Warranty);
+                Logica.BL.Customer customer = new Logica.BL.Customer();
+                var validaCustomer = customer.GetCustomer().Where(x => x.UserId == user.Id).FirstOrDefault();
 
-                ViewBag.Message = "Tu producto se guardo de manera satisfactoria!";
+                if (validaCustomer != null)
+                {
+                    Logica.BL.SellProducts saleDetails = new Logica.BL.SellProducts();
+                    saleDetails.CreateSaleProducts(model.Name,
+                        model.Category,
+                        model.Description,
+                        model.Photo,
+                        model.Guid,
+                        model.States,
+                        model.Quantity,
+                        model.Price,
+                        model.ShippingCost,
+                        model.Warranty,
+                        validaCustomer.Id);
 
-                return View("SuccessMessage");
+                    ViewBag.Message = "Tu producto se guardo de manera satisfactoria!";
+
+                    return View("SuccessMessage");
+                }
+                ViewBag.Message = "Aun no estas registrado, debes hacerlo para empezar a vender";
+
+                return View("SuccessSaleProducts");
             }
 
             return View(model);
