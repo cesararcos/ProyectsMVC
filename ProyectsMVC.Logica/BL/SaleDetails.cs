@@ -48,6 +48,11 @@ namespace ProyectsMVC.Logica.BL
                 SubtotalValue = price
             });
             _context.SaveChanges();
+
+            var Product = _context.Products.Where(x => x.Id == id).FirstOrDefault();
+            Product.Quantity = Product.Quantity - quantity;
+
+            _context.SaveChanges();
         }
 
         public void CreateShipping(bool shippingClient,
@@ -64,7 +69,7 @@ namespace ProyectsMVC.Logica.BL
                 DAL.Models.ProyectsMVCEntities _context = new DAL.Models.ProyectsMVCEntities();
                 _context.Sales.Add(new DAL.Models.Sales
                 {
-                    TotalValue = (quantity * subtotalValue) + 40655, //shippingCost,
+                    TotalValue = (quantity * subtotalValue) + shippingCost,
                     Date = DateTime.Now,
                     CustomerId = CustomerId
                 });
