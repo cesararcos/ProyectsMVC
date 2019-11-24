@@ -12,7 +12,7 @@ namespace ProyectsMVC.Logica.Models.ViewModel
         [Display(Name = "Retiro en domicilio del vendedor - Cali")]
         public bool ShippingSeller { get; set; }
 
-        [Display(Name = "Normal a domicilio $ 40.655")]
+        [Display(Name = "Normal a domicilio")]
         public bool ShippingClient { get; set; }
 
         [Display(Name = "MethodPayment")]

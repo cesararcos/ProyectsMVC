@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProyectsMVC.Logica.BL
 {
@@ -92,7 +90,7 @@ namespace ProyectsMVC.Logica.BL
                 _context.Sales.Add(new DAL.Models.Sales
                 {
                     TotalValue = quantity * subtotalValue,
-                    Date = DateTime.Today,
+                    Date = DateTime.Now,
                     CustomerId = CustomerId
                 });
                 _context.SaveChanges();

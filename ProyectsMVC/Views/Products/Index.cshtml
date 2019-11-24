@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<ProyectsMVC.DAL.Models.Products>*@
-@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.ViewProducts>
+﻿@model IEnumerable<ProyectsMVC.Logica.Models.ViewModel.ViewProducts>
 @{
     ViewBag.Title = "Index";
 }
@@ -17,7 +16,6 @@
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="~/Images/Products/@item.Guid" alt="Card image cap" width="150" height="280" >
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
             <p class="card-text">@Html.DisplayFor(modelItem => item.prodName)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.CategoryName)</p>

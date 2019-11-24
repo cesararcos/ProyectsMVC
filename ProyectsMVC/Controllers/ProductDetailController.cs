@@ -65,12 +65,26 @@ namespace ProyectsMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                Logica.BL.SaleDetails saleDetails = new Logica.BL.SaleDetails();
-                saleDetails.CreateSaleProducts(model.Id,
-                    model.Quantity,
-                    model.Price);
+                Logica.BL.Products products = new Logica.BL.Products();
+                var validarQuantity = products.GetProducts().Where(x => x.Id == model.Id).FirstOrDefault();
 
-                return RedirectToAction("CreateMethodPayment");
+                //VALIDA SI HAY STOCK DEL PRODUCTO X LA CANTIDAD SOLICITADA 
+                if (model.Quantity <= validarQuantity.Quantity)
+                {
+                    Logica.BL.SaleDetails saleDetails = new Logica.BL.SaleDetails();
+                    saleDetails.CreateSaleProducts(model.Id,
+                        model.Quantity,
+                        model.Price);
+
+                    return RedirectToAction("CreateMethodPayment");
+                }
+                else
+                {
+                    ViewBag.Message = "En este momento no disponemos de la cantidad requerida " + model.Quantity + " Und(s), ya que solo disponemos en stock "
+                        + validarQuantity.Quantity + " Und(s), si gusta puede acercarse a uno de nuestros almacenes mas cercanos en su localidad o puede pedir la cantidad existente";
+
+                    return View("QuantityRequired");
+                }
             }
 
             Logica.Services.SearchProducts search = new Logica.Services.SearchProducts();

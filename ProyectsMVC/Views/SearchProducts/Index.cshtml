@@ -5,18 +5,28 @@
 
 <h2>Search Result</h2>
 
+@{ int colum = 1; }
 <br />
 @foreach (var item in Model)
 {
+    if (colum == 1)
+    {
+        @Html.Raw("<div class='form-row'>");
+    }
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="~/Images/Products/@item.Guid" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
             <p class="card-text">@Html.DisplayFor(modelItem => item.prodName)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
             <p class="card-text">@Html.DisplayFor(modelItem => item.CategoryName)</p>
             @Html.ActionLink("Ver producto", "Create", "ProductDetail", new { @class = "btn btn-primary" })
         </div>
     </div>
+    if (colum == 3)
+    {
+        colum = 0;
+        @Html.Raw("</div>")
+        colum++;
+    }
 }
 

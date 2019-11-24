@@ -14,7 +14,7 @@ namespace ProyectsMVC.Logica.BL
             var listProducts = (from _Products in db.Products
                                 join _Categories in db.Categories on _Products.CategoryId equals _Categories.Id
                                 join _States in db.States on _Products.StateId equals _States.Id
-                                where _Products.Quantity > 0
+                                //where _Products.Quantity > 0
                                 select new Models.DB.Products
                                 {
                                     Id = _Products.Id,
