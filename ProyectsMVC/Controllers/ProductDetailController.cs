@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using IdentitySample.Models;
+using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using IdentitySample.Models;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace ProyectsMVC.Controllers
 {

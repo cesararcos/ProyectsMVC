@@ -1,17 +1,13 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using SendGrid.Helpers.Mail;
-using System.Configuration;
 
 namespace IdentitySample.Models
 {
@@ -47,29 +43,7 @@ namespace IdentitySample.Models
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
-            // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
-            // You can write your own provider and plug in here.
-            manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
-            {
-                MessageFormat = "Your security code is: {0}"
-            });
-            manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
-            {
-                Subject = "SecurityCode",
-                BodyFormat = "Your security code is {0}"
-            });
-            manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
-            var dataProtectionProvider = options.DataProtectionProvider;
-            if (dataProtectionProvider != null)
-            {
-                manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
-                    {
-                        TokenLifespan = TimeSpan.FromHours(3)
-                    }
-                    ;
-            }
+            
             return manager;
         }
     }
@@ -88,30 +62,7 @@ namespace IdentitySample.Models
         }
     }
 
-    public class EmailService : IIdentityMessageService
-    {
-        public Task SendAsync(IdentityMessage message)
-        {
-            // Plug in your email service here to send an email.
-            return configSendGridasync(message);
-        }
-        private Task configSendGridasync(IdentityMessage message)
-        {
-            var client = new SendGrid.SendGridClient(ConfigurationManager.AppSettings["SendGridKey"].ToString());
-
-            var myMessage = new SendGridMessage();
-            myMessage.AddTo(message.Destination);
-            myMessage.From = new EmailAddress("cesar@utap.edu.co", "Cesar Arcos.");
-            myMessage.Subject = message.Subject;
-            myMessage.PlainTextContent = message.Body;
-            myMessage.HtmlContent = message.Body;
-
-            myMessage.SetClickTracking(false, false);
-            return client.SendEmailAsync(myMessage);
-            
-        }
-
-    }
+    
 
     public class SmsService : IIdentityMessageService
     {
