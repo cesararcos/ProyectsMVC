@@ -49,7 +49,6 @@ namespace ProyectsMVC.Controllers
                 Name = x.prodName,
                 Price = x.Price,
                 ShippingCost = x.ShippingCost,
-                //Quantity = listaDetailsProducts.Quantity,
                 Warranty = x.Warranty,
                 States = x.StateName,
                 Description = x.Description,
@@ -81,7 +80,7 @@ namespace ProyectsMVC.Controllers
                 else
                 {
                     ViewBag.Message = "En este momento no disponemos de la cantidad requerida " + model.Quantity + " Und(s), ya que solo disponemos en stock "
-                        + validarQuantity.Quantity + " Und(s), si gusta puede acercarse a uno de nuestros almacenes mas cercanos en su localidad o puede pedir la cantidad existente";
+                        + validarQuantity.Quantity + " Und(s)";
 
                     return View("QuantityRequired");
                 }
@@ -100,7 +99,6 @@ namespace ProyectsMVC.Controllers
                 Name = x.prodName,
                 Price = x.Price,
                 ShippingCost = x.ShippingCost,
-                //Quantity = listaDetailsProducts.Quantity,
                 Warranty = x.Warranty,
                 States = x.StateName,
                 Description = x.Description,

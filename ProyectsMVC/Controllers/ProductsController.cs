@@ -1,13 +1,9 @@
-﻿using ProyectsMVC.DAL.Models;
-using System;
-using System.Collections.Generic;
+﻿using IdentitySample.Models;
+using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
-using IdentitySample.Models;
-using Microsoft.AspNet.Identity.Owin;
-using System.Threading.Tasks;
 
 namespace ProyectsMVC.Controllers
 {
@@ -35,38 +31,26 @@ namespace ProyectsMVC.Controllers
 
         // GET: Products
         public async Task<ActionResult> Index()
-        {
-            //var Products = db.Products.Include(t => t.ProductPhotos);//Categories
-            //return View(Products.ToList());
-            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+        {   
+            Logica.Services.SearchProducts search = new Logica.Services.SearchProducts();
+            var listViewSearchProducts = search.GetSearchProductsAll();
 
-            Logica.BL.Customer customer = new Logica.BL.Customer();
-            var validaCustomer = customer.GetCustomer().Where(x => x.UserId == user.Id).FirstOrDefault();
-            if (validaCustomer != null)
+            var listaTodosProductosEncontrados = listViewSearchProducts.Select(x => new Logica.Models.ViewModel.ViewProducts
             {
-                Logica.Services.SearchProducts search = new Logica.Services.SearchProducts();
-                var listViewSearchProducts = search.GetSearchProductsAll();
-
-                var listaTodosProductosEncontrados = listViewSearchProducts.Select(x => new Logica.Models.ViewModel.ViewProducts
-                {
-                    prodId = x.prodId,
-                    CategoryId = x.CategoryId,
-                    CategoryName = x.CategoryName,
-                    prodName = x.prodName,
-                    Price = x.Price,
-                    ShippingCost = x.ShippingCost,
-                    Warranty = x.Warranty,
-                    Description = x.Description,
-                    Quantity = x.Quantity,
-                    StateId = x.StateId,
-                    StateName = x.StateName,
-                    Guid = x.Guid
-                }).ToList();
-                return View(listaTodosProductosEncontrados);
-            }
-            ViewBag.Message = "Aun no estas registrado, debes hacerlo para empezar a comprar";
-
-            return View ("SuccessProducts");
+                prodId = x.prodId,
+                CategoryId = x.CategoryId,
+                CategoryName = x.CategoryName,
+                prodName = x.prodName,
+                Price = x.Price,
+                ShippingCost = x.ShippingCost,
+                Warranty = x.Warranty,
+                Description = x.Description,
+                Quantity = x.Quantity,
+                StateId = x.StateId,
+                StateName = x.StateName,
+                Guid = x.Guid
+            }).ToList();
+            return View(listaTodosProductosEncontrados);
         }
     }
 }
